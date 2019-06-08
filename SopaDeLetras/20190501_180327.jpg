@@ -1,0 +1,62 @@
+from pattern.web import Wiktionary
+import pattern.text.es as patt
+def PalabraWik(pal,verb,sust,adj):
+    '''Va a buscar la palabra a Wiktionary y la califica en verbo, sustantivo o adjetivo segun
+    la primer seccion por orden de relevancia, si la palabra no se encuentra en el diccionario de la pagina,
+    se debera ingresar otra'''
+    w = Wiktionary(language='es')
+    try:
+        palabra = list(w.search(pal).sections)
+    except(AttributeError):
+        print('ingrese otra palabra')
+    else:
+        print(palabra)
+        palabrota = str(palabra[3])
+        palabrita = str(palabra[2])
+        if ('Verbo' in palabrita) or ('Verbo' in palabrota):
+            print('Es verbo')
+            verb.append(pal)
+        elif('Sustantivo' in palabrita) or ('Sustantivo' in palabrota):
+            print('Es sustantivo')
+            sust.append(pal)
+        elif('Adjetivo' in palabrita) or ('Adjetivo' in palabrota):
+            print('Es adjetivo')
+            adj.append(pal)
+        elif('adjetiva' in palabrita) or ('adjetiva' in palabrota):
+            print('Es adjetivo')
+            adj.append(pal)
+        else:
+            print('Ingrese otra Palabra')
+    return verb,sust,adj
+
+def PalabraPattern(pal):
+    '''Busca la palabra en el pattern y la califica segun su tipo, si no es un verbo, sustantivo o adjetivo, se debera ingresar otra.
+        TENER EN CUENTA  QUE SI LA PALABRA NO EXISTE EL MODULO PATTERN LO TOMA COMO SUSTANTIVO'''
+    palabra = patt.parse(pal)
+    print(palabra)
+    if ('VB' in palabra):
+        print('Es verbo')
+    elif ('NN' in palabra):
+        print('Es sustantivo')
+    elif ('JJ' in palabra):
+        print('Es adjetivo')
+    else:
+        print('Ingrese otra Palabra')
+
+def Definicion(pal):
+    '''Busca el articulo de la palabra en Wiktionary, selecciona la seccion con el tipo
+        y la devuelve toda como texto plano'''
+    wi = Wiktionary(language='es')
+    secciones = wi.search(pal).sections
+    seccion = secciones[3]
+    definicion = wi.MediaWikiSection.plaintext(seccion)  # ERROR NO PUEDO ACCEDER A UNA POSICION DE UN TEXTO PLANO
+    print(secciones)
+    print(definicion)
+    return definicion
+verbos = []
+sustantivos = []
+adjetivos = []
+pal = str(input())
+#PalabraWik(pal,verbos,sustantivos,adjetivos)
+#PalabraPattern(pal)
+#Definicion(pal)
