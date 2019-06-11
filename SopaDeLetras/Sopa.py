@@ -2,7 +2,8 @@ import sys
 import PySimpleGUI as sg
 import random
 import string
-
+from SopaDeLetras.configuracion import *
+import time
 #--------------------------------------- Functions ---------------------------------------
 
 def bienvenida():
@@ -14,7 +15,7 @@ def bienvenida():
 
 
     bienvenido = sg.Window('Bienvenido!', layout=layout_bienvenido)
-    event,  values = bienvenido.Read(timeout=4000)
+    bienvenido.Read(timeout=4000)
 
 def draw_grid(window):
 
@@ -42,7 +43,9 @@ window = sg.Window('Window Title', ).Layout(layout).Finalize()
 
 
 bienvenida()
+configPalabras()
 draw_grid(window)
+
 
 BOX_SIZE = 25
 palabras=['milanesa','telefono','galletitas','computadora','sdkjfisdfjdsf']
