@@ -93,6 +93,10 @@ def configPalabras():
             break
 
     ventana_IngVen.Refresh()
-    print(event, values)
 
-configPalabras()
+    valoresInservibles = ['__input__','__verbos__','__adjetivos__','__sustantivos__']
+    for dato in valoresInservibles:
+        if dato in values.keys():
+            del values[dato]
+    print(dic_palabras , values)
+    return values
