@@ -17,7 +17,7 @@ def bienvenida():
     event,  values = bienvenido.Read(timeout=4000)
 
 
-def select_words (dic_palabras, cantverbos, cantadj, cantsust):
+def select_words(dic_palabras, cantverbos, cantadj, cantsust):
     wordDic = []
     tempList = dic_palabras['__verbos__'].copy()
     wordDic['verbos'] = random.choices(tempList, k=cantverbos)
@@ -30,13 +30,15 @@ def select_words (dic_palabras, cantverbos, cantadj, cantsust):
 
 def longest_word(dic_palabras):
     max = -1
+    palMax = ''
     for pal in palabras:
-        if (len(pal) > max):
+        if len(pal) > max:
             palMax = pal
             max = len(pal)
     return palMax
 
-def draw_grid(window,palMax,g,coordenadas):
+
+def draw_grid(window, palMax, g, coordenadas):
     ''' Dibuja con letras random (POR AHORA) la matriz. A su vez, guarda en un diccionario auxiliar
     con las cordenadas como clave y su letra como valor.
         '''
@@ -49,7 +51,7 @@ def draw_grid(window,palMax,g,coordenadas):
             coordenadas[(col, row)] = letra         #Generacion del diccionario auxiliar.
 
 
-def Pintar(coordenadas,pintados,g,punto):
+def Pintar(coordenadas, pintados, g, punto):
     '''  Se ocupa de indicar como marcada una casilla pintandola en gris.
         '''
     g.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
@@ -61,11 +63,11 @@ def Pintar(coordenadas,pintados,g,punto):
     del coordenadas[punto]                  #Y las saco de mi estructura auxiliar.
 
 
-def Despintar(coordenadas,pintados,g,punto):
+def Despintar(coordenadas, pintados, g, punto):
     g.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
-                    (punto[0]* BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3), line_color='black',
+                    (punto[0] * BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3), line_color='black',
                     fill_color='white')
-    g.DrawText('{}'.format(borrados[punto]), (punto[0]* BOX_SIZE + 15, punto[1] * BOX_SIZE + 15),
+    g.DrawText('{}'.format(pintados[punto]), (punto[0] * BOX_SIZE + 15, punto[1] * BOX_SIZE + 15),
                font='Courier 25')
     coordenadas[punto] = pintados[punto]   #Devuelvo la casilla de la estructura de pintados a mi auxiliar
     del pintados[punto]
@@ -74,7 +76,7 @@ def Despintar(coordenadas,pintados,g,punto):
 
 layout = [
             [sg.Text('Sopa De Letras'), sg.Text('', key='_OUTPUT_')],
-            [sg.Graph((700, 600), (0, 330), (330, 0), key='_GRAPH_', change_submits=True, drag_submits=False,background_color='white')],
+            [sg.Graph((700, 600), (0, 330), (330, 0), key='_GRAPH_', change_submits=True, drag_submits=False, background_color='white')],
             [sg.Button('Show'), sg.Button('Exit')]
          ]
 
@@ -90,17 +92,17 @@ dic_palabras['__sustantivos__'] = []
 
 
 bienvenida()
-config_values = configPalabras(dic_palabras)                                        #Levantar configuracion
-palabras = select_words(dic_palabras,config_values['__cantverbos__'],config_values['__cantadjetivos__'],config_values['__cantsustantivos__'])                                   #Seleccionar palabras a usar
+config_values = configPalabras(dic_palabras)                  #Levantar configuracion
+palabras = select_words(dic_palabras, config_values['__cantverbos__'], config_values['__cantadjetivos__'], config_values['__cantsustantivos__'])                                   #Seleccionar palabras a usar
 palMax = longest_word(palabras)
 
 
 g = window.FindElement('_GRAPH_')
-BOX_SIZE = 25      #Tamaño de las casillas
+BOX_SIZE = 25      # Tamaño de las casillas
 
 coordenadas = {}
 draw_grid(window, palMax, g, coordenadas)
-borrados = {}
+pintados = {}
 
 
 while True:             # Event Loop
@@ -117,12 +119,12 @@ while True:             # Event Loop
             punto = (x, y)
             if punto in coordenadas.keys():
                 try:                                           #Esto no va, hay que ajustar el tamaño de la window.
-                    Pintar(coordenadas, borrados, g, punto)
+                    Pintar(coordenadas, pintados, g, punto)
                 except KeyError:
                     pass
             else:
                 try:                                           #Same con este.
-                    Despintar(coordenadas, borrados, g, punto)
+                    Despintar(coordenadas, pintados, g, punto)
                 except KeyError:
                     pass
 
