@@ -1,9 +1,5 @@
 import sys
-if sys.version_info[0] >= 3:
-    import PySimpleGUI as sg
-    # import PySimpleGUIWeb as sg       # take your pick of ports. Runs on both
-else:
-    import PySimpleGUI27 as sg
+import PySimpleGUI as sg
 import random
 import string
 
@@ -22,6 +18,7 @@ for pal in palabras:
         palMax=pal
         max=len(pal)
 print(palMax)
+#borrzrrrr
 
 layout = [
             [sg.Text('Crossword Puzzle Using PySimpleGUI'), sg.Text('', key='_OUTPUT_')],
