@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3b278a84-e50d-4073-9a81-db5542bccd79" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Mati/SopaPrueba.py" beforeDir="false" afterPath="$PROJECT_DIR$/Mati/SopaPrueba.py" afterDir="false" />
-    </list>
+    <list default="true" id="3b278a84-e50d-4073-9a81-db5542bccd79" name="Default Changelist" comment="" />
     <ignored path="C:\Users\fernando\PycharmProjects\ProyectoPy\.idea\shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +39,7 @@
         <entry file="file://$PROJECT_DIR$/SopaDeLetras/Sopa.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-12">
-              <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+              <caret line="47" selection-start-line="47" selection-end-line="47" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -53,7 +51,7 @@
         <entry file="file://$PROJECT_DIR$/Mati/SopaPrueba.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
-              <caret line="22" column="18" lean-forward="true" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
+              <caret line="22" column="18" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -291,12 +289,25 @@
       <option name="project" value="LOCAL" />
       <updated>1560272949929</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Sopa comentada">
+      <created>1560275358351</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1560275358351</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Sopa comentada">
+      <created>1560275432886</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1560275432886</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12946428" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -344,7 +355,8 @@
     <MESSAGE value="nueva organizacion de archivos" />
     <MESSAGE value="nueva funcion" />
     <MESSAGE value="temporal" />
-    <option name="LAST_COMMIT_MESSAGE" value="temporal" />
+    <MESSAGE value="Sopa comentada" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sopa comentada" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python36/site-packages/pygame/__init__.py" />
@@ -384,7 +396,7 @@
     <entry file="file://$PROJECT_DIR$/SopaDeLetras/Sopa.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-12">
-          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -394,7 +406,7 @@
     <entry file="file://$PROJECT_DIR$/Mati/SopaPrueba.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="22" column="18" lean-forward="true" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
+          <caret line="22" column="18" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
