@@ -26,7 +26,7 @@ def draw_grid(window,palMax,g,coordenadas):
             g.DrawText('{}'.format(letra), (col * BOX_SIZE + 15, row * BOX_SIZE + 15),
                        font='Courier 25')
             coordenadas[(col,row)]=letra
-    return coordenadas #
+    return coordenadas
 
 
 def Pintar(coordenadas,borrados,g):
