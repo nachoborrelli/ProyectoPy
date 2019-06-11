@@ -48,37 +48,41 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
     #calcular tamaño de la grilla
     palMax = len(longest_word(wordDic))
     if (palMax < 5):
-        palMax += 6
+        alto = palMax + 6
     elif ((palMax >= 5) and (palMax <= 7)):
-        palMax += 4
+        alto = palMax + 4
     else:
-        palMax += 2
+        alto = palMax + 2
 
     cant_palabras = len(wordDic['verbos']) + len(wordDic['sustantivos']) + len(wordDic['adjetivos'])
 
     if cant_palabras < 7:                                                           #
-        cant_palabras += 5                                                          #
-    elif (cant_palabras >= 7) and (cant_palabras < 13):                             # Revisar al final    #####################################
-        cant_palabras += 2
+        ancho= cant_palabras + 5                                                          #
+    else:                                                                  # Revisar al final    #####################################
+        ancho = cant_palabras + 2
 
-    if orientacion == 'Horizontal':                                                   # recorrer por columnas
-        for row in range(palMax):
-            for col in range(cant_palabras):
-                graph.DrawRectangle((col * BOX_SIZE + 5, row * BOX_SIZE + 3),
+    for row in range(alto):                                 # Creo la grilla
+        for col in range(ancho):
+            graph.DrawRectangle((col * BOX_SIZE + 5, row * BOX_SIZE + 3),
                                 (col * BOX_SIZE + BOX_SIZE + 5, row * BOX_SIZE + BOX_SIZE + 3),
-                                line_color='black')  # Creo la grilla
+                                line_color='black')
+
+    if orientacion == 'Horizontal':                                                   # recorrer por filas
+        for i in range(cant_palabras):
+            x = random.random(ancho)
+            y = random.random(alto)
+            #if (ancho - x)
+
+
+        for row in range(alto):                                       # Agrego letras random en las posiciones libres.
+            for col in range(ancho):
                 letra = random.choice(string.ascii_uppercase)  # Me guardo una letra random
                 graph.DrawText('{}'.format(letra), (col * BOX_SIZE + 15, row * BOX_SIZE + 15),
                            font='Courier 25')  # Escribo la letra.
                 coordenadas[(col, row)] = letra  # Generacion del diccionario auxiliar.
 
     else:
-        # orientacion == 'Vertical'                                                #recorrer por filas
-        for col in range(cant_palabras):
-            for row in range(palMax):
-                graph.DrawRectangle((col * BOX_SIZE + 5, row * BOX_SIZE + 3),
-                                (col * BOX_SIZE + BOX_SIZE + 5, row * BOX_SIZE + BOX_SIZE + 3),
-                                line_color='black')  # Creo la grilla
+        # orientacion == 'Vertical'                                                #recorrer por columnas
                 letra = random.choice(string.ascii_uppercase)  # Me guardo una letra random
                 graph.DrawText('{}'.format(letra), (col * BOX_SIZE + 15, row * BOX_SIZE + 15),
                            font='Courier 25')  # Escribo la letra.
