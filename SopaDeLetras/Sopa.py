@@ -88,11 +88,11 @@ dic_palabras['__verbos__'] = []  # dic de palabras clasificadas por tipo
 dic_palabras['__adjetivos__'] = []
 dic_palabras['__sustantivos__'] = []
 
-#--------------------------------------- Main ---------------------------------------
+# --------------------------------------- Main ---------------------------------------
 
 
 bienvenida()
-config_values = configPalabras(dic_palabras)                  #Levantar configuracion
+config_values = configPalabras(dic_palabras)                  # Levantar configuracion
 palabras = select_words(dic_palabras, config_values['__cantverbos__'], config_values['__cantadjetivos__'], config_values['__cantsustantivos__'])                                   #Seleccionar palabras a usar
 palMax = longest_word(palabras)
 
