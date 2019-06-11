@@ -37,14 +37,14 @@ def configPalabras():
     columna_adj = [
         [sg.Frame('Adjetivos', [
         [sg.Listbox( dic_palabras['__adjetivos__'], key='__adjetivos__', size=(25, 5))],
-        [sg.Text('Cantidad:'), sg.Spin([i for i in range(0,  6)], initial_value=0, size=(3, 3), key='__cantadjetivos'),
+        [sg.Text('Cantidad:'), sg.Spin([i for i in range(0,  6)], initial_value=0, size=(3, 3), key='__cantadjetivos__'),
         sg.ColorChooserButton('Elegir color', key='__adjColorChooser__' )]
                             ])]
     ]
     columna_sust = [
         [sg.Frame('Sustantivos', [
         [sg.Listbox(dic_palabras['__sustantivos__'], key='__sustantivos__', size=(25, 5))],
-        [sg.Text('Cantidad:'), sg.Spin([i for i in range(0,  6)], initial_value=0, size=(3, 3),key='cantsustantivos'),
+        [sg.Text('Cantidad:'), sg.Spin([i for i in range(0,  6)], initial_value=0, size=(3, 3),key='__cantsustantivos__'),
         sg.ColorChooserButton('Elegir color', key='__sustColorChooser__', )]
                             ])]
     ]
@@ -79,7 +79,7 @@ def configPalabras():
             if (valores[0] == False):
                 valores = modulo.ProcesarPalabra(values['__input__'], dic_palabras, tipo)
             else:
-                ventana_IngVen.FindElement(valores[1]).Update(dic_palabras[valores[1]])
+                ventana_IngVen.FindElement(valores[1]).Update(dic_palabras[valores[1]])       #pos 0 = boolean si se pudo o no #pos 1 el tipo de palabra
             ventana_IngVen.Refresh()
 
         elif event == '__deletebutton__':

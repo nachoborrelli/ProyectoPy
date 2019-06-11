@@ -3,11 +3,8 @@ import PySimpleGUI as sg
 import random
 import string
 
-"""
-    Demo application to show how to draw rectangles and letters on a Graph Element
-    This demo mocks up a crossword puzzle board
-    It will place a letter where you click on the puzzle
-"""
+#--------------------------------------- Functions ---------------------------------------
+
 def bienvenida():
 
     layout_bienvenido = [
@@ -18,17 +15,19 @@ def bienvenida():
 
     bienvenido = sg.Window('Bienvenido!', layout=layout_bienvenido)
     event,  values = bienvenido.Read(timeout=4000)
-bienvenida()
 
-BOX_SIZE = 25
-palabras=['milanesa','telefono','galletitas','computadora','sdkjfisdfjdsf']
-max=-1
-for pal in palabras:
-    if (len(pal)>max):
-        palMax=pal
-        max=len(pal)
-print(palMax)
+def draw_grid(window):
 
+    g = window.FindElement('_GRAPH_')
+
+    for row in range(len(palMax)):
+        for col in range(len(palMax)):
+            g.DrawRectangle((col * BOX_SIZE + 5, row * BOX_SIZE + 3),
+                            (col * BOX_SIZE + BOX_SIZE + 5, row * BOX_SIZE + BOX_SIZE + 3), line_color='black')
+            # g.DrawText('{}'.format(row * 6 + col + 1), (col * BOX_SIZE + 10, row * BOX_SIZE + 8))
+            g.DrawText('{}'.format(random.choice(string.ascii_uppercase)), (col * BOX_SIZE + 15, row * BOX_SIZE + 15),
+                       font='Courier 25')
+#--------------------------------------- Layouts ---------------------------------------
 
 layout = [
             [sg.Text('Sopa De Letras'), sg.Text('', key='_OUTPUT_')],
@@ -38,13 +37,21 @@ layout = [
 
 window = sg.Window('Window Title', ).Layout(layout).Finalize()
 
-g = window.FindElement('_GRAPH_')
 
-for row in range(len(palMax)):
-    for col in range(len(palMax)):
-        g.DrawRectangle((col * BOX_SIZE + 5, row * BOX_SIZE + 3), (col * BOX_SIZE + BOX_SIZE + 5, row * BOX_SIZE + BOX_SIZE + 3), line_color='black')
-        #g.DrawText('{}'.format(row * 6 + col + 1), (col * BOX_SIZE + 10, row * BOX_SIZE + 8))
-        g.DrawText('{}'.format(random.choice(string.ascii_uppercase)), (col * BOX_SIZE + 15, row * BOX_SIZE + 15),font='Courier 25')
+#--------------------------------------- Main ---------------------------------------
+
+
+bienvenida()
+draw_grid(window)
+
+BOX_SIZE = 25
+palabras=['milanesa','telefono','galletitas','computadora','sdkjfisdfjdsf']
+max=-1
+for pal in palabras:
+    if (len(pal)>max):
+        palMax=pal
+        max=len(pal)
+print(palMax)
 
 while True:             # Event Loop
     event, values = window.Read()
