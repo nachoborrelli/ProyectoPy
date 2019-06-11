@@ -18,6 +18,7 @@ for pal in palabras:
         palMax=pal
         max=len(pal)
 print(palMax)
+#borrzr
 
 layout = [
             [sg.Text('Crossword Puzzle Using PySimpleGUI'), sg.Text('', key='_OUTPUT_')],
