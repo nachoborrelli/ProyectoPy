@@ -22,28 +22,27 @@ def draw_grid(window,palMax,g,coordenadas):
         for col in range(len(palMax)):
             g.DrawRectangle((col * BOX_SIZE + 5, row * BOX_SIZE + 3),
                             (col * BOX_SIZE + BOX_SIZE + 5, row * BOX_SIZE + BOX_SIZE + 3), line_color='black')
-            letra = random.choice(string.ascii_uppercase)
-            g.DrawText('{}'.format(letra), (col * BOX_SIZE + 15, row * BOX_SIZE + 15),
-                       font='Courier 25')
+            letra = random.choice(string.ascii_uppercase)       #Me guardo una letra random
+            g.DrawText('{}'.format(letra), (col * BOX_SIZE + 15, row * BOX_SIZE + 15), font='Courier 25')
             coordenadas[(col,row)]=letra
     return coordenadas
 
 
-def Pintar(coordenadas,borrados,g):
-    g.DrawRectangle((box_x * BOX_SIZE + 5, box_y * BOX_SIZE + 3),
-                    (box_x * BOX_SIZE + BOX_SIZE + 5, box_y * BOX_SIZE + BOX_SIZE + 3), line_color='black',
+def Pintar(coordenadas,borrados,g,punto):
+    g.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
+                    (punto[0] * BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3), line_color='black',
                     fill_color='red')
-    g.DrawText('{}'.format(coordenadas[punto]), (box_x * BOX_SIZE + 15, box_y * BOX_SIZE + 15),
+    g.DrawText('{}'.format(coordenadas[punto]), (punto[0] * BOX_SIZE + 15, punto[1]* BOX_SIZE + 15),
                font='Courier 25')
     borrados[punto] = coordenadas[punto]
     del coordenadas[punto]
 
 
-def Despintar(coordenadas,borrados,g):
-    g.DrawRectangle((box_x * BOX_SIZE + 5, box_y * BOX_SIZE + 3),
-                    (box_x * BOX_SIZE + BOX_SIZE + 5, box_y * BOX_SIZE + BOX_SIZE + 3), line_color='black',
+def Despintar(coordenadas,borrados,g,punto):
+    g.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
+                    (punto[0]* BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3), line_color='black',
                     fill_color='white')
-    g.DrawText('{}'.format(borrados[punto]), (box_x * BOX_SIZE + 15, box_y * BOX_SIZE + 15),
+    g.DrawText('{}'.format(borrados[punto]), (punto[0]* BOX_SIZE + 15, punto[1] * BOX_SIZE + 15),
                font='Courier 25')
     coordenadas[punto] = borrados[punto]
     del borrados[punto]
@@ -88,6 +87,6 @@ while True:             # Event Loop
         #letter_location = (box_x * BOX_SIZE + 18, box_y * BOX_SIZE + 17)
         punto=(x,y)
         if(punto in coordenadas.keys()):
-           Pintar(coordenadas,borrados,g)
+           Pintar(coordenadas,borrados,g,punto)
         else:
-            Despintar(coordenadas,borrados,g)
+            Despintar(coordenadas,borrados,g,punto)
