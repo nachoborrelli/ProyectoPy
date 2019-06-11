@@ -4,7 +4,7 @@ import random
 import string
 from SopaDeLetras.configuracion import configPalabras
 
-#--------------------------------------- Functions ---------------------------------------
+#--------------------------------------- Functions ---------------------------------------------------------------------
 
 def bienvenida():
 
@@ -17,7 +17,7 @@ def bienvenida():
     event,  values = bienvenido.Read(timeout=4000)
 
 
-def select_words (dic_palabras, cantverbos, cantadj, cantsust):
+def select_words(dic_palabras, cantverbos, cantadj, cantsust):
     wordDic = []
     tempList = dic_palabras['__verbos__'].copy()
     wordDic['verbos'] = random.choices(tempList, k=cantverbos)
@@ -28,77 +28,116 @@ def select_words (dic_palabras, cantverbos, cantadj, cantsust):
     return wordDic
 
 
-def longest_word(dic_palabras):
+def longest_word(wordDic):
     max = -1
-    for pal in palabras:
-        if (len(pal) > max):
-            palMax = pal
-            max = len(pal)
-    return max
+    palMax = ''
+    for list in wordDic:
+        for pal in wordDic[list]:
+            if len(pal) > max:
+               palMax = pal
+               max = len(pal)
 
-def draw_grid(window,palMax,g,coordenadas):
-    '''
+    return palMax
+
+
+
+def draw_grid(window, orientacion, graph, coordenadas, wordDic):
+    ''' Dibuja con letras random (POR AHORA) la matriz. A su vez, guarda en un diccionario auxiliar
+    con las cordenadas como clave y su letra como valor.'''
+
+    #calcular tamaño de la grilla
+    palMax = len(longest_word(wordDic))
+    if (palMax < 5):
+        palMax += 6
+    elif ((palMax >= 5) and (palMax <= 7)):
+        palMax += 4
+    else:
+        palMax += 2
+
+    cant_palabras = len(wordDic['verbos']) + len(wordDic['sustantivos']) + len(wordDic['adjetivos'])
+
+    if cant_palabras < 7:                                                           #
+        cant_palabras += 5                                                          #
+    elif (cant_palabras >= 7) and (cant_palabras < 13):                             # Revisar al final    #####################################
+        cant_palabras += 2
+
+    if orientacion == 'Horizontal':                                                   # recorrer por columnas
+        for row in range(palMax):
+            for col in range(cant_palabras):
+                graph.DrawRectangle((col * BOX_SIZE + 5, row * BOX_SIZE + 3),
+                                (col * BOX_SIZE + BOX_SIZE + 5, row * BOX_SIZE + BOX_SIZE + 3),
+                                line_color='black')  # Creo la grilla
+                letra = random.choice(string.ascii_uppercase)  # Me guardo una letra random
+                graph.DrawText('{}'.format(letra), (col * BOX_SIZE + 15, row * BOX_SIZE + 15),
+                           font='Courier 25')  # Escribo la letra.
+                coordenadas[(col, row)] = letra  # Generacion del diccionario auxiliar.
+
+    else:
+        # orientacion == 'Vertical'                                                #recorrer por filas
+        for col in range(cant_palabras):
+            for row in range(palMax):
+                graph.DrawRectangle((col * BOX_SIZE + 5, row * BOX_SIZE + 3),
+                                (col * BOX_SIZE + BOX_SIZE + 5, row * BOX_SIZE + BOX_SIZE + 3),
+                                line_color='black')  # Creo la grilla
+                letra = random.choice(string.ascii_uppercase)  # Me guardo una letra random
+                graph.DrawText('{}'.format(letra), (col * BOX_SIZE + 15, row * BOX_SIZE + 15),
+                           font='Courier 25')  # Escribo la letra.
+                coordenadas[(col, row)] = letra  # Generacion del diccionario auxiliar.
+
+
+def Pintar(coordenadas, pintados, graph, punto):
+    '''  Se ocupa de indicar como marcada una casilla pintandola en gris.
         '''
-    for row in range(len(palMax)):
-        for col in range(len(palMax)):
-            g.DrawRectangle((col * BOX_SIZE + 5, row * BOX_SIZE + 3),
-                            (col * BOX_SIZE + BOX_SIZE + 5, row * BOX_SIZE + BOX_SIZE + 3), line_color='black')
-            #letra = random.choice(string.ascii_uppercase)       #Me guardo una letra random
-            #g.DrawText('{}'.format(letra), (col * BOX_SIZE + 15, row * BOX_SIZE + 15), font='Courier 25')
-
-            #coordenadas[(col,row)]=letra
-
-
-
-def Pintar(coordenadas,borrados,g,punto):
-    g.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
+    graph.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
                     (punto[0] * BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3), line_color='black',
-                    fill_color='red')
-    g.DrawText('{}'.format(coordenadas[punto]), (punto[0] * BOX_SIZE + 15, punto[1]* BOX_SIZE + 15),
+                    fill_color='grey72')
+    graph.DrawText('{}'.format(coordenadas[punto]), (punto[0] * BOX_SIZE + 15, punto[1]* BOX_SIZE + 15),
                font='Courier 25')
-    borrados[punto] = coordenadas[punto]
-    del coordenadas[punto]
+    pintados[punto] = coordenadas[punto]  #Mantengo una estructura con solo las casillas pintadas.
+    del coordenadas[punto]                  #Y las saco de mi estructura auxiliar.
 
 
-def Despintar(coordenadas,borrados,g,punto):
-    g.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
-                    (punto[0]* BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3), line_color='black',
+def Despintar(coordenadas, pintados, graph, punto):
+    graph.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
+                    (punto[0] * BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3), line_color='black',
                     fill_color='white')
-    g.DrawText('{}'.format(borrados[punto]), (punto[0]* BOX_SIZE + 15, punto[1] * BOX_SIZE + 15),
+    graph.DrawText('{}'.format(pintados[punto]), (punto[0] * BOX_SIZE + 15, punto[1] * BOX_SIZE + 15),
                font='Courier 25')
-    coordenadas[punto] = borrados[punto]
-    del borrados[punto]
-#--------------------------------------- Layouts ---------------------------------------
-
-layout = [
-            [sg.Text('Sopa De Letras'), sg.Text('', key='_OUTPUT_')],
-            [sg.Graph((700,600), (0,450), (450,0), key='_GRAPH_', change_submits=True, drag_submits=False,background_color='white')],
-            [sg.Button('Show'), sg.Button('Exit')]
-         ]
-
-window = sg.Window('Window Title', ).Layout(layout).Finalize()
-
-# ------------------------------------ Estructuras ------------------------------------
+    coordenadas[punto] = pintados[punto]   #Devuelvo la casilla de la estructura de pintados a mi auxiliar
+    del pintados[punto]
+# ------------------------------------ Estructuras ---------------------------------------------------------------------
 dic_palabras = {}
 dic_palabras['__verbos__'] = []  # dic de palabras clasificadas por tipo
 dic_palabras['__adjetivos__'] = []
 dic_palabras['__sustantivos__'] = []
 
-#--------------------------------------- Main ---------------------------------------
+# --------------------------------------- Config y bienvenida ----------------------------------------------------------
+bienvenida()
+config_values = configPalabras(dic_palabras)                                                  # Levantar configuracion
+
+# --------------------------------------- Layouts ----------------------------------------------------------------------
+
+layout = [
+            [sg.Text('Sopa De Letras'), sg.Text('', key='_OUTPUT_')],
+            [sg.Graph((700, 600), (0, 330), (330, 0), key='_GRAPH_', change_submits=True, drag_submits=False, background_color='white')],
+            [sg.Button('Show'), sg.Button('Exit')]
+         ]
+
+window = sg.Window('Window Title', ).Layout(layout).Finalize()
+
+# --------------------------------------- Main -------------------------------------------------------------------------
+
+wordDic = select_words(dic_palabras, config_values['__cantverbos__'], config_values['__cantadjetivos__'], config_values['__cantsustantivos__'])                                   #Seleccionar palabras a usar
+
+graph = window.FindElement('_GRAPH_')
+
+BOX_SIZE = 25                                                                               # Tamaño de las casillas
+
+coordenadas = {}
+draw_grid(window, config_values['__orientacion__'], graph, coordenadas)
+pintados = {}
 
 
-#bienvenida()                                                           #Cartel de bienvenida
-config_values = configPalabras()                                        #Levantar configuracion
-palabras = select_words(dic_palabras,config_values['__cantverbos__'],config_values['__cantadjetivos__'],config_values['__cantsustantivos__'])                                   #Seleccionar palabras a usar
-palMax = longest_word(palabras)
-
-
-g = window.FindElement('_GRAPH_')
-BOX_SIZE = 25
-
-coordenadas={}
-draw_grid(window,palMax,g,coordenadas)
-borrados={}
 while True:             # Event Loop
     event, values = window.Read()
     if event is None or event == 'Exit':
@@ -106,12 +145,19 @@ while True:             # Event Loop
     mouse = values['_GRAPH_']
     if event == '_GRAPH_':
         if mouse == (None, None):
-            continue            #Pass vs continue?
-        x = mouse[0] // BOX_SIZE
-        y = mouse[1] // BOX_SIZE
-        #letter_location = (box_x * BOX_SIZE + 18, box_y * BOX_SIZE + 17)
-        punto=(x,y)
-        if(punto in coordenadas.keys()):
-           Pintar(coordenadas,borrados,g,punto)
+            pass            #Pass vs continue?
         else:
-            Despintar(coordenadas,borrados,g,punto)
+            x = mouse[0] // BOX_SIZE
+            y = mouse[1] // BOX_SIZE
+            punto = (x, y)
+            if punto in coordenadas.keys():
+                try:                                           #Esto no va, hay que ajustar el tamaño de la window.
+                    Pintar(coordenadas, pintados, graph, punto)
+                except KeyError:
+                    pass
+            else:
+                try:                                           #Same con este.
+                    Despintar(coordenadas, pintados, graph, punto)
+                except KeyError:
+                    pass
+
