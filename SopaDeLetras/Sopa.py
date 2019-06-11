@@ -8,7 +8,17 @@ import string
     This demo mocks up a crossword puzzle board
     It will place a letter where you click on the puzzle
 """
+def bienvenida():
 
+    layout_bienvenido = [
+                            [sg.Image(filename='bienvenido_image.png')]
+
+                         ]
+
+
+    bienvenido = sg.Window('Bienvenido!', layout=layout_bienvenido)
+    event,  values = bienvenido.Read(timeout=4000)
+bienvenida()
 
 BOX_SIZE = 25
 palabras=['milanesa','telefono','galletitas','computadora','sdkjfisdfjdsf']
@@ -18,10 +28,10 @@ for pal in palabras:
         palMax=pal
         max=len(pal)
 print(palMax)
-#borrzrrrr
+
 
 layout = [
-            [sg.Text('Crossword Puzzle Using PySimpleGUI'), sg.Text('', key='_OUTPUT_')],
+            [sg.Text('Sopa De Letras'), sg.Text('', key='_OUTPUT_')],
             [sg.Graph((700,600), (0,450), (450,0), key='_GRAPH_', change_submits=True, drag_submits=False)],
             [sg.Button('Show'), sg.Button('Exit')]
          ]
