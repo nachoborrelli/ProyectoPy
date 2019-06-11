@@ -71,7 +71,6 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
         for i in range(cant_palabras):
             x = random.random(ancho)
             y = random.random(alto)
-            #if (ancho - x)
 
 
         for row in range(alto):                                       # Agrego letras random en las posiciones libres.
