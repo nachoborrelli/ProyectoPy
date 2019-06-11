@@ -19,5 +19,5 @@ bienvenida()
 
 def MostrarSopa ():
     layoutsopa= [
-                [sg.]
+                []
     ]
