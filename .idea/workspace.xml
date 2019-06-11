@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3b278a84-e50d-4073-9a81-db5542bccd79" name="Default Changelist" comment="">
+    <list default="true" id="3b278a84-e50d-4073-9a81-db5542bccd79" name="Default Changelist" comment="nueva funcion">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SopaDeLetras/Sopa.py" beforeDir="false" afterPath="$PROJECT_DIR$/SopaDeLetras/Sopa.py" afterDir="false" />
     </list>
     <ignored path="C:\Users\fernando\PycharmProjects\ProyectoPy\.idea\shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,8 +40,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SopaDeLetras/Sopa.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+            <state relative-caret-position="-104">
+              <caret line="30" column="88" lean-forward="true" selection-start-line="30" selection-start-column="88" selection-end-line="30" selection-end-column="88" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -240,7 +239,14 @@
       <option name="project" value="LOCAL" />
       <updated>1560268101116</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="nueva funcion">
+      <created>1560269034688</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1560269034688</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -291,7 +297,8 @@
     <MESSAGE value="sin casilla" />
     <MESSAGE value="merge de bienvenida y sopa" />
     <MESSAGE value="nueva organizacion de archivos" />
-    <option name="LAST_COMMIT_MESSAGE" value="nueva organizacion de archivos" />
+    <MESSAGE value="nueva funcion" />
+    <option name="LAST_COMMIT_MESSAGE" value="nueva funcion" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python36/site-packages/pygame/__init__.py" />
@@ -350,8 +357,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SopaDeLetras/Sopa.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+        <state relative-caret-position="-104">
+          <caret line="30" column="88" lean-forward="true" selection-start-line="30" selection-start-column="88" selection-end-line="30" selection-end-column="88" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
