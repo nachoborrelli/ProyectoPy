@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3b278a84-e50d-4073-9a81-db5542bccd79" name="Default Changelist" comment="nueva funcion">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="3b278a84-e50d-4073-9a81-db5542bccd79" name="Default Changelist" comment="nueva funcion" />
     <ignored path="C:\Users\fernando\PycharmProjects\ProyectoPy\.idea\shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +14,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Mati/Web.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+            <state relative-caret-position="1139">
+              <caret line="69" selection-start-line="69" selection-end-line="69" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
               </folding>
@@ -28,7 +26,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SopaDeLetras/configuracion.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
+            <state relative-caret-position="765">
               <caret line="46" column="119" selection-start-line="46" selection-start-column="119" selection-end-line="46" selection-end-column="119" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
@@ -40,8 +38,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SopaDeLetras/Sopa.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-104">
-              <caret line="30" column="88" lean-forward="true" selection-start-line="30" selection-start-column="88" selection-end-line="30" selection-end-column="88" />
+            <state relative-caret-position="510">
+              <caret line="30" column="88" selection-start-line="30" selection-start-column="88" selection-end-line="30" selection-end-column="88" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -250,8 +248,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12946428" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -302,26 +299,8 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python36/site-packages/pygame/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/SopaDeLetras/Sopa.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SopaDeLetras/Casilla.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SopaDeLetras/bienvenida.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/SopaDeLetras/Casilla.py" />
+    <entry file="file://$PROJECT_DIR$/SopaDeLetras/bienvenida.py" />
     <entry file="file://$PROJECT_DIR$/Abus/crosswords.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -329,16 +308,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SopaDeLetras/pruebaPygame.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/SopaDeLetras/pruebaPygame.py" />
     <entry file="file://$PROJECT_DIR$/SopaDeLetras/Demo-Crucigrama.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Mati/Web.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+        <state relative-caret-position="1139">
+          <caret line="69" selection-start-line="69" selection-end-line="69" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
           </folding>
@@ -347,7 +324,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SopaDeLetras/configuracion.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
+        <state relative-caret-position="765">
           <caret line="46" column="119" selection-start-line="46" selection-start-column="119" selection-end-line="46" selection-end-column="119" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
@@ -357,8 +334,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SopaDeLetras/Sopa.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-104">
-          <caret line="30" column="88" lean-forward="true" selection-start-line="30" selection-start-column="88" selection-end-line="30" selection-end-column="88" />
+        <state relative-caret-position="510">
+          <caret line="30" column="88" selection-start-line="30" selection-start-column="88" selection-end-line="30" selection-end-column="88" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
