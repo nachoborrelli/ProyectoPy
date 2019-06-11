@@ -17,7 +17,7 @@ def ProcesarPalabra(pal, dic, tipo):
             print(palabra)
             seccion2 = str(palabra[3])
             seccion1 = str(palabra[2])
-            if ('Verbo' in seccion2) or ('Verbo' in seccion1):
+            if ('Verbo' in seccion2) or ('Verbo' in seccion1):                  #FORMA VERBAL
                 dic['__verbos__'].append(pal)
                 tipo= '__verbos__'
                 correcto=True

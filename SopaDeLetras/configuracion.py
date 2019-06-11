@@ -1,7 +1,7 @@
 import PySimpleGUI as sg
 from Mati import Web as modulo
 
-def configPalabras():
+def configPalabras(dic_palabras):
     #------------------------------------ Funciones ------------------------------------
     def borrar_valor(valor,dic_palabras):
 
@@ -19,11 +19,7 @@ def configPalabras():
 
         return valido
 
-    #------------------------------------ Estructuras ------------------------------------
-    dic_palabras = {}
-    dic_palabras['__verbos__'] = []                                         #dic de palabras clasificadas por tipo
-    dic_palabras['__adjetivos__'] = []
-    dic_palabras['__sustantivos__'] = []
+
     # ------------------------------------ Layout & Design ------------------------------------
 
     sg.ChangeLookAndFeel('Purple')
@@ -76,8 +72,9 @@ def configPalabras():
         if event == '__addbutton__':
             valores = modulo.ProcesarPalabra(values['__input__'], dic_palabras, tipo)
             print(valores[0])
-            if (valores[0] == False):
-                valores = modulo.ProcesarPalabra(values['__input__'], dic_palabras, tipo)
+            if valores[0] == False:
+                #valores = modulo.ProcesarPalabra(values['__input__'], dic_palabras, tipo)
+                pass
             else:
                 ventana_IngVen.FindElement(valores[1]).Update(dic_palabras[valores[1]])       #pos 0 = boolean si se pudo o no #pos 1 el tipo de palabra
             ventana_IngVen.Refresh()
@@ -98,5 +95,6 @@ def configPalabras():
     for dato in valoresInservibles:
         if dato in values.keys():
             del values[dato]
-    print(dic_palabras , values)
+
+    print(values)
     return values
