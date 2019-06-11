@@ -53,7 +53,7 @@ def Despintar(coordenadas,pintados,g,punto):
 
 layout = [
             [sg.Text('Sopa De Letras'), sg.Text('', key='_OUTPUT_')],
-            [sg.Graph((700,600), (0,450), (450,0), key='_GRAPH_', change_submits=True, drag_submits=False,background_color='white')],
+            [sg.Graph((700, 600), (0, 330), (330, 0), key='_GRAPH_', change_submits=True, drag_submits=False,background_color='white')],
             [sg.Button('Show'), sg.Button('Exit')]
          ]
 
@@ -67,8 +67,8 @@ window = sg.Window('Window Title', ).Layout(layout).Finalize()
 #draw_grid(window)
 g = window.FindElement('_GRAPH_')
 BOX_SIZE = 25      #Tamaño de las casillas
-palabras=['milanesa', 'telefono', 'galletitas', 'computadora', 'sdkjfisdfjdsf']   #Estas deben llegar por parametro
-max=-1
+palabras = ['milanesa', 'telefono', 'galletitas', 'computadora']   #Estas deben llegar por parametro
+max = -1
 for pal in palabras:     #Me quedo con la palabra mas larga.
     if len(pal) > max:
         palMax = pal
@@ -92,6 +92,13 @@ while True:             # Event Loop
             y = mouse[1] // BOX_SIZE
             punto = (x, y)
             if punto in coordenadas.keys():
-                Pintar(coordenadas, borrados, g, punto)
+                try:                                           #Esto no va, hay que ajustar el tamaño de la window.
+                    Pintar(coordenadas, borrados, g, punto)
+                except KeyError:
+                    pass
             else:
-                Despintar(coordenadas, borrados, g, punto)
+                try:                                           #Same con este.
+                    Despintar(coordenadas, borrados, g, punto)
+                except KeyError:
+                    pass
+
