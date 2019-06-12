@@ -45,47 +45,79 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
     ''' Dibuja con letras random (POR AHORA) la matriz. A su vez, guarda en un diccionario auxiliar
     con las cordenadas como clave y su letra como valor.'''
 
+    def crearLineas(lado1, lado2):
+        for row in range(lado1):                    # Creo la grilla
+            for col in range(lado2):
+                graph.DrawRectangle((col * BOX_SIZE + 5, row * BOX_SIZE + 3),
+                                    (col * BOX_SIZE + BOX_SIZE + 5, row * BOX_SIZE + BOX_SIZE + 3),
+                                    line_color='black')
+
+    def rellenarConLetrasRandom(lado1, lado2):
+        for row in range(lado1):  # Agrego letras random en las posiciones libres.
+            for col in range(lado2):
+                letra = random.choice(string.ascii_uppercase)  # Me guardo una letra random
+                if (col, row) not in coordenadas:
+                    graph.DrawText('{}'.format(letra), (col * BOX_SIZE + 15, row * BOX_SIZE + 15),
+                                   font='Courier 25')  # Escribo la letra.
+                    coordenadas[(col, row)] = letra  # Generacion del diccionario auxiliar.
+
     #calcular tamaño de la grilla
     palMax = len(longest_word(wordDic))
     if (palMax < 5):
-        alto = palMax + 6
+        palMax =+ 6
     elif ((palMax >= 5) and (palMax <= 7)):
-        alto = palMax + 4
+        palMax =+ 4
     else:
-        alto = palMax + 2
+        palMax =+ 2
 
     cant_palabras = len(wordDic['verbos']) + len(wordDic['sustantivos']) + len(wordDic['adjetivos'])
 
     if cant_palabras < 7:                                                           #
-        ancho= cant_palabras + 5                                                          #
+        cant_palabras =+ 5                                                          #
     else:                                                                  # Revisar al final    #####################################
-        ancho = cant_palabras + 2
-
-    for row in range(alto):                                 # Creo la grilla
-        for col in range(ancho):
-            graph.DrawRectangle((col * BOX_SIZE + 5, row * BOX_SIZE + 3),
-                                (col * BOX_SIZE + BOX_SIZE + 5, row * BOX_SIZE + BOX_SIZE + 3),
-                                line_color='black')
+        cant_palabras =+ 2
 
     if orientacion == 'Horizontal':                                                   # recorrer por filas
-        for i in range(cant_palabras):
-            x = random.random(ancho)
-            y = random.random(alto)
-
-
-        for row in range(alto):                                       # Agrego letras random en las posiciones libres.
-            for col in range(ancho):
-                letra = random.choice(string.ascii_uppercase)  # Me guardo una letra random
-                graph.DrawText('{}'.format(letra), (col * BOX_SIZE + 15, row * BOX_SIZE + 15),
-                           font='Courier 25')  # Escribo la letra.
-                coordenadas[(col, row)] = letra  # Generacion del diccionario auxiliar.
-
+        crearLineas(palMax, cant_palabras)
+        for lista in wordDic:
+            for palabra in wordDic[lista]:
+                while True:
+                    ok = True
+                    x = random.random(palMax)
+                    y = random.random(cant_palabras)
+                    if ((palMax-1) - x) >= len(palabra):
+                        for i in range(len(palabra)):
+                            if (x+i, y) in coordenadas:
+                                ok = False
+                                break
+                        if ok == True:
+                            for j in range(len(palabra)):
+                                coordenadas[x+j, y] = palabra[j]
+                                graph.DrawText('{}'.format(palabra[j]), (x * BOX_SIZE + 15, y * BOX_SIZE + 15),
+                                               font='Courier 25')  # Escribo la letra
+                            break
+        rellenarConLetrasRandom(palMax, cant_palabras)
     else:
-        # orientacion == 'Vertical'                                                #recorrer por columnas
-                letra = random.choice(string.ascii_uppercase)  # Me guardo una letra random
-                graph.DrawText('{}'.format(letra), (col * BOX_SIZE + 15, row * BOX_SIZE + 15),
-                           font='Courier 25')  # Escribo la letra.
-                coordenadas[(col, row)] = letra  # Generacion del diccionario auxiliar.
+    # orientacion == 'Vertical'                                                #recorrer por columnas
+        crearLineas(cant_palabras, palMax)
+        for lista in wordDic:
+            for palabra in wordDic[lista]:
+                while True:
+                    ok = True
+                    x = random.random(cant_palabras)    #Cant filas
+                    y = random.random(palMax)
+                    if ((cant_palabras - 1) - x) >= len(palabra):
+                        for i in range(len(palabra)):
+                            if (x, y+i) in coordenadas:
+                                ok = False
+                                break
+                        if ok == True:
+                            for j in range(len(palabra)):
+                                coordenadas[x, y + j] = palabra[j]
+                                graph.DrawText('{}'.format(palabra[j]), (x * BOX_SIZE + 15, y * BOX_SIZE + 15),
+                                               font='Courier 25')  # Escribo la letra
+                            break
+        rellenarConLetrasRandom(cant_palabras, palMax)
 
 
 def Pintar(coordenadas, pintados, graph, punto):
