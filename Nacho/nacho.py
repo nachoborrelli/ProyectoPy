@@ -45,15 +45,15 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
     con las cordenadas como clave y su letra como valor.'''
 
     def crearLineas(lado1, lado2):
-        for row in range(lado1):  # Creo la grilla
-            for col in range(lado2):
+        for col in range(lado1):  # Creo la grilla
+            for row in range(lado2):
                 graph.DrawRectangle((col * BOX_SIZE + 5, row * BOX_SIZE + 3),
                                     (col * BOX_SIZE + BOX_SIZE + 5, row * BOX_SIZE + BOX_SIZE + 3),
                                     line_color='black')
 
     def rellenarConLetrasRandom(lado1, lado2):
-        for row in range(lado1):  # Agrego letras random en las posiciones libres.
-            for col in range(lado2):
+        for col in range(lado1):  # Agrego letras random en las posiciones libres.
+            for row in range(lado2):
                 letra = random.choice(string.ascii_uppercase)  # Me guardo una letra random
                 if (col, row) not in coordenadas:
                     graph.DrawText('{}'.format(letra), (col * BOX_SIZE + 15, row * BOX_SIZE + 15),
@@ -63,18 +63,18 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
     # calcular tamaño de la grilla
     palMax = len(longest_word(wordDic))
     if (palMax < 5):
-        palMax = + 6
+        palMax += 6
     elif ((palMax >= 5) and (palMax <= 7)):
-        palMax = + 4
+        palMax += 4
     else:
-        palMax = + 2
+        palMax +=  2
 
     cant_palabras = len(wordDic['verbos']) + len(wordDic['sustantivos']) + len(wordDic['adjetivos'])
 
     if cant_palabras < 7:  #
-        cant_palabras = + 5  #
+        cant_palabras += 5  #
     else:  # Revisar al final    #####################################
-        cant_palabras = + 2
+        cant_palabras += 2
 
     if orientacion == 'Horizontal':  # recorrer por filas
         crearLineas(palMax, cant_palabras)
