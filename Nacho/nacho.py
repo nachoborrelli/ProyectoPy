@@ -105,7 +105,7 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
                     ok = True
                     x = random.randrange(0, cant_palabras)  # Cant filas
                     y = random.randrange(0, palMax - 1)
-                    if ((cant_palabras - 1) - x) >= len(palabra):
+                    if (palMax - y) >= len(palabra):
                         for i in range(len(palabra)):
                             if (x, y + i) in coordenadas:
                                 ok = False
