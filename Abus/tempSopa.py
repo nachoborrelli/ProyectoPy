@@ -3,18 +3,19 @@ import PySimpleGUI as sg
 import random
 import string
 from SopaDeLetras.configuracion import configPalabras
+# --------------------------------------- Global Variables -------------------------------------------------------------###########################
 
-#--------------------------------------- Functions ---------------------------------------------------------------------
+BOX_SIZE = 25  # Tamaño de las casillas                                                                                 ###########################
+# --------------------------------------- Functions --------------------------------------------------------------------
 
 def bienvenida():
-
     layout_bienvenido = [
-                            [sg.Image(filename='bienvenido_image.png')]
+        [sg.Image(filename='bienvenido_image.png')]
 
-                         ]
+    ]
 
     bienvenido = sg.Window('Bienvenido!', layout=layout_bienvenido)
-    event,  values = bienvenido.Read(timeout=4000)
+    event, values = bienvenido.Read(timeout=4000)
 
 
 def select_words(dic_palabras, cantverbos, cantadj, cantsust):
@@ -34,11 +35,10 @@ def longest_word(wordDic):
     for list in wordDic:
         for pal in wordDic[list]:
             if len(pal) > max:
-               palMax = pal
-               max = len(pal)
+                palMax = pal
+                max = len(pal)
 
     return palMax
-
 
 
 def draw_grid(window, orientacion, graph, coordenadas, wordDic):
@@ -95,7 +95,8 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
                                 coordenadas[x + j, y] = palabra[j]
                                 graph.DrawText('{}'.format(palabra[j]), ((x + j) * BOX_SIZE + 15, y * BOX_SIZE + 15),
                                                font='Courier 25')  # Escribo la letra
-                    break
+                            break                                                                                       ####################################
+                print(palabra)
         rellenarConLetrasRandom(palMax, cant_palabras)
     else:
         # orientacion == 'Vertical'                                                #recorrer por columnas
@@ -124,74 +125,70 @@ def Pintar(coordenadas, pintados, graph, punto):
     '''  Se ocupa de indicar como marcada una casilla pintandola en gris.
         '''
     graph.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
-                    (punto[0] * BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3), line_color='black',
-                    fill_color='grey72')
-    graph.DrawText('{}'.format(coordenadas[punto]), (punto[0] * BOX_SIZE + 15, punto[1]* BOX_SIZE + 15),
-               font='Courier 25')
-    pintados[punto] = coordenadas[punto]  #Mantengo una estructura con solo las casillas pintadas.
-    del coordenadas[punto]                  #Y las saco de mi estructura auxiliar.
+                        (punto[0] * BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3), line_color='black',
+                        fill_color='grey72')
+    graph.DrawText('{}'.format(coordenadas[punto]), (punto[0] * BOX_SIZE + 15, punto[1] * BOX_SIZE + 15),
+                   font='Courier 25')
+    pintados[punto] = coordenadas[punto]  # Mantengo una estructura con solo las casillas pintadas.
+    del coordenadas[punto]  # Y las saco de mi estructura auxiliar.
 
 
 def Despintar(coordenadas, pintados, graph, punto):
     graph.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
-                    (punto[0] * BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3), line_color='black',
-                    fill_color='white')
+                        (punto[0] * BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3), line_color='black',
+                        fill_color='white')
     graph.DrawText('{}'.format(pintados[punto]), (punto[0] * BOX_SIZE + 15, punto[1] * BOX_SIZE + 15),
-               font='Courier 25')
-    coordenadas[punto] = pintados[punto]   #Devuelvo la casilla de la estructura de pintados a mi auxiliar
+                   font='Courier 25')
+    coordenadas[punto] = pintados[punto]  # Devuelvo la casilla de la estructura de pintados a mi auxiliar
     del pintados[punto]
+
+
 # ------------------------------------ Estructuras ---------------------------------------------------------------------
 dic_palabras = {}
 dic_palabras['__verbos__'] = []  # dic de palabras clasificadas por tipo
 dic_palabras['__adjetivos__'] = []
 dic_palabras['__sustantivos__'] = []
-
-# --------------------------------------- Config y bienvenida ----------------------------------------------------------
-bienvenida()
-config_values = configPalabras(dic_palabras)                                                  # Levantar configuracion
-
 # --------------------------------------- Layouts ----------------------------------------------------------------------
 
 layout = [
-            [sg.Text('Sopa De Letras'), sg.Text('', key='_OUTPUT_')],
-            [sg.Graph((800, 600), (0, 450), (450, 0), key='_GRAPH_', change_submits=True, drag_submits=False, background_color='white')],
-            [sg.Button('Show'), sg.Button('Exit')]
-         ]
+    [sg.Text('Sopa De Letras'), sg.Text('', key='_OUTPUT_')],
+    [sg.Graph((800, 600), (0, 430), (430, 0), key='_GRAPH_', change_submits=True, drag_submits=False,
+              background_color='white')],
+    [sg.Button('Show'), sg.Button('Exit')]
+]
 
 window = sg.Window('Window Title', ).Layout(layout).Finalize()
 
 # --------------------------------------- Main -------------------------------------------------------------------------
 
-wordDic = select_words(dic_palabras, config_values['__cantverbos__'], config_values['__cantadjetivos__'], config_values['__cantsustantivos__'])                                   #Seleccionar palabras a usar
+wordDic = {'verbos': ['correr', 'saltar', 'caminar'], 'adjetivos': ['lindo', 'fea', 'rojo'], 'sustantivos': ['casa', 'techo', 'embotellamiento']}
 
 graph = window.FindElement('_GRAPH_')
 
-BOX_SIZE = 25                                                                               # Tamaño de las casillas
 
 coordenadas = {}
-draw_grid(window, config_values['__orientacion__'], graph, coordenadas)
+draw_grid(window, 'Horizontal', graph, coordenadas, wordDic)
 pintados = {}
 
-
-while True:             # Event Loop
+while True:  # Event Loop
     event, values = window.Read()
     if event is None or event == 'Exit':
         break
     mouse = values['_GRAPH_']
     if event == '_GRAPH_':
         if mouse == (None, None):
-            pass            #Pass vs continue?
+            pass  # Pass vs continue?
         else:
             x = mouse[0] // BOX_SIZE
             y = mouse[1] // BOX_SIZE
             punto = (x, y)
             if punto in coordenadas.keys():
-                try:                                           #Esto no va, hay que ajustar el tamaño de la window.
+                try:  # Esto no va, hay que ajustar el tamaño de la window.
                     Pintar(coordenadas, pintados, graph, punto)
                 except KeyError:
                     pass
             else:
-                try:                                           #Same con este.
+                try:  # Same con este.
                     Despintar(coordenadas, pintados, graph, punto)
                 except KeyError:
                     pass
