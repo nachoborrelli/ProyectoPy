@@ -82,9 +82,9 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
             for palabra in wordDic[lista]:
                 while True:
                     ok = True
-                    x = random.randrange(0, palMax)
+                    x = random.randrange(0, palMax-1)
                     y = random.randrange(0, cant_palabras)
-                    if ((palMax - 1) - x) >= len(palabra):
+                    if (palMax - x) >= len(palabra):
                         for i in range(len(palabra)):
                             if (x + i, y) in coordenadas:
                                 ok = False
@@ -92,7 +92,7 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
                         if ok == True:
                             for j in range(len(palabra)):
                                 coordenadas[x + j, y] = palabra[j]
-                                graph.DrawText('{}'.format(palabra[j]), (x * BOX_SIZE + 15, y * BOX_SIZE + 15),
+                                graph.DrawText('{}'.format(palabra[j]), ((x + j) * BOX_SIZE + 15, y * BOX_SIZE + 15),
                                                font='Courier 25')  # Escribo la letra
                     break
         rellenarConLetrasRandom(palMax, cant_palabras)
@@ -104,8 +104,8 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
                 while True:
                     ok = True
                     x = random.randrange(0, cant_palabras)  # Cant filas
-                    y = random.randrange(0, palMax)
-                    if ((cant_palabras - 1) - x) >= len(palabra):
+                    y = random.randrange(0, palMax - 1)
+                    if (palMax - y) >= len(palabra):
                         for i in range(len(palabra)):
                             if (x, y + i) in coordenadas:
                                 ok = False
@@ -113,7 +113,7 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
                         if ok == True:
                             for j in range(len(palabra)):
                                 coordenadas[x, y + j] = palabra[j]
-                                graph.DrawText('{}'.format(palabra[j]), (x * BOX_SIZE + 15, y * BOX_SIZE + 15),
+                                graph.DrawText('{}'.format(palabra[j]), (x * BOX_SIZE + 15,(y + j) * BOX_SIZE + 15),
                                                font='Courier 25')  # Escribo la letra
                     break
         rellenarConLetrasRandom(cant_palabras, palMax)
@@ -150,7 +150,7 @@ dic_palabras['__sustantivos__'] = []
 
 layout = [
     [sg.Text('Sopa De Letras'), sg.Text('', key='_OUTPUT_')],
-    [sg.Graph((700, 600), (0, 330), (330, 0), key='_GRAPH_', change_submits=True, drag_submits=False,
+    [sg.Graph((800, 600), (0, 450), (450, 0), key='_GRAPH_', change_submits=True, drag_submits=False,
               background_color='white')],
     [sg.Button('Show'), sg.Button('Exit')]
 ]
@@ -159,14 +159,14 @@ window = sg.Window('Window Title', ).Layout(layout).Finalize()
 
 # --------------------------------------- Main -------------------------------------------------------------------------
 
-wordDic = {'verbos': ['correr', 'saltar', 'caminar'], 'adjetivos': ['lindo', 'fea', 'rojo'], 'sustantivos': ['casa', 'techo', 'embotellamento']}
+wordDic = {'verbos': ['correr', 'saltar', 'caminar'], 'adjetivos': ['lindo', 'fea', 'rojo'], 'sustantivos': ['casa', 'techo', 'embotellamiento']}
 
 graph = window.FindElement('_GRAPH_')
 
 BOX_SIZE = 25  # Tamaño de las casillas
 
 coordenadas = {}
-draw_grid(window, 'Horizontal', graph, coordenadas, wordDic)
+draw_grid(window, 'Vertical', graph, coordenadas, wordDic)
 pintados = {}
 
 while True:  # Event Loop
