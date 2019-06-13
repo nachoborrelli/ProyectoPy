@@ -83,7 +83,6 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
                 while True:
                     ok = True
                     x = random.randrange(0, palMax-1)
-                    print (x, palMax)
                     y = random.randrange(0, cant_palabras)
                     if (palMax - x) >= len(palabra):
                         for i in range(len(palabra)):
@@ -105,7 +104,7 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
                 while True:
                     ok = True
                     x = random.randrange(0, cant_palabras)  # Cant filas
-                    y = random.randrange(0, palMax)
+                    y = random.randrange(0, palMax - 1)
                     if ((cant_palabras - 1) - x) >= len(palabra):
                         for i in range(len(palabra)):
                             if (x, y + i) in coordenadas:
@@ -167,7 +166,7 @@ graph = window.FindElement('_GRAPH_')
 BOX_SIZE = 25  # Tamaño de las casillas
 
 coordenadas = {}
-draw_grid(window, 'Horizontal', graph, coordenadas, wordDic)
+draw_grid(window, 'Vertical', graph, coordenadas, wordDic)
 pintados = {}
 
 while True:  # Event Loop
