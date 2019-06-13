@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3b278a84-e50d-4073-9a81-db5542bccd79" name="Default Changelist" comment="">
+    <list default="true" id="3b278a84-e50d-4073-9a81-db5542bccd79" name="Default Changelist" comment="Sopa v1.3">
+      <change beforePath="$PROJECT_DIR$/.idea/ProyectoPy.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ProyectoPy.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Abus/tempSopa.py" beforeDir="false" afterPath="$PROJECT_DIR$/Abus/tempSopa.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Nacho/nacho.py" beforeDir="false" afterPath="$PROJECT_DIR$/Nacho/nacho.py" afterDir="false" />
     </list>
     <ignored path="C:\Users\fernando\PycharmProjects\ProyectoPy\.idea\shelf/" />
@@ -15,62 +16,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Mati/Web.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1139">
-              <caret line="69" selection-start-line="69" selection-end-line="69" />
-              <folding>
-                <element signature="e#0#34#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SopaDeLetras/configuracion.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="42" column="119" selection-start-line="42" selection-start-column="119" selection-end-line="42" selection-end-column="119" />
-              <folding>
-                <element signature="e#0#24#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SopaDeLetras/Sopa.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="67" column="67" lean-forward="true" selection-start-line="67" selection-start-column="67" selection-end-line="67" selection-end-column="67" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Abus/tempSopa.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="198" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Nacho/nacho.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="117" column="20" lean-forward="true" selection-start-line="117" selection-start-column="20" selection-end-line="117" selection-end-column="20" />
+            <state relative-caret-position="-969">
+              <caret line="87" column="31" selection-start-line="87" selection-start-column="31" selection-end-line="87" selection-end-column="31" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Abus/crosswords.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -123,7 +85,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -155,6 +116,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -244,7 +206,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="configuracion" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="crosswords" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ProyectoPy" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -252,11 +214,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SopaDeLetras" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Abus" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SopaDeLetras/configuracion.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Abus/crosswords.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -289,10 +251,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.nacho" />
+        <item itemvalue="Python.crosswords" />
         <item itemvalue="Python.Demo-Crucigrama" />
         <item itemvalue="Python.Sopa" />
         <item itemvalue="Python.SopaPrueba" />
-        <item itemvalue="Python.configuracion" />
       </list>
     </recent_temporary>
   </component>
@@ -465,7 +427,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12946428" />
@@ -473,12 +435,12 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49925596" visible="true" weight="0.32242227" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49925596" visible="true" weight="0.32104453" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32872504" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.3289689" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50074404" side_tool="true" weight="0.30261138" />
       <window_info anchor="bottom" id="Python Console" order="10" />
@@ -525,13 +487,6 @@
     <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python36/site-packages/pygame/__init__.py" />
     <entry file="file://$PROJECT_DIR$/SopaDeLetras/Casilla.py" />
     <entry file="file://$PROJECT_DIR$/SopaDeLetras/bienvenida.py" />
-    <entry file="file://$PROJECT_DIR$/Abus/crosswords.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="10" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SopaDeLetras/pruebaPygame.py" />
     <entry file="file://$PROJECT_DIR$/Mati/SopaPrueba.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -595,6 +550,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Abus/tempSopa.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="83" column="27" lean-forward="true" selection-start-line="83" selection-start-column="27" selection-end-line="83" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/PySimpleGUI/PySimpleGUI.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
@@ -602,20 +567,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Abus/tempSopa.py">
+    <entry file="file://$PROJECT_DIR$/Abus/crosswords.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="198" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="34">
+          <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Nacho/nacho.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="117" column="20" lean-forward="true" selection-start-line="117" selection-start-column="20" selection-end-line="117" selection-end-column="20" />
+        <state relative-caret-position="-969">
+          <caret line="87" column="31" selection-start-line="87" selection-start-column="31" selection-end-line="87" selection-end-column="31" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
