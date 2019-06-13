@@ -166,7 +166,7 @@ graph = window.FindElement('_GRAPH_')
 BOX_SIZE = 25  # Tamaño de las casillas
 
 coordenadas = {}
-draw_grid(window, 'Vertical', graph, coordenadas, wordDic)
+draw_grid(window, 'Horizontal', graph, coordenadas, wordDic)
 pintados = {}
 
 while True:  # Event Loop
