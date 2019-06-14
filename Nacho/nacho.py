@@ -67,7 +67,7 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
     elif ((palMax >= 5) and (palMax <= 7)):
         palMax += 4
     else:
-        palMax +=  2
+        palMax += 2
 
     cant_palabras = len(wordDic['verbos']) + len(wordDic['sustantivos']) + len(wordDic['adjetivos'])
 
@@ -150,12 +150,15 @@ dic_palabras['__sustantivos__'] = []
 
 layout = [
     [sg.Text('Sopa De Letras'), sg.Text('', key='_OUTPUT_')],
-    [sg.Graph((800, 600), (0, 450), (450, 0), key='_GRAPH_', change_submits=True, drag_submits=False,
+    [sg.Graph((800, 600), (0, 300), (450, 0), key='_GRAPH_', change_submits=True, drag_submits=False,
               background_color='white')],
-    [sg.Button('Show'), sg.Button('Exit')]
+    [sg.Button('Adjetivo', button_color=('black', co),size=(9, 2)),            #Los colores deberian llegar por parametro.
+     sg.Button('Verbo', button_color=('black', 'green'), size=(9, 2)),
+     sg.Button('Sustantivo', button_color=('black', 'red'), size=(9, 2))],
+    [sg.Button('Terminar', button_color=('black', 'grey55')), sg.Button('Salir', button_color=('black', 'grey55'))] # Salir no tendria q estar...
 ]
 
-window = sg.Window('Window Title', ).Layout(layout).Finalize()
+window = sg.Window('Window Title').Layout(layout).Finalize()
 
 # --------------------------------------- Main -------------------------------------------------------------------------
 
