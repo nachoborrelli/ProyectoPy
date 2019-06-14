@@ -17,7 +17,7 @@ def ProcesarPalabra(pal, dic, tipo):
             print(palabra)
             seccion2 = str(palabra[3])
             seccion1 = str(palabra[2])
-            if ('Verbo' in seccion2) or ('Verbo' in seccion1):                  #FORMA VERBAL
+            if ('Verb' in seccion2) or ('Verb' in seccion1):                  #Verbo o Forma Verbal
                 dic['__verbos__'].append(pal)
                 tipo= '__verbos__'
                 correcto=True
@@ -25,13 +25,9 @@ def ProcesarPalabra(pal, dic, tipo):
                 dic['__sustantivos__'].append(pal)
                 tipo = '__sustantivos__'
                 correcto=True
-            elif('Adjetivo' in seccion2) or ('Adjetivo' in seccion1):
+            elif('Adjetiv' in seccion2) or ('Adjetiv' in seccion1):           #Adjetivo o Forma Adjetiva
                 dic['__adjetivos__'].append(pal)
                 tipo= '__adjetivos__'
-                correcto=True
-            elif('adjetiva' in seccion2) or ('adjetiva' in seccion1):        #Se puede unir con el de arriba_?
-                dic['__adjetivos__'].append(pal)
-                tipo = '__adjetivos__'
                 correcto=True
         return (correcto, tipo)
 
@@ -42,19 +38,37 @@ def ProcesarPalabra(pal, dic, tipo):
         correcto=False
         print(palabra)
         if ('VB' in palabra):
+            tipo = '__verbos__'
             correcto=True
         elif ('NN' in palabra):
+            tipo = '__sustantivos__'
             correcto=True
         elif ('JJ' in palabra):
+            tipo = '_adjetivos__'
             correcto=True
         else:
+            tipo = ' '
             print('Ingrese otra Palabra')
-        return correcto
-    val= PalabraWik(pal, dic, tipo)
-    if val[0] and PalabraPattern(pal):
-        return (True,val[1])
+        return correcto,tipo
+
+    archivo= open('Reporte.txt','w')
+
+    wik = PalabraWik(pal, dic, tipo)
+    pat = PalabraPattern(pal)
+    if wik[0] and pat[0]:
+        if (wik[1] != pat[1]):
+            archivo.write(
+                'La clasificacion de la palabra {} no coincide entre Wiktionary y Pattern. En wiktionary es: {}, y en Patter es: {}. '.format(
+                    pal, wik[1], pat[1]))
+            archivo.close()
+        return (True,wik[1])
     else:
-        return (False,val[1])
+        if (wik[1] != pat[1]):
+            archivo.write(
+                'La clasificacion de la palabra {} no coincide entre Wiktionary y Pattern. En wiktionary es: {}, y en Patter es: {}. '.format(
+                    pal, wik[1], pat[1]))
+            archivo.close()
+        return (False,wik[1])
 
     # def Definicion(pal):
     #     '''Busca el articulo de la palabra en Wiktionary, selecciona la seccion con el tipo
