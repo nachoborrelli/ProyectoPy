@@ -3,10 +3,13 @@ import PySimpleGUI as sg
 import random
 import string
 from SopaDeLetras.configuracion import configPalabras
-# --------------------------------------- Global Variables -------------------------------------------------------------###########################
 
-BOX_SIZE = 25  # Tamaño de las casillas                                                                                 ###########################
-# --------------------------------------- Functions --------------------------------------------------------------------
+# --------------------------------------- Global Variables -------------------------------------------------------------
+
+BOX_SIZE = 25  # Tamaño de las casillas
+
+
+# --------------------------------------- Functions ---------------------------------------------------------------------
 
 def bienvenida():
     layout_bienvenido = [
@@ -41,6 +44,28 @@ def longest_word(wordDic):
     return palMax
 
 
+def calc_palMaxSide():  #################
+    palMax = len(longest_word(wordDic))
+    if (palMax < 5):
+        palMax += 6
+    elif ((palMax >= 5) and (palMax <= 7)):
+        palMax += 4
+    else:
+        palMax += 2
+
+    return palMax
+
+
+def calc_cantPalabrasSide(wordDic):  ##################
+
+    cant_palabras = len(wordDic['verbos']) + len(wordDic['sustantivos']) + len(wordDic['adjetivos'])
+    if cant_palabras < 7:  #
+        cant_palabras += 5  #
+    else:  # Revisar al final    #####################################
+        cant_palabras += 2
+    return cant_palabras
+
+
 def draw_grid(window, orientacion, graph, coordenadas, wordDic):
     ''' Dibuja con letras random (POR AHORA) la matriz. A su vez, guarda en un diccionario auxiliar
     con las cordenadas como clave y su letra como valor.'''
@@ -62,20 +87,8 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
                     coordenadas[(col, row)] = letra  # Generacion del diccionario auxiliar.
 
     # calcular tamaño de la grilla
-    palMax = len(longest_word(wordDic))
-    if (palMax < 5):
-        palMax += 6
-    elif ((palMax >= 5) and (palMax <= 7)):
-        palMax += 4
-    else:
-        palMax +=  2
-
-    cant_palabras = len(wordDic['verbos']) + len(wordDic['sustantivos']) + len(wordDic['adjetivos'])
-
-    if cant_palabras < 7:  #
-        cant_palabras += 5  #
-    else:  # Revisar al final    #####################################
-        cant_palabras += 2
+    palMax = calc_palMaxSide()
+    cant_palabras = calc_cantPalabrasSide(wordDic)
 
     if orientacion == 'Horizontal':  # recorrer por filas
         crearLineas(palMax, cant_palabras)
@@ -83,7 +96,7 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
             for palabra in wordDic[lista]:
                 while True:
                     ok = True
-                    x = random.randrange(0, palMax-1)
+                    x = random.randrange(0, palMax - 1)
                     y = random.randrange(0, cant_palabras)
                     if (palMax - x) >= len(palabra):
                         for i in range(len(palabra)):
@@ -95,8 +108,7 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
                                 coordenadas[x + j, y] = palabra[j]
                                 graph.DrawText('{}'.format(palabra[j]), ((x + j) * BOX_SIZE + 15, y * BOX_SIZE + 15),
                                                font='Courier 25')  # Escribo la letra
-                            break                                                                                       ####################################
-                print(palabra)
+                            break
         rellenarConLetrasRandom(palMax, cant_palabras)
     else:
         # orientacion == 'Vertical'                                                #recorrer por columnas
@@ -115,7 +127,7 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
                         if ok == True:
                             for j in range(len(palabra)):
                                 coordenadas[x, y + j] = palabra[j]
-                                graph.DrawText('{}'.format(palabra[j]), (x * BOX_SIZE + 15,(y + j) * BOX_SIZE + 15),
+                                graph.DrawText('{}'.format(palabra[j]), (x * BOX_SIZE + 15, (y + j) * BOX_SIZE + 15),
                                                font='Courier 25')  # Escribo la letra
                     break
         rellenarConLetrasRandom(cant_palabras, palMax)
@@ -143,32 +155,53 @@ def Despintar(coordenadas, pintados, graph, punto):
     del pintados[punto]
 
 
-# ------------------------------------ Estructuras ---------------------------------------------------------------------
+# ------------------------------------ Estructuras,Config y bienvenida ---------------------------------------------------------------------
+bienvenida()
 dic_palabras = {}
 dic_palabras['__verbos__'] = []  # dic de palabras clasificadas por tipo
 dic_palabras['__adjetivos__'] = []
 dic_palabras['__sustantivos__'] = []
+coordenadas = {}
+pintados = {}
+config_values = configPalabras(dic_palabras)  # Levantar configuracion
+wordDic = select_words(dic_palabras, config_values['__cantverbos__'],  # Seleccionar palabras a usar
+                       config_values['__cantadjetivos__'],
+                       config_values['__cantsustantivos__']
+                       )
+
 # --------------------------------------- Layouts ----------------------------------------------------------------------
 
-layout = [
+layoutHorizontal = [
     [sg.Text('Sopa De Letras'), sg.Text('', key='_OUTPUT_')],
-    [sg.Graph((800, 600), (0, 430), (430, 0), key='_GRAPH_', change_submits=True, drag_submits=False,
-              background_color='white')],
+    [sg.Graph((500, 500),  # canvas_size
+              (0, BOX_SIZE * calc_cantPalabrasSide(wordDic) + 3),
+              (BOX_SIZE * calc_palMaxSide() + 5, 0), key='_GRAPH_',
+              change_submits=True, drag_submits=False, background_color='white')],
     [sg.Button('Show'), sg.Button('Exit')]
 ]
 
-window = sg.Window('Window Title', ).Layout(layout).Finalize()
+layoutVertical = [
+    [sg.Text('Sopa De Letras'), sg.Text('', key='_OUTPUT_')],
+    [sg.Graph((500, 500),  # canvas_size
+              (0, BOX_SIZE * calc_palMaxSide() + 3),
+              (BOX_SIZE * calc_cantPalabrasSide(wordDic) + 5, 0), key='_GRAPH_',
+              change_submits=True, drag_submits=False, background_color='white')],
+    [sg.Button('Show'), sg.Button('Exit')]
+]
+
+if (config_values['__orientacion__'] == 'Horizontal'):
+    window = sg.Window('Window Title').Layout(layoutHorizontal).Finalize()
+else:
+    window = sg.Window('Window Title').Layout(layoutVertical).Finalize()
 
 # --------------------------------------- Main -------------------------------------------------------------------------
 
-wordDic = {'verbos': ['correr', 'saltar', 'caminar'], 'adjetivos': ['lindo', 'fea', 'rojo'], 'sustantivos': ['casa', 'techo', 'embotellamiento']}
 
 graph = window.FindElement('_GRAPH_')
 
+BOX_SIZE = 25  # Tamaño de las casillas
 
-coordenadas = {}
-draw_grid(window, 'Horizontal', graph, coordenadas, wordDic)
-pintados = {}
+draw_grid(window, config_values['__orientacion__'], graph, coordenadas)
 
 while True:  # Event Loop
     event, values = window.Read()
