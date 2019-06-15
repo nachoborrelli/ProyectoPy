@@ -211,14 +211,15 @@ while True:  # Event Loop
                     pass
     else:
         if event == 'Adjetivos' or event == 'Sustantivos' or event == 'Verbos':
-            clave = event.lower()
+            clave = event
             clave = '__' + event + '__'
+            clave = clave.lower()
             pal = FormarPalabra(pintados)
             print (pal)
             if pal in dic_palabras[clave]:
                 #pintarCorrecto()
                 pass
             else:
-                for punto in pintados:
+                for punto in pintados:   #RuntimeError: dictionary changed size during iteration (??)
                     Despintar(coordenadas, pintados, graph, punto)
 
