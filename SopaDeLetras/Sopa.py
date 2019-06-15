@@ -180,7 +180,7 @@ layoutHorizontal = [
     [sg.Button('Adjetivo', button_color=('black', config_values['__adjColorChooser__']), size=(9, 2)),
      # Los colores deberian llegar por parametro.
      sg.Button('Verbo', button_color=('black', config_values['__verbColorChooser__']), size=(9, 2)),
-     sg.Button('Sustantivo', button_color=('black', config_values['__verbColorChooser__']), size=(9, 2))],
+     sg.Button('Sustantivo', button_color=('black', config_values['__susColorChooser__']), size=(9, 2))],
     [sg.Button('Terminar', button_color=('black', 'grey55')), sg.Button('Salir', button_color=('black', 'grey55'))]
     # Salir no tendria q estar...
 ]
@@ -194,7 +194,7 @@ layoutVertical = [
     [sg.Button('Adjetivo', button_color=('black', config_values['__adjColorChooser__']), size=(9, 2)),
      # Los colores deberian llegar por parametro.
      sg.Button('Verbo', button_color=('black', config_values['__verbColorChooser__']), size=(9, 2)),
-     sg.Button('Sustantivo', button_color=('black', config_values['__verbColorChooser__']), size=(9, 2))],
+     sg.Button('Sustantivo', button_color=('black', config_values['__sustColorChooser__']), size=(9, 2))],
     [sg.Button('Terminar', button_color=('black', 'grey55')), sg.Button('Salir', button_color=('black', 'grey55'))]
     # Salir no tendria q estar...
 ]

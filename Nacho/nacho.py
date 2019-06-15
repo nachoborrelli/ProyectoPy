@@ -149,8 +149,9 @@ def FormarPalabra(pintados):  #Hasta donde se, el sorted funciona con las 2 orie
         pal = pal + pintados[key]
     return pal
 
-def pintarCorrecto():
+def pintarCorrecto(pintados, ):
     # Recibe un el dic pintados y el color. Los pone del color correspondiente
+
     pass
 
 
@@ -217,7 +218,11 @@ while True:  # Event Loop
             pal = FormarPalabra(pintados)
             print (pal)
             if pal in dic_palabras[clave]:
-                #pintarCorrecto()
+                if clave == '__Adjetivos__':
+                    color = config_values['__adjColorChooser__']
+                elif clave == '__Sustantivos__':
+                    color= config_values['__sustColorChooser__']
+                pintarCorrecto(pintados,clave)
                 pass
             else:
                 pintadosClone = pintados.copy()   # si no haces copias: RuntimeError: dictionary changed size during iteration (??)
