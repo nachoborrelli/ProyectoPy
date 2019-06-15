@@ -156,7 +156,7 @@ def Despintar(coordenadas, pintados, graph, punto):
 
 
 # ------------------------------------ Estructuras,Config y bienvenida ---------------------------------------------------------------------
-bienvenida()
+# bienvenida()
 dic_palabras = {}
 dic_palabras['__verbos__'] = []  # dic de palabras clasificadas por tipo
 dic_palabras['__adjetivos__'] = []

@@ -119,12 +119,12 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
         rellenarConLetrasRandom(cant_palabras, palMax)
 
 
-def Pintar(coordenadas, pintados, graph, punto):
+def Pintar(coordenadas, pintados, graph, punto, color= 'grey72'):
     '''  Se ocupa de indicar como marcada una casilla pintandola en gris.
         '''
     graph.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
                         (punto[0] * BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3), line_color='black',
-                        fill_color='grey72')
+                        fill_color=color)
     graph.DrawText('{}'.format(coordenadas[punto]), (punto[0] * BOX_SIZE + 15, punto[1] * BOX_SIZE + 15),
                    font='Courier 25')
     pintados[punto] = coordenadas[punto]  # Mantengo una estructura con solo las casillas pintadas.
@@ -149,13 +149,6 @@ def FormarPalabra(pintados):  #Hasta donde se, el sorted funciona con las 2 orie
         pal = pal + pintados[key]
     return pal
 
-def pintarCorrecto(pintados, ):
-    # Recibe un el dic pintados y el color. Los pone del color correspondiente
-
-    pass
-
-
-
 # ------------------------------------ Estructuras ---------------------------------------------------------------------
 dic_palabras = {}
 dic_palabras['__verbos__'] = []  # dic de palabras clasificadas por tipo
@@ -167,7 +160,7 @@ layout = [
     [sg.Text('Sopa De Letras'), sg.Text('', key='_OUTPUT_')],
     [sg.Graph((800, 600), (0, 300), (450, 0), key='_GRAPH_', change_submits=True, drag_submits=False,
               background_color='white')],
-    [sg.Button('Adjetivos', button_color=('black', 'blue'),size=(9, 2)),            #Los colores deberian llegar por parametro.
+    [sg.Button('Adjetivos', button_color=('black', 'blue'), size=(9, 2)),            #Los colores deberian llegar por parametro.
      sg.Button('Verbos', button_color=('black', 'green'), size=(9, 2)),
      sg.Button('Sustantivos', button_color=('black', 'red'), size=(9, 2))],
     [sg.Button('Terminar', button_color=('black', 'grey55')), sg.Button('Salir', button_color=('black', 'grey55'))] # Salir no tendria q estar...
@@ -177,7 +170,7 @@ window = sg.Window('Window Title').Layout(layout).Finalize()
 
 # --------------------------------------- Main -------------------------------------------------------------------------
 
-wordDic = {'verbos': ['correr', 'saltar', 'caminar'], 'adjetivos': ['lindo', 'fea', 'rojo'], 'sustantivos': ['casa', 'techo', 'embotellamiento']}
+# wordDic = {'verbos': ['correr', 'saltar', 'caminar'], 'adjetivos': ['lindo', 'fea', 'rojo'], 'sustantivos': ['casa', 'techo', 'embotellamiento']}
 
 graph = window.FindElement('_GRAPH_')
 
@@ -189,7 +182,6 @@ pintados = {}
 
 while True:  # Event Loop
     event, values = window.Read()
-    print (event,'xx', values)
     if event is None or event == 'Exit':
         break
     mouse = values['_GRAPH_']
@@ -212,18 +204,20 @@ while True:  # Event Loop
                     pass
     else:
         if event == 'Adjetivos' or event == 'Sustantivos' or event == 'Verbos':
-            clave = event
             clave = '__' + event + '__'
             clave = clave.lower()
             pal = FormarPalabra(pintados)
             print (pal)
             if pal in dic_palabras[clave]:
                 if clave == '__Adjetivos__':
-                    color = config_values['__adjColorChooser__']
+                    color = 'blue'  # config_values['__adjColorChooser__']
                 elif clave == '__Sustantivos__':
-                    color= config_values['__sustColorChooser__']
-                pintarCorrecto(pintados,clave)
-                pass
+                    color = 'red'  # config_values['__sustColorChooser__']
+                else:
+                    color = 'green'  # config_values['__verbColorChooser__']
+                pintadosClone = pintados.copy()   #Puede ser keys creo
+                for punto in pintadosClone:
+                    Pintar(coordenadas, pintados, graph, punto, color)
             else:
                 pintadosClone = pintados.copy()   # si no haces copias: RuntimeError: dictionary changed size during iteration (??)
                 for punto in pintadosClone:

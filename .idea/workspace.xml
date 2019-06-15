@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3b278a84-e50d-4073-9a81-db5542bccd79" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/SopaDeLetras/sopaNacho.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Nacho/nacho.py" beforeDir="false" afterPath="$PROJECT_DIR$/Nacho/nacho.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SopaDeLetras/Sopa.py" beforeDir="false" afterPath="$PROJECT_DIR$/SopaDeLetras/Sopa.py" afterDir="false" />
     </list>
     <ignored path="C:\Users\fernando\PycharmProjects\ProyectoPy\.idea\shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,8 +31,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SopaDeLetras/configuracion.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="29" column="72" selection-start-line="29" selection-start-column="50" selection-end-line="29" selection-end-column="72" />
+            <state relative-caret-position="-391">
+              <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -41,8 +43,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SopaDeLetras/Sopa.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2618">
-              <caret line="158" selection-start-line="158" selection-end-line="158" />
+            <state relative-caret-position="207">
+              <caret line="170" selection-start-line="170" selection-end-line="170" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -51,10 +53,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Abus/tempSopa.py">
+        <entry file="file://$PROJECT_DIR$/SopaDeLetras/sopaNacho.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="238" />
+            <state relative-caret-position="187">
+              <caret line="166" selection-start-line="166" selection-end-line="173" selection-end-column="8" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -65,8 +67,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Nacho/nacho.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="222" column="50" lean-forward="true" selection-start-line="222" selection-start-column="50" selection-end-line="222" selection-end-column="50" />
+            <state relative-caret-position="257">
+              <caret line="208" column="1" selection-start-line="208" selection-start-column="1" selection-end-line="208" selection-end-column="1" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -103,8 +105,10 @@
         <option value="$PROJECT_DIR$/SopaDeLetras/configuracion.py" />
         <option value="$PROJECT_DIR$/SopaDeLetras/Demo-Crucigrama.py" />
         <option value="$PROJECT_DIR$/Abus/tempSopa.py" />
-        <option value="$PROJECT_DIR$/SopaDeLetras/Sopa.py" />
         <option value="$PROJECT_DIR$/Mati/Web.py" />
+        <option value="$PROJECT_DIR$/Nacho/sopaNacho.py" />
+        <option value="$PROJECT_DIR$/SopaDeLetras/sopaNacho.py" />
+        <option value="$PROJECT_DIR$/SopaDeLetras/Sopa.py" />
         <option value="$PROJECT_DIR$/Nacho/nacho.py" />
       </list>
     </option>
@@ -164,6 +168,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Mariafernanda\PycharmProjects\ProyectoPy\SopaDeLetras" />
       <recent name="C:\Users\Mariafernanda\Desktop\ProyectoFinal\Mati" />
       <recent name="C:\Users\Mariafernanda\Desktop\ProyectoFinal\SopaDeLetras" />
     </key>
@@ -180,7 +185,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.nacho">
+  <component name="RunManager" selected="Python.Sopa">
+    <configuration name="Sopa" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ProyectoPy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SopaDeLetras" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SopaDeLetras/Sopa.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="SopaPrueba" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ProyectoPy" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -244,8 +270,31 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="sopaNacho" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ProyectoPy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Nacho" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\Mariafernanda\PycharmProjects\ProyectoPy\SopaDeLetras\sopaNacho.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Sopa" />
+        <item itemvalue="Python.sopaNacho" />
         <item itemvalue="Python.nacho" />
         <item itemvalue="Python.Web" />
         <item itemvalue="Python.SopaPrueba" />
@@ -459,45 +508,58 @@
       <option name="project" value="LOCAL" />
       <updated>1560583499526</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="nacho (sopa 1.5.3)">
+      <created>1560627641362</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1560627641362</updated>
+    </task>
+    <task id="LOCAL-00030" summary="nacho (sopa 1.5.3)">
+      <created>1560628481257</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1560628481257</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12946428" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.12946428" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49776787" visible="true" weight="0.31914893" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49702382" weight="0.31914893" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32733223" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.3289689" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50223213" side_tool="true" weight="0.31914893" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5029762" side_tool="true" weight="0.31914893" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.0766369" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12946428" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.05400982" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49702382" visible="true" weight="0.31914893" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32872504" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32733223" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3289689" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5029762" side_tool="true" weight="0.31914893" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -524,14 +586,14 @@
     <MESSAGE value="nacho (sopa 1.5)" />
     <MESSAGE value="nacho (sopa 1.5.1)" />
     <MESSAGE value="nacho (sopa 1.5.2)&#10;RuntimeError: dictionary changed size during iteration" />
-    <option name="LAST_COMMIT_MESSAGE" value="nacho (sopa 1.5.2)&#10;RuntimeError: dictionary changed size during iteration" />
+    <MESSAGE value="nacho (sopa 1.5.3)" />
+    <option name="LAST_COMMIT_MESSAGE" value="nacho (sopa 1.5.3)" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python36/site-packages/pygame/__init__.py" />
     <entry file="file://$PROJECT_DIR$/SopaDeLetras/Casilla.py" />
     <entry file="file://$PROJECT_DIR$/SopaDeLetras/bienvenida.py" />
     <entry file="file://$PROJECT_DIR$/SopaDeLetras/pruebaPygame.py" />
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/random.py" />
     <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-1070850418/builtins.py" />
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/PySimpleGUI/PySimpleGUI.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -576,26 +638,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SopaDeLetras/configuracion.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="29" column="72" selection-start-line="29" selection-start-column="50" selection-end-line="29" selection-end-column="72" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SopaDeLetras/Sopa.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2618">
-          <caret line="158" selection-start-line="158" selection-end-line="158" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Abus/tempSopa.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -606,10 +648,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/SopaDeLetras/configuracion.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-391">
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/tkinter/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="3500" selection-start-line="3500" selection-end-line="3500" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/random.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="354" selection-start-line="354" selection-end-line="354" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SopaDeLetras/sopaNacho.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="166" selection-start-line="166" selection-end-line="173" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SopaDeLetras/Sopa.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="170" selection-start-line="170" selection-end-line="170" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Nacho/nacho.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="222" column="50" lean-forward="true" selection-start-line="222" selection-start-column="50" selection-end-line="222" selection-end-column="50" />
+        <state relative-caret-position="257">
+          <caret line="208" column="1" selection-start-line="208" selection-start-column="1" selection-end-line="208" selection-end-column="1" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
