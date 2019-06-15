@@ -141,6 +141,20 @@ def Despintar(coordenadas, pintados, graph, punto):
     del pintados[punto]
 
 
+def FormarPalabra(pintados):  #Hasta donde se, el sorted funciona con las 2 orientaciones
+    keys = sorted(pintados.keys())
+    print (keys)
+    pal = ''
+    for key in keys:
+        pal = pal + pintados[key]
+    return pal
+
+def pintarCorrecto():
+    # Recibe un el dic pintados y el color. Los pone del color correspondiente
+    pass
+
+
+
 # ------------------------------------ Estructuras ---------------------------------------------------------------------
 dic_palabras = {}
 dic_palabras['__verbos__'] = []  # dic de palabras clasificadas por tipo
@@ -152,9 +166,9 @@ layout = [
     [sg.Text('Sopa De Letras'), sg.Text('', key='_OUTPUT_')],
     [sg.Graph((800, 600), (0, 300), (450, 0), key='_GRAPH_', change_submits=True, drag_submits=False,
               background_color='white')],
-    [sg.Button('Adjetivo', button_color=('black', co),size=(9, 2)),            #Los colores deberian llegar por parametro.
-     sg.Button('Verbo', button_color=('black', 'green'), size=(9, 2)),
-     sg.Button('Sustantivo', button_color=('black', 'red'), size=(9, 2))],
+    [sg.Button('Adjetivos', button_color=('black', 'blue'),size=(9, 2)),            #Los colores deberian llegar por parametro.
+     sg.Button('Verbos', button_color=('black', 'green'), size=(9, 2)),
+     sg.Button('Sustantivos', button_color=('black', 'red'), size=(9, 2))],
     [sg.Button('Terminar', button_color=('black', 'grey55')), sg.Button('Salir', button_color=('black', 'grey55'))] # Salir no tendria q estar...
 ]
 
@@ -174,6 +188,7 @@ pintados = {}
 
 while True:  # Event Loop
     event, values = window.Read()
+    print (event,'xx', values)
     if event is None or event == 'Exit':
         break
     mouse = values['_GRAPH_']
@@ -194,4 +209,16 @@ while True:  # Event Loop
                     Despintar(coordenadas, pintados, graph, punto)
                 except KeyError:
                     pass
+    else:
+        if event == 'Adjetivos' or event == 'Sustantivos' or event == 'Verbos':
+            clave = event.lower()
+            clave = '__' + event + '__'
+            pal = FormarPalabra(pintados)
+            print (pal)
+            if pal in dic_palabras[clave]:
+                #pintarCorrecto()
+                pass
+            else:
+                for punto in pintados:
+                    Despintar(coordenadas, pintados, graph, punto)
 
