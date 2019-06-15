@@ -220,6 +220,7 @@ while True:  # Event Loop
                 #pintarCorrecto()
                 pass
             else:
-                for punto in pintados:   #RuntimeError: dictionary changed size during iteration (??)
+                pintadosClone = pintados.copy()   # si no haces copias: RuntimeError: dictionary changed size during iteration (??)
+                for punto in pintadosClone:
                     Despintar(coordenadas, pintados, graph, punto)
 
