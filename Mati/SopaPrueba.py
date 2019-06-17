@@ -270,6 +270,7 @@ while True:  # Event Loop
                     pass
     else:
         if event == 'Adjetivos' or event == 'Sustantivos' or event == 'Verbos':
+            print('entra')
             clave = '__' + event + '__'
             clave = clave.lower()
             pal = FormarPalabra(pintados)
