@@ -23,6 +23,7 @@ def configPalabras(dic_palabras):
     # ------------------------------------ Layout & Design ------------------------------------
 
     sg.ChangeLookAndFeel('Purple')
+
     columna_verbos = [
         [sg.Frame('Verbos', [
         [sg.Listbox(dic_palabras['__verbos__'], key='__verbos__', size=(25, 5))],
@@ -62,9 +63,18 @@ def configPalabras(dic_palabras):
 
     ]
 
+    layout_selectAyuda = [
+        [sg.Text('Seleccione las ayudas a usar')],
+        [sg.Checkbox('Definicion de palabra', key='__ayudaDefinicion__'),
+         sg.Checkbox('Lista de Palabras', key='__ayudalistaPalabras__')],
+        [sg.Submit()],
+    ]
+
+
     # ------------------------------------ Window Loop ------------------------------------
 
     ventana_IngVen = sg.Window('Configuracion', layout=Config)
+    window_selectAyuda = sg.Window('Ayudas', layout=layout_selectAyuda)
 
     while True:
         event, values = ventana_IngVen.Read()
@@ -90,6 +100,11 @@ def configPalabras(dic_palabras):
             break
 
     ventana_IngVen.Refresh()
+    if values['__ayuda__'] == 'Si':
+        event_ayuda, values_ayuda = window_selectAyuda.Read()
+        if event_ayuda is 'Submit':
+            values['__ayudalistaPalabras__'] = values_ayuda['__ayudalistaPalabras__']
+            values['__ayudaDefinicion__'] = values_ayuda['__ayudaDefinicion__']
 
     valoresInservibles = ['__input__','__verbos__','__adjetivos__','__sustantivos__']
     for dato in valoresInservibles:
