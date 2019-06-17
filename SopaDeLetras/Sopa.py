@@ -229,7 +229,7 @@ draw_grid(sopa_window, config_values['__orientacion__'], graph, coordenadas,word
 
 while True:  # Event Loop
     event, values = sopa_window.Read()
-    if event is None or event == 'Exit':
+    if event is None or event == 'Terminar' or event == 'Salir':
         break
     mouse = values['_GRAPH_']
     if event == '_GRAPH_':
