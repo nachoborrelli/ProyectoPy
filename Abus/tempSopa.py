@@ -62,12 +62,12 @@ def calc_palMaxSide():  #################
     return palMax
 
 
-def calc_cantPalabrasSide(wordDic):  ##################
+def calc_cantPalabrasSide(wordDic):
 
     cant_palabras = len(wordDic['verbos']) + len(wordDic['sustantivos']) + len(wordDic['adjetivos'])
     if cant_palabras < 7:  #
         cant_palabras += 5  #
-    else:  # Revisar al final    #####################################
+    else:
         cant_palabras += 2
     return cant_palabras
 
@@ -139,12 +139,12 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
         rellenarConLetrasRandom(cant_palabras, palMax)
 
 
-def Pintar(coordenadas, pintados, graph, punto):
+def Pintar(coordenadas, pintados, graph, punto, color= 'grey72'):
     '''  Se ocupa de indicar como marcada una casilla pintandola en gris.
         '''
     graph.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
                         (punto[0] * BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3), line_color='black',
-                        fill_color='grey72')
+                        fill_color=color)
     graph.DrawText('{}'.format(coordenadas[punto]), (punto[0] * BOX_SIZE + 15, punto[1] * BOX_SIZE + 15),
                    font='Courier 25')
     pintados[punto] = coordenadas[punto]  # Mantengo una estructura con solo las casillas pintadas.
@@ -160,16 +160,26 @@ def Despintar(coordenadas, pintados, graph, punto):
     coordenadas[punto] = pintados[punto]  # Devuelvo la casilla de la estructura de pintados a mi auxiliar
     del pintados[punto]
 
+def FormarPalabra(pintados):  #Hasta donde se, el sorted funciona con las 2 orientaciones
+    keys = sorted(pintados.keys())
+    print (keys)
+    pal = ''
+    for key in keys:
+        pal = pal + pintados[key]
+    return pal
 
 # ------------------------------------ Estructuras,Config y bienvenida ---------------------------------------------------------------------
 # bienvenida()
+
 dic_palabras = {}
 dic_palabras['__verbos__'] = []  # dic de palabras clasificadas por tipo
 dic_palabras['__adjetivos__'] = []
 dic_palabras['__sustantivos__'] = []
 coordenadas = {}
 pintados = {}
+
 config_values = configPalabras(dic_palabras)  # Levantar configuracion
+
 wordDic = select_words(dic_palabras, config_values['__cantverbos__'],  # Seleccionar palabras a usar
                        config_values['__cantadjetivos__'],
                        config_values['__cantsustantivos__']
@@ -179,23 +189,23 @@ wordDic = select_words(dic_palabras, config_values['__cantverbos__'],  # Selecci
 
 layoutHorizontal = [
     [sg.Text('Sopa De Letras'), sg.Text('', key='_OUTPUT_')],
-    [sg.Graph((500, 500),  # canvas_size
-              (0, BOX_SIZE * calc_cantPalabrasSide(wordDic) + 3),
-              (BOX_SIZE * calc_palMaxSide() + 5, 0), key='_GRAPH_',
+    [sg.Graph((500, 500),                                                       # canvas_size
+              (0, BOX_SIZE * calc_cantPalabrasSide(wordDic) + 3),               #graph_bottom_left
+              (BOX_SIZE * calc_palMaxSide() + 5, 0), key='_GRAPH_',             #graph_top_right
               change_submits=True, drag_submits=False, background_color='white')],
     [sg.Button('Adjetivo', button_color=('black', config_values['__adjColorChooser__']), size=(9, 2)),
      # Los colores deberian llegar por parametro.
      sg.Button('Verbo', button_color=('black', config_values['__verbColorChooser__']), size=(9, 2)),
-     sg.Button('Sustantivo', button_color=('black', config_values['__susColorChooser__']), size=(9, 2))],
+     sg.Button('Sustantivo', button_color=('black', config_values['__sustColorChooser__']), size=(9, 2))],
     [sg.Button('Terminar', button_color=('black', 'grey55')), sg.Button('Salir', button_color=('black', 'grey55'))]
     # Salir no tendria q estar...
 ]
 
 layoutVertical = [
     [sg.Text('Sopa De Letras'), sg.Text('', key='_OUTPUT_')],
-    [sg.Graph((500, 500),  # canvas_size
-              (0, BOX_SIZE * calc_palMaxSide() + 3),
-              (BOX_SIZE * calc_cantPalabrasSide(wordDic) + 5, 0), key='_GRAPH_',
+    [sg.Graph((500, 500),                                                           # canvas_size
+              (0, BOX_SIZE * calc_palMaxSide() + 3),                                #graph_bottom_left
+              (BOX_SIZE * calc_cantPalabrasSide(wordDic) + 5, 0), key='_GRAPH_',    #graph_top_right
               change_submits=True, drag_submits=False, background_color='white')],
     [sg.Button('Adjetivo', button_color=('black', config_values['__adjColorChooser__']), size=(9, 2)),
      # Los colores deberian llegar por parametro.
@@ -206,22 +216,20 @@ layoutVertical = [
 ]
 
 if (config_values['__orientacion__'] == 'Horizontal'):
-    window = sg.Window('Window Title').Layout(layoutHorizontal).Finalize()
+    sopa_window = sg.Window('Window Title').Layout(layoutHorizontal).Finalize()
 else:
-    window = sg.Window('Window Title').Layout(layoutVertical).Finalize()
+    sopa_window = sg.Window('Window Title').Layout(layoutVertical).Finalize()
 
+graph = sopa_window.FindElement('_GRAPH_')
 # --------------------------------------- Main -------------------------------------------------------------------------
 
 
-graph = window.FindElement('_GRAPH_')
 
-BOX_SIZE = 25  # Tamaño de las casillas
-
-draw_grid(window, config_values['__orientacion__'], graph, coordenadas)
+draw_grid(sopa_window, config_values['__orientacion__'], graph, coordenadas,wordDic)
 
 while True:  # Event Loop
-    event, values = window.Read()
-    if event is None or event == 'Exit':
+    event, values = sopa_window.Read()
+    if (event is None) or (event == 'Terminar') or (event == 'Salir'):
         break
     mouse = values['_GRAPH_']
     if event == '_GRAPH_':
@@ -241,4 +249,23 @@ while True:  # Event Loop
                     Despintar(coordenadas, pintados, graph, punto)
                 except KeyError:
                     pass
-
+    else:
+        if event == 'Adjetivos' or event == 'Sustantivos' or event == 'Verbos':
+            clave = '__' + event + '__'
+            clave = clave.lower()
+            pal = FormarPalabra(pintados)
+            print (pal)
+            if pal in dic_palabras[clave]:
+                if clave == '__Adjetivos__':
+                    color = 'blue'  # config_values['__adjColorChooser__']
+                elif clave == '__Sustantivos__':
+                    color = 'red'  # config_values['__sustColorChooser__']
+                else:
+                    color = 'green'  # config_values['__verbColorChooser__']
+                pintadosClone = pintados.copy()   #Puede ser keys creo
+                for punto in pintadosClone:
+                    Pintar(coordenadas, pintados, graph, punto, color)
+            else:
+                pintadosClone = pintados.copy()   # si no haces copias: RuntimeError: dictionary changed size during iteration (??)
+                for punto in pintadosClone:
+                    Despintar(coordenadas, pintados, graph, punto)

@@ -248,10 +248,11 @@ draw_grid(sopa_window, config_values['__orientacion__'], graph, coordenadas,word
 
 while True:  # Event Loop
     event, values = sopa_window.Read()
+    print(event)
     if event is None or event == 'Terminar' or event == 'Salir':
         break
-    mouse = values['_GRAPH_']
-    if event == '_GRAPH_':
+    elif event == '_GRAPH_':
+        mouse = values['_GRAPH_']
         if mouse == (None, None):
             pass  # Pass vs continue?
         else:
@@ -268,8 +269,7 @@ while True:  # Event Loop
                     Despintar(coordenadas, pintados, graph, punto)
                 except KeyError:
                     pass
-    else:
-        if event == 'Adjetivos' or event == 'Sustantivos' or event == 'Verbos':
+    elif event == 'Adjetivo' or event == 'Sustantivo' or event == 'Verbo':
             print('entra')
             clave = '__' + event + '__'
             clave = clave.lower()
