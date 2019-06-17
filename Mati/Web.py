@@ -86,14 +86,14 @@ def ProcesarPalabra(pal, dic, tipo):
             archivo.close()
         return (False,wik[1])
 
-    # def Definicion(pal):
-    #     '''Busca el articulo de la palabra en Wiktionary, selecciona la seccion con el tipo
-    #     y la devuelve toda como texto plano'''
-    #     wi = Wiktionary(language='es')
-    #     secciones = wi.search(pal).sections
-    #     seccion = secciones[3]
-    #     definicion = wi.MediaWikiSection.plaintext(seccion)  # ERROR NO PUEDO ACCEDER A UNA POSICION DE UN TEXTO PLANO
-    #     print(secciones)
-    #     print(definicion)
-    #     return definicion
-    #PalabraWik((pal, dic, tipo))
+def Definicion(pal):
+    '''Busca el articulo de la palabra en Wiktionary, selecciona la seccion con el tipo
+    y la devuelve toda como texto plano'''
+    wi = Wiktionary(language='es')
+    secciones = wi.search(pal).sections
+    seccion = secciones[3]
+    definicion = wi.MediaWikiSection.plaintext(seccion)  # ERROR NO PUEDO ACCEDER A UNA POSICION DE UN TEXTO PLANO
+    print(secciones)
+    print(definicion)
+    return definicion
+
