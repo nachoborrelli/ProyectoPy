@@ -51,22 +51,36 @@ def ProcesarPalabra(pal, dic, tipo):
             print('Ingrese otra Palabra')
         return correcto,tipo
 
-    archivo= open('Reporte.txt','w')
+
 
     wik = PalabraWik(pal, dic, tipo)
     pat = PalabraPattern(pal)
     if wik[0] and pat[0]:
         if (wik[1] != pat[1]):
-            archivo.write(
-                'La clasificacion de la palabra {} no coincide entre Wiktionary y Pattern. En wiktionary es: {}, y en Patter es: {}. '.format(
-                    pal, wik[1], pat[1]))
+            try:
+                archivo = open('Reporte.txt', 'w')
+            except(FileNotFoundError):
+                archivo = open('Reporte.txt','x')
+                archivo.write('La clasificacion de la palabra {} no coincide entre Wiktionary y Pattern. En wiktionary es: {}, y en Patter es: {}. '.format(
+                        pal, wik[1], pat[1]))
+            else:
+                archivo = open('Reporte.txt','a')
+                archivo.write('La clasificacion de la palabra {} no coincide entre Wiktionary y Pattern. En wiktionary es: {}, y en Patter es: {}. '.format(
+                        pal, wik[1], pat[1]))
             archivo.close()
         return (True,wik[1])
     else:
         if (wik[1] != pat[1]):
-            archivo.write(
-                'La clasificacion de la palabra {} no coincide entre Wiktionary y Pattern. En wiktionary es: {}, y en Patter es: {}. '.format(
-                    pal, wik[1], pat[1]))
+            try:
+                archivo = open('Reporte.txt', 'w')
+            except(FileNotFoundError):
+                archivo = open('Reporte.txt','x')
+                archivo.write('La clasificacion de la palabra {} no coincide entre Wiktionary y Pattern. En wiktionary es: {}, y en Patter es: {}. '.format(
+                        pal, wik[1], pat[1]))
+            else:
+                archivo = open('Reporte.txt','a')
+                archivo.write('La clasificacion de la palabra {} no coincide entre Wiktionary y Pattern. En wiktionary es: {}, y en Patter es: {}. '.format(
+                        pal, wik[1], pat[1]))
             archivo.close()
         return (False,wik[1])
 
@@ -80,4 +94,4 @@ def ProcesarPalabra(pal, dic, tipo):
     #     print(secciones)
     #     print(definicion)
     #     return definicion
-    PalabraWik((pal, dic, tipo))
+    #PalabraWik((pal, dic, tipo))
