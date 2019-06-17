@@ -255,9 +255,9 @@ while True:  # Event Loop
         pal = FormarPalabra(pintados)
         print (pal)
         if pal in dic_palabras[clave]:
-            if clave == '__Adjetivos__':
+            if clave == '__Adjetivo__':
                 color = 'blue'  # config_values['__adjColorChooser__']
-            elif clave == '__Sustantivos__':
+            elif clave == '__Sustantivo__':
                 color = 'red'  # config_values['__sustColorChooser__']
             else:
                 color = 'green'  # config_values['__verbColorChooser__']
