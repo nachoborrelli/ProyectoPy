@@ -23,12 +23,15 @@ def bienvenida():
 
 def select_words(dic_palabras, cantverbos, cantadj, cantsust):
     wordDic = []
-    tempList = dic_palabras['__verbos__'].copy()
-    wordDic['verbos'] = random.choices(tempList, k=cantverbos)
-    tempList = dic_palabras['__sustantivos__'].copy()
-    wordDic['sustantivos'] = random.choices(tempList, k=cantsust)
-    tempList = dic_palabras['__adjetivos__'].copy()
-    wordDic['adjetivos'] = random.choices(tempList, k=cantadj)
+    if (cantverbos != 0):
+        tempList = dic_palabras['__verbos__'].copy()
+        wordDic['verbos'].append(random.choices(tempList, k=cantverbos))
+    if (cantsust != 0):
+        tempList = dic_palabras['__sustantivos__'].copy()
+        wordDic['sustantivos'].append(random.choices(tempList, k=cantsust))
+    if (cantadj != 0):
+        tempList = dic_palabras['__adjetivos__'].copy()
+        wordDic['adjetivos'] = random.choices(tempList, k=cantadj)
     return wordDic
 
 
