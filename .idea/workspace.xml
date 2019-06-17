@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3b278a84-e50d-4073-9a81-db5542bccd79" name="Default Changelist" comment="">
+    <list default="true" id="3b278a84-e50d-4073-9a81-db5542bccd79" name="Default Changelist" comment="nuevos cambios en web">
+      <change afterPath="$PROJECT_DIR$/Abus/valoresDePrueba.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/ProyectoPy.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ProyectoPy.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mati/Web.py" beforeDir="false" afterPath="$PROJECT_DIR$/Mati/Web.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Abus/tempSopa.py" beforeDir="false" afterPath="$PROJECT_DIR$/Abus/tempSopa.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SopaDeLetras/Sopa.py" beforeDir="false" afterPath="$PROJECT_DIR$/SopaDeLetras/Sopa.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SopaDeLetras/configuracion.py" beforeDir="false" afterPath="$PROJECT_DIR$/SopaDeLetras/configuracion.py" afterDir="false" />
     </list>
     <ignored path="C:\Users\fernando\PycharmProjects\ProyectoPy\.idea\shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,29 +18,52 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Mati/Web.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="430">
-              <caret line="98" lean-forward="true" selection-start-line="98" selection-end-line="98" />
-              <folding>
-                <element signature="e#0#34#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SopaDeLetras/Sopa.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-187">
-              <caret line="4" column="47" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Abus/tempSopa.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-187">
+                  <caret line="69" column="70" lean-forward="true" selection-start-line="69" selection-start-column="33" selection-end-line="69" selection-end-column="70" />
+                  <folding>
+                    <element signature="e#0#10#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/SopaDeLetras/Sopa.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="334">
+                  <caret line="247" column="24" lean-forward="true" selection-start-line="247" selection-start-column="24" selection-end-line="247" selection-end-column="24" />
+                  <folding>
+                    <element signature="e#0#10#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/SopaDeLetras/Sopa.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-17">
+                  <caret line="69" column="10" selection-start-line="69" selection-start-column="10" selection-end-line="69" selection-end-column="10" />
+                  <folding>
+                    <element signature="e#0#10#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -63,14 +89,15 @@
         <option value="$PROJECT_DIR$/SopaDeLetras/Rectangulo.py" />
         <option value="$PROJECT_DIR$/SopaDeLetras/bienvenida.py" />
         <option value="$PROJECT_DIR$/Mati/SopaPrueba.py" />
-        <option value="$PROJECT_DIR$/SopaDeLetras/configuracion.py" />
         <option value="$PROJECT_DIR$/SopaDeLetras/Demo-Crucigrama.py" />
-        <option value="$PROJECT_DIR$/Abus/tempSopa.py" />
         <option value="$PROJECT_DIR$/Nacho/sopaNacho.py" />
         <option value="$PROJECT_DIR$/SopaDeLetras/sopaNacho.py" />
-        <option value="$PROJECT_DIR$/SopaDeLetras/Sopa.py" />
-        <option value="$PROJECT_DIR$/Nacho/nacho.py" />
         <option value="$PROJECT_DIR$/Mati/Web.py" />
+        <option value="$PROJECT_DIR$/SopaDeLetras/configuracion.py" />
+        <option value="$PROJECT_DIR$/Abus/tempSopa.py" />
+        <option value="$PROJECT_DIR$/Nacho/nacho.py" />
+        <option value="$PROJECT_DIR$/Abus/valoresDePrueba.py" />
+        <option value="$PROJECT_DIR$/SopaDeLetras/Sopa.py" />
       </list>
     </option>
   </component>
@@ -79,6 +106,9 @@
     <option name="y" value="2" />
     <option name="width" value="697" />
     <option name="height" value="775" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -143,7 +173,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Sopa">
+  <component name="RunManager" selected="Python.pruebaDeLayout">
     <configuration name="Sopa" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ProyectoPy" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -165,27 +195,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Web" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="ProyectoPy" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Mati" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Mati/Web.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="nacho" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ProyectoPy" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -199,6 +208,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Nacho/nacho.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pruebaDeLayout" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ProyectoPy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Abus" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Abus/pruebaDeLayout.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -251,11 +281,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.pruebaDeLayout" />
+        <item itemvalue="Python.tempSopa" />
         <item itemvalue="Python.Sopa" />
         <item itemvalue="Python.nacho" />
-        <item itemvalue="Python.tempSopa" />
         <item itemvalue="Python.sopaNacho" />
-        <item itemvalue="Python.Web" />
       </list>
     </recent_temporary>
   </component>
@@ -521,20 +551,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.088541664" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49702382" weight="0.3289689" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49330357" weight="0.31914893" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49330357" weight="0.31797236" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39938557" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49925596" weight="0.3289689" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.4985119" weight="0.32569557" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.4985119" weight="0.32565284" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49925596" weight="0.3289689" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5029762" side_tool="true" weight="0.31914893" />
       <window_info anchor="bottom" id="Python Console" order="10" />
@@ -542,25 +572,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12946428" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49702382" visible="true" weight="0.31914893" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32733223" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3289689" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5029762" side_tool="true" weight="0.31914893" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout-to-restore>
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -609,7 +620,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/PySimpleGUI/PySimpleGUI.py" />
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/tkinter/__init__.py" />
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/random.py" />
     <entry file="file://$PROJECT_DIR$/SopaDeLetras/sopaNacho.py" />
@@ -623,16 +633,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SopaDeLetras/configuracion.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1377">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SopaDeLetras/Demo-Crucigrama.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-258">
@@ -640,8 +640,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Mati/Reporte.txt">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/Mati/Reporte.txt" />
+    <entry file="file://$PROJECT_DIR$/Mati/Web.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="741">
+          <caret line="98" selection-start-line="98" selection-end-line="98" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Abus/crosswords.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -650,10 +658,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Abus/pruebaDeLayout.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Abus/valoresDePrueba.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SopaDeLetras/configuracion.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="116" column="63" selection-start-line="116" selection-start-column="63" selection-end-line="116" selection-end-column="63" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/PySimpleGUI/PySimpleGUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="1995" column="70" selection-start-line="1995" selection-start-column="55" selection-end-line="1995" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Nacho/nacho.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="208" column="1" selection-start-line="208" selection-start-column="1" selection-end-line="208" selection-end-column="1" />
+        <state relative-caret-position="289">
+          <caret line="211" column="28" lean-forward="true" selection-start-line="211" selection-start-column="28" selection-end-line="211" selection-end-column="28" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -662,8 +704,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Abus/tempSopa.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3264">
-          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+        <state relative-caret-position="-187">
+          <caret line="69" column="70" lean-forward="true" selection-start-line="69" selection-start-column="33" selection-end-line="69" selection-end-column="70" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -672,17 +714,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SopaDeLetras/Sopa.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-187">
-          <caret line="4" column="47" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mati/Web.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="98" lean-forward="true" selection-start-line="98" selection-end-line="98" />
+        <state relative-caret-position="-17">
+          <caret line="69" column="10" selection-start-line="69" selection-start-column="10" selection-end-line="69" selection-end-column="10" />
           <folding>
-            <element signature="e#0#34#0" expanded="true" />
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>

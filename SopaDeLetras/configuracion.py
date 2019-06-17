@@ -100,16 +100,20 @@ def configPalabras(dic_palabras):
             break
 
     ventana_IngVen.Refresh()
-    if values['__ayuda__'] == 'Si':
+    if values['__ayuda__'] == 'Si':                                                         #en caso de que se seleccione ayuda,
         event_ayuda, values_ayuda = window_selectAyuda.Read()
         if event_ayuda is 'Submit':
             values['__ayudalistaPalabras__'] = values_ayuda['__ayudalistaPalabras__']
             values['__ayudaDefinicion__'] = values_ayuda['__ayudaDefinicion__']
 
-    valoresInservibles = ['__input__','__verbos__','__adjetivos__','__sustantivos__']
+    valoresInservibles = ['__input__','__verbos__','__adjetivos__','__sustantivos__']       #elimino los valores devueltos por el layout que no me sirven
     for dato in valoresInservibles:
         if dato in values.keys():
             del values[dato]
 
+    #convertir valores string a numericos para facilitar el procesamiento luego
+    values['__cantsustantivos__'] = int(values['__cantsustantivos__'])
+    values['__cantverbos__'] = int(values['__cantverbos__'])
+    values['__cantadjetivos__'] = int(values['__cantadjetivos__'])
     print(values)
     return values

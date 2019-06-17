@@ -22,13 +22,19 @@ def bienvenida():
 
 
 def select_words(dic_palabras, cantverbos, cantadj, cantsust):
-    wordDic = []
-    tempList = dic_palabras['__verbos__'].copy()
-    wordDic['verbos'] = random.choices(tempList, k=cantverbos)
-    tempList = dic_palabras['__sustantivos__'].copy()
-    wordDic['sustantivos'] = random.choices(tempList, k=cantsust)
-    tempList = dic_palabras['__adjetivos__'].copy()
-    wordDic['adjetivos'] = random.choices(tempList, k=cantadj)
+    wordDic = {}
+    wordDic['verbos'] = []  # dic de palabras clasificadas por tipo
+    wordDic['adjetivos'] = []
+    wordDic['sustantivos'] = []
+    if (cantverbos != 0):
+        tempList = dic_palabras['__verbos__'].copy()
+        wordDic['verbos'] = random.sample(tempList, k=cantverbos)
+    if (cantsust != 0):
+        tempList = dic_palabras['__sustantivos__'].copy()
+        wordDic['sustantivos'] = random.sample(tempList, k=cantsust)
+    if (cantadj != 0):
+        tempList = dic_palabras['__adjetivos__'].copy()
+        wordDic['adjetivos'] = random.sample(tempList, k=cantadj)
     return wordDic
 
 
@@ -156,7 +162,7 @@ def Despintar(coordenadas, pintados, graph, punto):
 
 
 # ------------------------------------ Estructuras,Config y bienvenida ---------------------------------------------------------------------
-bienvenida()
+# bienvenida()
 dic_palabras = {}
 dic_palabras['__verbos__'] = []  # dic de palabras clasificadas por tipo
 dic_palabras['__adjetivos__'] = []
@@ -180,7 +186,7 @@ layoutHorizontal = [
     [sg.Button('Adjetivo', button_color=('black', config_values['__adjColorChooser__']), size=(9, 2)),
      # Los colores deberian llegar por parametro.
      sg.Button('Verbo', button_color=('black', config_values['__verbColorChooser__']), size=(9, 2)),
-     sg.Button('Sustantivo', button_color=('black', config_values['__verbColorChooser__']), size=(9, 2))],
+     sg.Button('Sustantivo', button_color=('black', config_values['__susColorChooser__']), size=(9, 2))],
     [sg.Button('Terminar', button_color=('black', 'grey55')), sg.Button('Salir', button_color=('black', 'grey55'))]
     # Salir no tendria q estar...
 ]
@@ -194,7 +200,7 @@ layoutVertical = [
     [sg.Button('Adjetivo', button_color=('black', config_values['__adjColorChooser__']), size=(9, 2)),
      # Los colores deberian llegar por parametro.
      sg.Button('Verbo', button_color=('black', config_values['__verbColorChooser__']), size=(9, 2)),
-     sg.Button('Sustantivo', button_color=('black', config_values['__verbColorChooser__']), size=(9, 2))],
+     sg.Button('Sustantivo', button_color=('black', config_values['__sustColorChooser__']), size=(9, 2))],
     [sg.Button('Terminar', button_color=('black', 'grey55')), sg.Button('Salir', button_color=('black', 'grey55'))]
     # Salir no tendria q estar...
 ]
