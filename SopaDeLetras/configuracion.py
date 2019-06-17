@@ -1,5 +1,5 @@
 import PySimpleGUI as sg
-from Mati import Web as modulo
+from Mati import Web
 
 def configPalabras(dic_palabras):
     #------------------------------------ Funciones ------------------------------------
@@ -80,10 +80,10 @@ def configPalabras(dic_palabras):
         event, values = ventana_IngVen.Read()
         tipo = ''
         if event == '__addbutton__':
-            valores = modulo.ProcesarPalabra(values['__input__'], dic_palabras, tipo)
+            valores = Web.ProcesarPalabra(values['__input__'], dic_palabras, tipo)
             print(valores[0])
             if valores[0] == False:
-                #valores = modulo.ProcesarPalabra(values['__input__'], dic_palabras, tipo)
+                #valores = Web.ProcesarPalabra(values['__input__'], dic_palabras, tipo)
                 pass
             else:
                 ventana_IngVen.FindElement(valores[1]).Update(dic_palabras[valores[1]])       #pos 0 = boolean si se pudo o no #pos 1 el tipo de palabra
