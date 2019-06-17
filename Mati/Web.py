@@ -63,7 +63,7 @@ def ProcesarPalabra(pal, dic, tipo):
                 archivo = open('Reporte.txt','x')
                 archivo.write('La clasificacion de la palabra {} no coincide entre Wiktionary y Pattern. En wiktionary es: {}, y en Patter es: {}. '.format(
                         pal, wik[1], pat[1]))
-                archivo.write('/n')
+                #archivo.write('/n')
             else:
                 archivo.write('La clasificacion de la palabra {} no coincide entre Wiktionary y Pattern. En wiktionary es: {}, y en Patter es: {}. '.format(
                         pal, wik[1], pat[1]))
