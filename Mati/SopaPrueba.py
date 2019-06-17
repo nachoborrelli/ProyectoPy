@@ -171,9 +171,9 @@ def FormarPalabra(pintados):  #Hasta donde se, el sorted funciona con las 2 orie
 # ------------------------------------ Estructuras,Config y bienvenida ---------------------------------------------------------------------
 # bienvenida()
 config_values = {}
-config_values['__verbColorChooser__'] = '#f17850'
-config_values['__adjColorChooser__'] = '#2d06c4'
-config_values['__sustColorChooser__'] = '#3707f5'
+config_values['__verbColorChooser__'] = '#ee5357'
+config_values['__adjColorChooser__'] = '#6df54b'
+config_values['__sustColorChooser__'] = '#5b4ff2'
 config_values['__cantadjetivos__'] = 3
 config_values['__cantsustantivos__'] = 4
 config_values['__cantverbos__'] = 4
@@ -271,21 +271,25 @@ while True:  # Event Loop
                     pass
     elif event == 'Adjetivo' or event == 'Sustantivo' or event == 'Verbo':
             print('entra')
-            clave = '__' + event + '__'
+            clave = '__' + event + 's' + '__'
             clave = clave.lower()
             pal = FormarPalabra(pintados)
             print (pal)
             if pal in dic_palabras[clave]:
-                if clave == '__Adjetivos__':
-                    color = 'blue'  # config_values['__adjColorChooser__']
-                elif clave == '__Sustantivos__':
-                    color = 'red'  # config_values['__sustColorChooser__']
+                if clave == '__adjetivos__':
+                    color = config_values['__adjColorChooser__']
+                elif clave == '__sustantivos__':
+                    color = config_values['__sustColorChooser__']
                 else:
-                    color = 'green'  # config_values['__verbColorChooser__']
+                    color = config_values['__verbColorChooser__']
                 pintadosClone = pintados.copy()   #Puede ser keys creo
+                print(pintadosClone)
                 for punto in pintadosClone:
-                    Pintar(coordenadas, pintados, graph, punto, color)
+                    Despintar(coordenadas,pintados,graph,punto)
+                for punto in pintadosClone:
+                    Pintar(coordenadas, pintadosClone, graph, punto, color)
             else:
                 pintadosClone = pintados.copy()   # si no haces copias: RuntimeError: dictionary changed size during iteration (??)
                 for punto in pintadosClone:
                     Despintar(coordenadas, pintados, graph, punto)
+            pal=''
