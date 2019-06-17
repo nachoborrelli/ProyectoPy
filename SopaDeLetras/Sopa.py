@@ -25,13 +25,13 @@ def select_words(dic_palabras, cantverbos, cantadj, cantsust):
     wordDic = []
     if (cantverbos != 0):
         tempList = dic_palabras['__verbos__'].copy()
-        wordDic['verbos'].append(random.choices(tempList, k=cantverbos))
+        wordDic['verbos'] = random.sample(tempList, k=cantverbos)
     if (cantsust != 0):
         tempList = dic_palabras['__sustantivos__'].copy()
-        wordDic['sustantivos'].append(random.choices(tempList, k=cantsust))
+        wordDic['sustantivos'] = random.sample(tempList, k=cantsust)
     if (cantadj != 0):
         tempList = dic_palabras['__adjetivos__'].copy()
-        wordDic['adjetivos'] = random.choices(tempList, k=cantadj)
+        wordDic['adjetivos'] = random.sample(tempList, k=cantadj)
     return wordDic
 
 
