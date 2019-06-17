@@ -231,8 +231,8 @@ while True:  # Event Loop
     event, values = sopa_window.Read()
     if (event is None) or (event == 'Terminar') or (event == 'Salir'):
         break
-    mouse = values['_GRAPH_']
-    if event == '_GRAPH_':
+    elif event == '_GRAPH_':
+        mouse = values['_GRAPH_']
         if mouse == (None, None):
             pass  # Pass vs continue?
         else:
@@ -249,23 +249,22 @@ while True:  # Event Loop
                     Despintar(coordenadas, pintados, graph, punto)
                 except KeyError:
                     pass
-    else:
-        if event == 'Adjetivos' or event == 'Sustantivos' or event == 'Verbos':
-            clave = '__' + event + '__'
-            clave = clave.lower()
-            pal = FormarPalabra(pintados)
-            print (pal)
-            if pal in dic_palabras[clave]:
-                if clave == '__Adjetivos__':
-                    color = 'blue'  # config_values['__adjColorChooser__']
-                elif clave == '__Sustantivos__':
-                    color = 'red'  # config_values['__sustColorChooser__']
-                else:
-                    color = 'green'  # config_values['__verbColorChooser__']
-                pintadosClone = pintados.copy()   #Puede ser keys creo
-                for punto in pintadosClone:
-                    Pintar(coordenadas, pintados, graph, punto, color)
+    elif event == 'Adjetivo' or event == 'Sustantivo' or event == 'Verbo':
+        clave = '__' + event + '__'
+        clave = clave.lower()
+        pal = FormarPalabra(pintados)
+        print (pal)
+        if pal in dic_palabras[clave]:
+            if clave == '__Adjetivos__':
+                color = 'blue'  # config_values['__adjColorChooser__']
+            elif clave == '__Sustantivos__':
+                color = 'red'  # config_values['__sustColorChooser__']
             else:
-                pintadosClone = pintados.copy()   # si no haces copias: RuntimeError: dictionary changed size during iteration (??)
-                for punto in pintadosClone:
-                    Despintar(coordenadas, pintados, graph, punto)
+                color = 'green'  # config_values['__verbColorChooser__']
+            pintadosClone = pintados.copy()   #Puede ser keys creo
+            for punto in pintadosClone:
+                Pintar(coordenadas, pintados, graph, punto, color)
+        else:
+            pintadosClone = pintados.copy()   # si no haces copias: RuntimeError: dictionary changed size during iteration (??)
+            for punto in pintadosClone:
+                Despintar(coordenadas, pintados, graph, punto)
