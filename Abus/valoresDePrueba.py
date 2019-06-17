@@ -1,6 +1,6 @@
 config_values = {}
 config_values['__verbColorChooser__'] = '#f17850'
-config_values['__verbColorChooser__'] = '#2d06c4'
+config_values['__adjColorChooser__'] = '#2d06c4'
 config_values['__sustColorChooser__'] = '#3707f5'
 config_values['__cantadjetivos__'] = 3
 config_values['__cantsustantivos__'] = 4

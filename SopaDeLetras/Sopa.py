@@ -170,13 +170,16 @@ def FormarPalabra(pintados):  #Hasta donde se, el sorted funciona con las 2 orie
 
 # ------------------------------------ Estructuras,Config y bienvenida ---------------------------------------------------------------------
 # bienvenida()
+
 dic_palabras = {}
 dic_palabras['__verbos__'] = []  # dic de palabras clasificadas por tipo
 dic_palabras['__adjetivos__'] = []
 dic_palabras['__sustantivos__'] = []
 coordenadas = {}
 pintados = {}
+
 config_values = configPalabras(dic_palabras)  # Levantar configuracion
+
 wordDic = select_words(dic_palabras, config_values['__cantverbos__'],  # Seleccionar palabras a usar
                        config_values['__cantadjetivos__'],
                        config_values['__cantsustantivos__']
@@ -193,7 +196,7 @@ layoutHorizontal = [
     [sg.Button('Adjetivo', button_color=('black', config_values['__adjColorChooser__']), size=(9, 2)),
      # Los colores deberian llegar por parametro.
      sg.Button('Verbo', button_color=('black', config_values['__verbColorChooser__']), size=(9, 2)),
-     sg.Button('Sustantivo', button_color=('black', config_values['__susColorChooser__']), size=(9, 2))],
+     sg.Button('Sustantivo', button_color=('black', config_values['__sustColorChooser__']), size=(9, 2))],
     [sg.Button('Terminar', button_color=('black', 'grey55')), sg.Button('Salir', button_color=('black', 'grey55'))]
     # Salir no tendria q estar...
 ]
@@ -222,7 +225,7 @@ graph = sopa_window.FindElement('_GRAPH_')
 
 
 
-draw_grid(sopa_window, config_values['__orientacion__'], graph, coordenadas)
+draw_grid(sopa_window, config_values['__orientacion__'], graph, coordenadas,wordDic)
 
 while True:  # Event Loop
     event, values = sopa_window.Read()
