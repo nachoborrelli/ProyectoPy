@@ -100,7 +100,5 @@ def Definicion(pal):
             break
     definicion = etimologia[pos:]
 
-    print(secciones)
-    print(definicion)
     return definicion
 
