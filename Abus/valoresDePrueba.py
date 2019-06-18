@@ -26,4 +26,5 @@ dic_palabras['__verbos__'] = ['cagar','comer', 'coger', 'respirar' , 'caminar'] 
 dic_palabras['__adjetivos__'] = ['lindo', 'rojo' , 'feo' , 'monótono' ,'extraordinario']
 dic_palabras['__sustantivos__'] = ['dinosaurio', 'embotellamiento', 'termotanque' , 'llamas']
 
-print(random.choice(dic_palabras))
+print(random.choice(random.choice(list(dic_palabras.values()))))
+print(random.choice(list(dic_palabras.values())))
