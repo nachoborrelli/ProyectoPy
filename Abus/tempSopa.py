@@ -310,3 +310,4 @@ while True:  # Event Loop
     elif event == '__helpButton__':
         help_window.FindElement('__helpText__').Update(Web.Definicion(random.choice(random.choice(list(wordDic.values())))))    #elegir random word y tirar la definicion
         helpevent, helpvalues= help_window.Read()
+        print(helpevent)

@@ -92,7 +92,14 @@ def Definicion(pal):
     wi = Wiktionary(language='es')
     secciones = wi.search(pal).sections
     seccion = secciones[3]
-    definicion = wi.MediaWikiSection.plaintext(seccion)  # ERROR NO PUEDO ACCEDER A UNA POSICION DE UN TEXTO PLANO
+    etimologia = wi.MediaWikiSection.plaintext(seccion)  # ERROR NO PUEDO ACCEDER A UNA POSICION DE UN TEXTO PLANO
+
+    for letra in range(len(etimologia)):
+        if etimologia[letra] == '1':
+            pos=letra
+            break
+    definicion = etimologia[pos:]
+
     print(secciones)
     print(definicion)
     return definicion
