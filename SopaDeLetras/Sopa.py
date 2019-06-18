@@ -143,14 +143,21 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
 def Pintar(coordenadas, pintados, graph, punto, color= 'grey72'):
     '''  Se ocupa de indicar como marcada una casilla pintandola en gris.
         '''
-    graph.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
-                        (punto[0] * BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3), line_color='black',
-                        fill_color=color)
-    graph.DrawText('{}'.format(coordenadas[punto]), (punto[0] * BOX_SIZE + 15, punto[1] * BOX_SIZE + 15),
-                   font='Courier 25')
-    pintados[punto] = coordenadas[punto]  # Mantengo una estructura con solo las casillas pintadas.
-    del coordenadas[punto]  # Y las saco de mi estructura auxiliar.
-
+    if(color == 'grey72'):
+        graph.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
+                            (punto[0] * BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3), line_color='black',
+                            fill_color=color)
+        graph.DrawText('{}'.format(coordenadas[punto]), (punto[0] * BOX_SIZE + 15, punto[1] * BOX_SIZE + 15),
+                       font='Courier 25')
+        pintados[punto] = coordenadas[punto]  # Mantengo una estructura con solo las casillas pintadas.
+        del coordenadas[punto]  # Y las saco de mi estructura auxiliar.
+    else:
+        graph.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
+                            (punto[0] * BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3),
+                            line_color='black',
+                            fill_color=color)
+        graph.DrawText('{}'.format(coordenadas[punto]), (punto[0] * BOX_SIZE + 15, punto[1] * BOX_SIZE + 15),
+                       font='Courier 25')
 
 def Despintar(coordenadas, pintados, graph, punto):
     graph.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
@@ -265,22 +272,25 @@ while True:  # Event Loop
                 except KeyError:
                     pass
     elif event == 'Adjetivo' or event == 'Sustantivo' or event == 'Verbo':
-        clave = '__' + event + '__'
+        clave = '__' + event + 's' + '__'
         clave = clave.lower()
         pal = FormarPalabra(pintados)
         print (pal)
         if pal in dic_palabras[clave]:
-            if clave == '__Adjetivo__':
+            if clave == '__adjetivos__':
                 color = config_values['__adjColorChooser__']
-            elif clave == '__Sustantivo__':
+            elif clave == '__sustantivos__':
                 color = config_values['__sustColorChooser__']
             else:
                 color = config_values['__verbColorChooser__']
             pintadosClone = pintados.copy()   #Puede ser keys creo
+            print(pintadosClone)
             for punto in pintadosClone:
-                Pintar(coordenadas, pintados, graph, punto, color)
+                Despintar(coordenadas, pintados, graph, punto)
+            for punto in pintadosClone:
+                Pintar(coordenadas, pintadosClone, graph, punto, color)
         else:
-            pintadosClone = pintados.copy()   # si no haces copias: RuntimeError: dictionary changed size during iteration (??)
+            pintadosClone = pintados.copy()  # si no haces copias: RuntimeError: dictionary changed size during iteration (??)
             for punto in pintadosClone:
                 Despintar(coordenadas, pintados, graph, punto)
     elif event == '__helpButton__':
