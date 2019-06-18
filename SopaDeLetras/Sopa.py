@@ -206,7 +206,23 @@ def comprobarPalabra(pintados, orientacion, event):
                 color = config_values['__verbColorChooser__']
 
     print(color,pal,palCorrecta)
-    return color,pal,palCorrecta
+    return color,pal,palCorrecta,clave
+
+def Comparar (wordDic,palabras_encontradas):
+    print(wordDic)
+    if(len(palabras_encontradas['__adjetivos__']) == len(wordDic['__adjetivos__'])):
+        cantAdj = 0
+    else:
+        cantAdj = len(wordDic['__adjetivos__']) - len(palabras_encontradas['__adjetivos__'])
+    if (len(palabras_encontradas['__verbos__']) == len(wordDic['__verbos__'])):
+        cantVerbs = 0
+    else:
+        cantVerbs = len(wordDic['__verbos__']) - len(palabras_encontradas['__verbos__'])
+    if (len(palabras_encontradas['__sustantivos__']) == len(wordDic['__sustantivos__'])):
+        cantSust = 0
+    else:
+        cantSust = len(wordDic['__sustantivos__']) - len(palabras_encontradas['__sustantivos__'])
+    return cantAdj,cantVerbs,cantSust
 
 # ------------------------------------ Estructuras,Config y bienvenida ---------------------------------------------------------------------
 # bienvenida()
@@ -217,6 +233,12 @@ dic_palabras['__adjetivos__'] = []
 dic_palabras['__sustantivos__'] = []
 coordenadas = {}
 pintados = {}
+
+palabras_encontradas = {}
+palabras_encontradas['__verbos__'] = []  # dic de palabras encontradas por tipo
+palabras_encontradas['__adjetivos__'] = []
+palabras_encontradas['__sustantivos__'] = []
+
 
 config_values = configPalabras(dic_palabras)  # Levantar configuracion
 
@@ -304,7 +326,7 @@ while True:  # Event Loop
                 except KeyError:
                     pass
     elif event == 'Adjetivo' or event == 'Sustantivo' or event == 'Verbo':
-        color, pal, correcta = comprobarPalabra(pintados, config_values['__orientacion__'], event )
+        color, pal, correcta,clave = comprobarPalabra(pintados, config_values['__orientacion__'], event )
         if correcta == True:
             pintadosClone = pintados.copy()   #Puede ser keys creo
             print(pintadosClone)
@@ -312,6 +334,9 @@ while True:  # Event Loop
                 Despintar(coordenadas, pintados, graph, punto)
             for punto in pintadosClone:
                 Pintar(coordenadas, pintadosClone, graph, punto, color)
+            palabras_encontradas[clave].append(pal)
+            Adjs, Verbs, Susts = Comparar(wordDic, palabras_encontradas)
+            print('Te faltan encontrar {} adjetivos, {} verbos, {} sustantivos'.format(Adjs, Verbs, Susts))
         else:
             pintadosClone = pintados.copy()  # si no haces copias: RuntimeError: dictionary changed size during iteration (??)
             for punto in pintadosClone:
