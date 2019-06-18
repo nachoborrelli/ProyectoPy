@@ -2,6 +2,7 @@ import sys
 import PySimpleGUI as sg
 import random
 import string
+from Mati import Web
 from SopaDeLetras.configuracion import configPalabras
 
 # --------------------------------------- Global Variables -------------------------------------------------------------
@@ -215,12 +216,25 @@ layoutVertical = [
     # Salir no tendria q estar...
 ]
 
+helpLayout = [  [sg.Text('Definicion de una palabra al azar')],
+                [sg.Multiline('',key = '__helpText__',size=(50,20))],
+                [sg.Quit('Cerrar')]
+            ]
+
+
+
 if (config_values['__orientacion__'] == 'Horizontal'):
     sopa_window = sg.Window('Window Title').Layout(layoutHorizontal).Finalize()
 else:
     sopa_window = sg.Window('Window Title').Layout(layoutVertical).Finalize()
 
+if config_values['__ayudaDefinicion__'] == False:
+    sopa_window.FindElement('__helpButton__').Update(visible=False)
+
 graph = sopa_window.FindElement('_GRAPH_')
+
+help_window = sg.Window('Ayudin' ,layout=helpLayout, no_titlebar=True )
+
 # --------------------------------------- Main -------------------------------------------------------------------------
 
 
@@ -268,3 +282,6 @@ while True:  # Event Loop
             pintadosClone = pintados.copy()   # si no haces copias: RuntimeError: dictionary changed size during iteration (??)
             for punto in pintadosClone:
                 Despintar(coordenadas, pintados, graph, punto)
+    elif event == '__helpButton__':
+        help_window.FindElement('__helpText__').Update(Web.Definicion(random.choice(random.choice(list(wordDic.values())))))    #elegir random word y tirar la definicion
+        helpevent, helpvalues= help_window.Read()

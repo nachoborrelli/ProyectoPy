@@ -236,8 +236,8 @@ layoutVertical = [
     # Salir no tendria q estar...
 ]
 
-helpLayout = [  [sg.Text('Definicion de una palabra')],
-                [sg.Multiline('',key = '__helpText__')],
+helpLayout = [  [sg.Text('Definicion de una palabra al azar')],
+                [sg.Multiline('',key = '__helpText__',size=(50,20))],
                 [sg.Quit('Cerrar')]
             ]
 
@@ -246,6 +246,9 @@ if (config_values['__orientacion__'] == 'Horizontal'):
     sopa_window = sg.Window('Window Title').Layout(layoutHorizontal).Finalize()
 else:
     sopa_window = sg.Window('Window Title').Layout(layoutVertical).Finalize()
+
+if config_values['__ayudaDefinicion__'] == False:
+    sopa_window.FindElement('__helpButton__').Update(visible=False)
 
 graph = sopa_window.FindElement('_GRAPH_')
 
@@ -305,5 +308,5 @@ while True:  # Event Loop
                     Despintar(coordenadas, pintados, graph, punto)
             pal=''
     elif event == '__helpButton__':
-        help_window.FindElement('__helpText__').Update(random.choice(random.choice(wordDic)))
+        help_window.FindElement('__helpText__').Update(Web.Definicion(random.choice(random.choice(list(wordDic.values())))))    #elegir random word y tirar la definicion
         helpevent, helpvalues= help_window.Read()
