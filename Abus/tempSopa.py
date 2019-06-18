@@ -24,18 +24,18 @@ def bienvenida():
 
 def select_words(dic_palabras, cantverbos, cantadj, cantsust):
     wordDic = {}
-    wordDic['verbos'] = []  # dic de palabras clasificadas por tipo
-    wordDic['adjetivos'] = []
-    wordDic['sustantivos'] = []
+    wordDic['__verbos__'] = []  # dic de palabras clasificadas por tipo
+    wordDic['__adjetivos__'] = []
+    wordDic['__sustantivos__'] = []
     if (cantverbos != 0):
         tempList = dic_palabras['__verbos__'].copy()
-        wordDic['verbos'] = random.sample(tempList, k=cantverbos)
+        wordDic['__verbos__'] = random.sample(tempList, k=cantverbos)
     if (cantsust != 0):
         tempList = dic_palabras['__sustantivos__'].copy()
-        wordDic['sustantivos'] = random.sample(tempList, k=cantsust)
+        wordDic['__sustantivos__'] = random.sample(tempList, k=cantsust)
     if (cantadj != 0):
         tempList = dic_palabras['__adjetivos__'].copy()
-        wordDic['adjetivos'] = random.sample(tempList, k=cantadj)
+        wordDic['__adjetivos__'] = random.sample(tempList, k=cantadj)
     return wordDic
 
 
@@ -65,7 +65,7 @@ def calc_palMaxSide():  #################
 
 def calc_cantPalabrasSide(wordDic):
 
-    cant_palabras = len(wordDic['verbos']) + len(wordDic['sustantivos']) + len(wordDic['adjetivos'])
+    cant_palabras = len(wordDic['__verbos__']) + len(wordDic['__sustantivos__']) + len(wordDic['__adjetivos__'])
     if cant_palabras < 7:  #
         cant_palabras += 5  #
     else:
@@ -161,13 +161,45 @@ def Despintar(coordenadas, pintados, graph, punto):
     coordenadas[punto] = pintados[punto]  # Devuelvo la casilla de la estructura de pintados a mi auxiliar
     del pintados[punto]
 
-def FormarPalabra(pintados):  #Hasta donde se, el sorted funciona con las 2 orientaciones
+def comprobarPalabra(pintados, orientacion, event):
+    def checkConsecutivos(lista):                                         #True = todos los valores de la lista consecutivos
+        return sorted(lista) == list(range(min(lista), max(lista) + 1))
+
+    def checkValoresIguales(lista):                                        #True = todos los elem iguales
+        return all(elem == lista[0] for elem in lista)
+
     keys = sorted(pintados.keys())
-    print (keys)
+    palCorrecta = True
     pal = ''
-    for key in keys:
-        pal = pal + pintados[key]
-    return pal
+    color = ''
+    y = 1
+    x = 0
+    if orientacion == 'Horizontal':
+        palCorrecta = checkValoresIguales(list(map(lambda zz: zz[y],keys))) and checkConsecutivos(list(map(lambda zz: zz[x],keys)))
+    elif orientacion == 'Vertical':
+        palCorrecta = checkValoresIguales(list(map(lambda zz: zz[x],keys))) and checkConsecutivos(list(map(lambda zz: zz[y],keys)))
+
+
+    if palCorrecta == True:
+        for key in keys:
+            pal = pal + pintados[key]
+
+        clave = '__' + event + 's' + '__'
+        clave = clave.lower()
+
+        if pal not in wordDic[clave]:
+            palCorrecta=False
+
+        if palCorrecta == True:
+            if clave == '__adjetivos__':
+                color = config_values['__adjColorChooser__']
+            elif clave == '__sustantivos__':
+                color = config_values['__sustColorChooser__']
+            elif clave == '__verbos__':
+                color = config_values['__verbColorChooser__']
+
+    print(color,pal,palCorrecta)
+    return color,pal,palCorrecta
 
 # ------------------------------------ Estructuras,Config y bienvenida ---------------------------------------------------------------------
 # bienvenida()
@@ -180,7 +212,7 @@ config_values['__cantsustantivos__'] = 4
 config_values['__cantverbos__'] = 4
 
 config_values['__ayuda__'] = 'No'
-config_values['__orientacion__'] = 'Vertical' #'Horizontal' 'Vertical'
+config_values['__orientacion__'] = 'Horizontal' #'Horizontal' 'Vertical'
 config_values['__letras__'] = 'Mayúsculas'      #'Minúsculas'
 
 #si tiene ayuda:
@@ -265,7 +297,6 @@ draw_grid(sopa_window, config_values['__orientacion__'], graph, coordenadas,word
 
 while True:  # Event Loop
     event, values = sopa_window.Read()
-    print(event)
     if event is None or event == 'Terminar' or event == 'Salir':
         break
     elif event == '_GRAPH_':
@@ -287,29 +318,19 @@ while True:  # Event Loop
                 except KeyError:
                     pass
     elif event == 'Adjetivo' or event == 'Sustantivo' or event == 'Verbo':
-            print('entra')
-            clave = '__' + event + 's' + '__'
-            clave = clave.lower()
-            pal = FormarPalabra(pintados)
-            print (pal)
-            if pal in dic_palabras[clave]:
-                if clave == '__adjetivos__':
-                    color = config_values['__adjColorChooser__']
-                elif clave == '__sustantivos__':
-                    color = config_values['__sustColorChooser__']
-                else:
-                    color = config_values['__verbColorChooser__']
-                pintadosClone = pintados.copy()   #Puede ser keys creo
-                print(pintadosClone)
-                for punto in pintadosClone:
-                    Despintar(coordenadas,pintados,graph,punto)
-                for punto in pintadosClone:
-                    Pintar(coordenadas, pintadosClone, graph, punto, color)
-            else:
-                pintadosClone = pintados.copy()   # si no haces copias: RuntimeError: dictionary changed size during iteration (??)
-                for punto in pintadosClone:
-                    Despintar(coordenadas, pintados, graph, punto)
-            pal=''
+        color, pal, correcta = comprobarPalabra(pintados, config_values['__orientacion__'], event )
+        if correcta == True:
+            pintadosClone = pintados.copy()   #Puede ser keys creo
+            print(pintadosClone)
+            for punto in pintadosClone:
+                Despintar(coordenadas,pintados,graph,punto)
+            for punto in pintadosClone:
+                Pintar(coordenadas, pintadosClone, graph, punto, color)
+        else:
+            pintadosClone = pintados.copy()   # si no haces copias: RuntimeError: dictionary changed size during iteration (??)
+            for punto in pintadosClone:
+                Despintar(coordenadas, pintados, graph, punto)
+
     elif event == '__helpButton__':
         sopa_window.FindElement('__helpText__').Update(Web.Definicion(random.choice(random.choice(list(wordDic.values())))))    #elegir random word y tirar la definicion
 
