@@ -211,7 +211,7 @@ config_values['__cantadjetivos__'] = 3
 config_values['__cantsustantivos__'] = 4
 config_values['__cantverbos__'] = 4
 
-config_values['__ayuda__'] = 'No'
+config_values['__ayuda__'] = 'Si'
 config_values['__orientacion__'] = 'Horizontal' #'Horizontal' 'Vertical'
 config_values['__letras__'] = 'Mayúsculas'      #'Minúsculas'
 
@@ -222,9 +222,9 @@ config_values['__ayudaDefinicion__'] = True
 
 
 dic_palabras = {}
-dic_palabras['__verbos__'] = ['cagar','comer', 'coger', 'respirar' , 'caminar']  # dic de palabras clasificadas por tipo
-dic_palabras['__adjetivos__'] = ['lindo', 'rojo' , 'feo' , 'monótono' ,'extraordinario']
-dic_palabras['__sustantivos__'] = ['dinosaurio', 'embotellamiento', 'termotanque' , 'llamas']
+dic_palabras['__verbos__'] = ['vivir','saltar', 'tirar', 'escribir' , 'tocar']  # dic de palabras clasificadas por tipo
+dic_palabras['__adjetivos__'] = ['verde', 'amarillo' , 'bajo' , 'quebrado' ,'estupendo']
+dic_palabras['__sustantivos__'] = ['madera', 'burlete', 'bañera' , 'computadora']
 
 coordenadas = {}
 pintados = {}
@@ -281,7 +281,7 @@ layout_sopa = [
 sopa_window = sg.Window('Window Title').Layout(layout_sopa).Finalize()
 
 
-if config_values['__ayudaDefinicion__'] == False and config_values['__ayudalistaPalabras__'] == False:
+if config_values['__ayuda__'] == 'No':
     sopa_window.FindElement('__columnaAyudas__').Update(visible=False)
 elif config_values['__ayudaDefinicion__'] == False:
     sopa_window.FindElement('__frameDefiniciones__').Update(visible=False)

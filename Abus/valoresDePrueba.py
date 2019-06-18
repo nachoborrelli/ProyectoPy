@@ -16,15 +16,13 @@ config_values['__letras__'] = 'Mayúsculas'      #'Minúsculas'
 config_values['__ayudalistaPalabras__'] = True
 config_values['__ayudaDefinicion__'] = True
 
-
-
-
-
+dic_palabras = {}
+dic_palabras['__verbos__'] = []  # dic de palabras clasificadas por tipo
+dic_palabras['__adjetivos__'] = []
+dic_palabras['__sustantivos__'] = []
 
 dic_palabras = {}
-dic_palabras['__verbos__'] = ['cagar','comer', 'coger', 'respirar' , 'caminar']  # dic de palabras clasificadas por tipo
-dic_palabras['__adjetivos__'] = ['lindo', 'rojo' , 'feo' , 'monótono' ,'extraordinario']
-dic_palabras['__sustantivos__'] = ['dinosaurio', 'embotellamiento', 'termotanque' , 'llamas']
+dic_palabras['__verbos__'] = ['cagar','comer', 'coger', 'respirar' , 'caminar','vivir','saltar', 'tirar', 'escribir' , 'tocar']  # dic de palabras clasificadas por tipo
+dic_palabras['__adjetivos__'] = ['lindo', 'rojo' , 'feo' , 'monótono' ,'extraordinario','verde', 'amarillo' , 'bajo' , 'quebrado' ,'estupendo']
+dic_palabras['__sustantivos__'] = ['dinosaurio', 'embotellamiento', 'termotanque' , 'llamas','madera', 'burlete', 'bañera' , 'computadora']
 
-print(random.choice(random.choice(list(dic_palabras.values()))))
-print(random.choice(list(dic_palabras.values())))

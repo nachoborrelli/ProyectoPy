@@ -179,6 +179,7 @@ def comprobarPalabra(pintados, orientacion, event):
     palCorrecta = True
     pal = ''
     color = ''
+    clave=''
     y = 1
     x = 0
     if orientacion == 'Horizontal':
@@ -289,7 +290,7 @@ layout_sopa = [
 sopa_window = sg.Window('Window Title').Layout(layout_sopa).Finalize()
 
 
-if config_values['__ayudaDefinicion__'] == False and config_values['__ayudalistaPalabras__'] == False:
+if config_values['__ayuda__'] == 'No':
     sopa_window.FindElement('__columnaAyudas__').Update(visible=False)
 elif config_values['__ayudaDefinicion__'] == False:
     sopa_window.FindElement('__frameDefiniciones__').Update(visible=False)
@@ -300,6 +301,8 @@ graph = sopa_window.FindElement('_GRAPH_')
 
 # --------------------------------------- Main -------------------------------------------------------------------------
 
+if config_values['__cantverbos__'] + config_values['__cantadjetivos__'] + config_values['__cantsustantivos__'] == 0:
+    sys.exit()
 
 draw_grid(sopa_window, config_values['__orientacion__'], graph, coordenadas,wordDic)
 
@@ -326,7 +329,7 @@ while True:  # Event Loop
                 except KeyError:
                     pass
     elif event == 'Adjetivo' or event == 'Sustantivo' or event == 'Verbo':
-        color, pal, correcta,clave = comprobarPalabra(pintados, config_values['__orientacion__'], event )
+        color, pal, correcta, clave = comprobarPalabra(pintados, config_values['__orientacion__'], event )
         if correcta == True:
             pintadosClone = pintados.copy()   #Puede ser keys creo
             print(pintadosClone)
@@ -342,4 +345,5 @@ while True:  # Event Loop
             for punto in pintadosClone:
                 Despintar(coordenadas, pintados, graph, punto)
     elif event == '__helpButton__':
+        sopa_window.FindElement('__helpText__').Update('Busqueda en proceso, espere un momento.')
         sopa_window.FindElement('__helpText__').Update(Web.Definicion(random.choice(random.choice(list(wordDic.values())))))    #elegir random word y tirar la definicion

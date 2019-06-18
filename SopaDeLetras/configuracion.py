@@ -1,5 +1,6 @@
 import PySimpleGUI as sg
 from Mati import Web
+import random
 
 def configPalabras(dic_palabras):
     #------------------------------------ Funciones ------------------------------------
@@ -54,7 +55,7 @@ def configPalabras(dic_palabras):
         [sg.Text('Palabras ingresadas', font=('Helvetica', 13))],
         [sg.Column(columna_verbos), sg.Column(columna_adj), sg.Column(columna_sust)],
         [sg.Text('_' * 113)],
-        [sg.Text('Ayuda'), sg.InputOptionMenu(('No', 'Si'),key='__ayuda__'),
+        [sg.Text('Ayuda'), sg.InputOptionMenu(('Si' , 'No'),key='__ayuda__'),
          sg.Text('Orientacion'), sg.InputOptionMenu(('Horizontal', 'Vertical'),key='__orientacion__'),
          sg.Text('Letras'), sg.InputOptionMenu(('Mayúsculas','Minúsculas'),key='__letras__'),
          sg.Text('Tipografia'), sg.InputCombo(values=('Courier', 'Helvetica', 'Times', 'Arial', 'Comic', 'Verdana'), size =(15, 1), key='__tipografia__'),
@@ -65,8 +66,8 @@ def configPalabras(dic_palabras):
 
     layout_selectAyuda = [
         [sg.Text('Seleccione las ayudas a usar')],
-        [sg.Checkbox('Definicion de palabra', key='__ayudaDefinicion__'),
-         sg.Checkbox('Lista de Palabras', key='__ayudalistaPalabras__')],
+        [sg.Checkbox('Definicion de palabra', key='__ayudaDefinicion__', default=True),
+         sg.Checkbox('Lista de Palabras', key='__ayudalistaPalabras__', default=True)],
         [sg.Submit()],
     ]
 
@@ -96,8 +97,15 @@ def configPalabras(dic_palabras):
             if tipo_borrado == '':                                           #Chequear que la palabra a eliminar sea valida
                 sg.PopupError('Palabra no existente',title='')
 
-        else:
-            break
+        elif event == 'Aceptar':
+            if values['__cantverbos__']=='0' and values['__cantadjetivos__'] =='0'and values['__cantsustantivos__'] =='0':
+                continuar = sg.PopupYesNo('Se eligieron 0 verbos, 0 adjetivos y 0 sustantivos. \n'
+                                'Esto finalizará el juego y perderá todos los datos ingresados.\n'
+                                'Desea continuar?',
+                                title='Peligro',font=('Helvetica',9,'bold'),button_color=('#000000','#ff1919'))
+                if continuar == 'Yes':
+                    break
+                pass
 
     ventana_IngVen.Refresh()
     if values['__ayuda__'] == 'Si':                                                         #en caso de que se seleccione ayuda,
@@ -105,6 +113,13 @@ def configPalabras(dic_palabras):
         if event_ayuda is 'Submit':
             values['__ayudalistaPalabras__'] = values_ayuda['__ayudalistaPalabras__']
             values['__ayudaDefinicion__'] = values_ayuda['__ayudaDefinicion__']
+
+    if values['__verbColorChooser__'] == '':                                                #Generar colores al azar si no son ingresados
+        values['__verbColorChooser__'] = '#' + "%06x" % random.randint(0, 0xFFFFFF)
+    if values['__adjColorChooser__'] == '':
+        values['__adjColorChooser__'] = '#' + "%06x" % random.randint(0, 0xFFFFFF)
+    if values['__sustColorChooser__'] == '':
+        values['__sustColorChooser__'] = '#' + "%06x" % random.randint(0, 0xFFFFFF)
 
     valoresInservibles = ['__input__','__verbos__','__adjetivos__','__sustantivos__']       #elimino los valores devueltos por el layout que no me sirven
     for dato in valoresInservibles:
