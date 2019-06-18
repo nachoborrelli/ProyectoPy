@@ -59,19 +59,19 @@ def calc_palMaxSide():  #################
         palMax += 4
     else:
         palMax += 2
-    print('palMax', palMax)
+
     return palMax
 
 
 def calc_cantPalabrasSide(wordDic):
 
     cant_palabras = len(wordDic['__verbos__']) + len(wordDic['__sustantivos__']) + len(wordDic['__adjetivos__'])
-    if cant_palabras < 7:
-        cant_palabras += 5
+    if cant_palabras < 7:  #
+        cant_palabras += 5  #
     else:
         cant_palabras += 2
-        print('cantpalabras',cant_palabras)
     return cant_palabras
+
 
 
 def draw_grid(window, orientacion, graph, coordenadas, wordDic):
@@ -84,7 +84,6 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
                 graph.DrawRectangle((col * BOX_SIZE + 5, row * BOX_SIZE + 3),
                                     (col * BOX_SIZE + BOX_SIZE + 5, row * BOX_SIZE + BOX_SIZE + 3),
                                     line_color='black')
-
 
     def rellenarConLetrasRandom(lado1, lado2):
         for col in range(lado1):  # Agrego letras random en las posiciones libres.
@@ -124,7 +123,6 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
         crearLineas(cant_palabras, palMax)
         for lista in wordDic:
             for palabra in wordDic[lista]:
-                print(palabra)
                 while True:
                     ok = True
                     x = random.randrange(0, cant_palabras)  # Cant filas
@@ -133,9 +131,7 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
                         for i in range(len(palabra)):
                             if (x, y + i) in coordenadas:
                                 ok = False
-                                print('error lugar, buscar nuevo')
                                 break
-
                         if ok == True:
                             for j in range(len(palabra)):
                                 coordenadas[x, y + j] = palabra[j]
@@ -148,14 +144,21 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
 def Pintar(coordenadas, pintados, graph, punto, color= 'grey72'):
     '''  Se ocupa de indicar como marcada una casilla pintandola en gris.
         '''
-    graph.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
-                        (punto[0] * BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3), line_color='black',
-                        fill_color=color)
-    graph.DrawText('{}'.format(coordenadas[punto]), (punto[0] * BOX_SIZE + 15, punto[1] * BOX_SIZE + 15),
-                   font='Courier 25')
-    pintados[punto] = coordenadas[punto]  # Mantengo una estructura con solo las casillas pintadas.
-    del coordenadas[punto]  # Y las saco de mi estructura auxiliar.
-
+    if(color == 'grey72'):
+        graph.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
+                            (punto[0] * BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3), line_color='black',
+                            fill_color=color)
+        graph.DrawText('{}'.format(coordenadas[punto]), (punto[0] * BOX_SIZE + 15, punto[1] * BOX_SIZE + 15),
+                       font='Courier 25')
+        pintados[punto] = coordenadas[punto]  # Mantengo una estructura con solo las casillas pintadas.
+        del coordenadas[punto]  # Y las saco de mi estructura auxiliar.
+    else:
+        graph.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
+                            (punto[0] * BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3),
+                            line_color='black',
+                            fill_color=color)
+        graph.DrawText('{}'.format(coordenadas[punto]), (punto[0] * BOX_SIZE + 15, punto[1] * BOX_SIZE + 15),
+                       font='Courier 25')
 
 def Despintar(coordenadas, pintados, graph, punto):
     graph.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
@@ -178,6 +181,7 @@ def comprobarPalabra(pintados, orientacion, event):
     palCorrecta = True
     pal = ''
     color = ''
+    clave=''
     y = 1
     x = 0
     if orientacion == 'Horizontal':
@@ -205,8 +209,23 @@ def comprobarPalabra(pintados, orientacion, event):
                 color = config_values['__verbColorChooser__']
 
     print(color,pal,palCorrecta)
-    return color,pal,palCorrecta
+    return color,pal,palCorrecta,clave
 
+def Comparar (wordDic,palabras_encontradas):
+    print(wordDic)
+    if(len(palabras_encontradas['__adjetivos__']) == len(wordDic['__adjetivos__'])):
+        cantAdj = 0
+    else:
+        cantAdj = len(wordDic['__adjetivos__']) - len(palabras_encontradas['__adjetivos__'])
+    if (len(palabras_encontradas['__verbos__']) == len(wordDic['__verbos__'])):
+        cantVerbs = 0
+    else:
+        cantVerbs = len(wordDic['__verbos__']) - len(palabras_encontradas['__verbos__'])
+    if (len(palabras_encontradas['__sustantivos__']) == len(wordDic['__sustantivos__'])):
+        cantSust = 0
+    else:
+        cantSust = len(wordDic['__sustantivos__']) - len(palabras_encontradas['__sustantivos__'])
+    return cantAdj,cantVerbs,cantSust
 # ------------------------------------ Estructuras,Config y bienvenida ---------------------------------------------------------------------
 # bienvenida()
 config_values = {}
@@ -231,9 +250,14 @@ dic_palabras = {}
 dic_palabras['__verbos__'] = ['vivir','saltar', 'tirar', 'escribir' , 'tocar']  # dic de palabras clasificadas por tipo
 dic_palabras['__adjetivos__'] = ['verde', 'amarillo' , 'bajo' , 'quebrado' ,'estupendo']
 dic_palabras['__sustantivos__'] = ['madera', 'burlete', 'bañera' , 'computadora']
-
 coordenadas = {}
 pintados = {}
+
+palabras_encontradas = {}
+palabras_encontradas['__verbos__'] = []  # dic de palabras encontradas por tipo
+palabras_encontradas['__adjetivos__'] = []
+palabras_encontradas['__sustantivos__'] = []
+
 #config_values = configPalabras(dic_palabras)  # Levantar configuracion
 wordDic = select_words(dic_palabras, config_values['__cantverbos__'],  # Seleccionar palabras a usar
                        config_values['__cantadjetivos__'],
@@ -297,13 +321,14 @@ graph = sopa_window.FindElement('_GRAPH_')
 
 # --------------------------------------- Main -------------------------------------------------------------------------
 
-
+if config_values['__cantverbos__'] + config_values['__cantadjetivos__'] + config_values['__cantsustantivos__'] == 0:
+    sys.exit()
 
 draw_grid(sopa_window, config_values['__orientacion__'], graph, coordenadas,wordDic)
 
 while True:  # Event Loop
     event, values = sopa_window.Read()
-    if event is None or event == 'Terminar' or event == 'Salir':
+    if (event is None) or (event == 'Terminar') or (event == 'Salir'):
         break
     elif event == '_GRAPH_':
         mouse = values['_GRAPH_']
@@ -324,20 +349,23 @@ while True:  # Event Loop
                 except KeyError:
                     pass
     elif event == 'Adjetivo' or event == 'Sustantivo' or event == 'Verbo':
-        color, pal, correcta = comprobarPalabra(pintados, config_values['__orientacion__'], event )
+        color, pal, correcta, clave = comprobarPalabra(pintados, config_values['__orientacion__'], event )
         if correcta == True:
             pintadosClone = pintados.copy()   #Puede ser keys creo
             print(pintadosClone)
             for punto in pintadosClone:
-                Despintar(coordenadas,pintados,graph,punto)
+                Despintar(coordenadas, pintados, graph, punto)
             for punto in pintadosClone:
                 Pintar(coordenadas, pintadosClone, graph, punto, color)
+            palabras_encontradas[clave].append(pal)
+            Adjs, Verbs, Susts = Comparar(wordDic, palabras_encontradas)
+            print('Te faltan encontrar {} adjetivos, {} verbos, {} sustantivos'.format(Adjs, Verbs, Susts))
         else:
-            pintadosClone = pintados.copy()   # si no haces copias: RuntimeError: dictionary changed size during iteration (??)
+            pintadosClone = pintados.copy()  # si no haces copias: RuntimeError: dictionary changed size during iteration (??)
             for punto in pintadosClone:
                 Despintar(coordenadas, pintados, graph, punto)
-
     elif event == '__helpButton__':
+        sopa_window.FindElement('__helpText__').Update('Busqueda en proceso, espere un momento.')
         sopa_window.FindElement('__helpText__').Update(Web.Definicion(random.choice(random.choice(list(wordDic.values())))))    #elegir random word y tirar la definicion
 
 

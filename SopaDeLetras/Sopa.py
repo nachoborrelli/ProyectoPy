@@ -206,7 +206,7 @@ def comprobarPalabra(pintados, orientacion, event):
             elif clave == '__verbos__':
                 color = config_values['__verbColorChooser__']
 
-    print(color,pal,palCorrecta)
+
     return color,pal,palCorrecta,clave
 
 def Comparar (wordDic,palabras_encontradas):
