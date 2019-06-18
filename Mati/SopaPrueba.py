@@ -160,13 +160,26 @@ def Despintar(coordenadas, pintados, graph, punto):
     coordenadas[punto] = pintados[punto]  # Devuelvo la casilla de la estructura de pintados a mi auxiliar
     del pintados[punto]
 
-def FormarPalabra(pintados):  #Hasta donde se, el sorted funciona con las 2 orientaciones
-    keys = sorted(pintados.keys())
+def FormarPalabra(pintados,orientacion):  #Hasta donde se, el sorted funciona con las 2 orientaciones
+    contigua = True
+    if (orientacion == 'Horizontal'):
+        keys = sorted(pintados.keys())
+        stop= keys[len(keys-1)[0]]
+        for i in range(len(keys)-1):
+            num = keys[i]
+            if((num[0] + 1) != keys[i+1][0]):
+                contigua = False
+    if (orientacion == 'Vertical'):
+        keys = sorted(pintados.keys())
+        for i in range(len(keys)):
+            num = keys[i]
+            if ((num[1] + 1 ) != keys[i+1][1]):
+                contigua = False
     print (keys)
     pal = ''
     for key in keys:
         pal = pal + pintados[key]
-    return pal
+    return pal,contigua
 
 # ------------------------------------ Estructuras,Config y bienvenida ---------------------------------------------------------------------
 # bienvenida()
@@ -292,4 +305,3 @@ while True:  # Event Loop
                 pintadosClone = pintados.copy()   # si no haces copias: RuntimeError: dictionary changed size during iteration (??)
                 for punto in pintadosClone:
                     Despintar(coordenadas, pintados, graph, punto)
-            pal=''
