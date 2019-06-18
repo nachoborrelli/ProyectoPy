@@ -24,9 +24,9 @@ def bienvenida():
 
 def select_words(dic_palabras, cantverbos, cantadj, cantsust):
     wordDic = {}
-    wordDic['verbos'] = []  # dic de palabras clasificadas por tipo
-    wordDic['adjetivos'] = []
-    wordDic['sustantivos'] = []
+    wordDic['__verbos__'] = []  # dic de palabras clasificadas por tipo
+    wordDic['__adjetivos__'] = []
+    wordDic['__sustantivos__'] = []
     if (cantverbos != 0):
         tempList = dic_palabras['__verbos__'].copy()
         wordDic['verbos'] = random.sample(tempList, k=cantverbos)
@@ -176,19 +176,19 @@ def FormarPalabra(pintados):  #Hasta donde se, el sorted funciona con las 2 orie
         pal = pal + pintados[key]
     return pal
 
-def Comparar (palabras,encontradas):
-    if(len(encontradas['__adjetivos__']) == len(palabras['__adjetivos__'])):
+def Comparar (wordDic,palabras_encontradas):
+    if(len(palabras_encontradas['__adjetivos__']) == len(wordDic['__adjetivos__'])):
         cantAdj = 0
     else:
-        cantAdj = len(palabras['__adjetivos__']) - len(encontradas['__adjetivos__'])
-    if (len(encontradas['__verbos__']) == len(palabras['__verbos__'])):
+        cantAdj = len(wordDic['__adjetivos__']) - len(palabras_encontradas['__adjetivos__'])
+    if (len(palabras_encontradas['__verbos__']) == len(wordDic['__verbos__'])):
         cantVerbs = 0
     else:
-        cantVerbs = len(palabras['_verbos__']) - len(encontradas['__verbos__'])
-    if (len(encontradas['__sustantivos__']) == len(palabras['__sustantivos__'])):
+        cantVerbs = len(wordDic['__verbos__']) - len(palabras_encontradas['__verbos__'])
+    if (len(palabras_encontradas['__sustantivos__']) == len(wordDic['__sustantivos__'])):
         cantSust = 0
     else:
-        cantSust = len(palabras['__sustantivos__']) - len(encontradas['__sustantivos__'])
+        cantSust = len(wordDic['__sustantivos__']) - len(palabras_encontradas['__sustantivos__'])
     return cantAdj,cantVerbs,cantSust
 
 # ------------------------------------ Estructuras,Config y bienvenida ---------------------------------------------------------------------
@@ -310,6 +310,7 @@ while True:  # Event Loop
                 Pintar(coordenadas, pintadosClone, graph, punto, color)
             palabras_encontradas[clave].append(pal)
             cantAdj,cantVerbs,cantSust = Comparar(wordDic,palabras_encontradas)
+            print('Te faltan encontrar {} adjetivos, {} verbos, {} sustantivos'.format(cantAdj,cantVerbs,cantSust))
         else:
             pintadosClone = pintados.copy()  # si no haces copias: RuntimeError: dictionary changed size during iteration (??)
             for punto in pintadosClone:
