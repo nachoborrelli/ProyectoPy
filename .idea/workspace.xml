@@ -4,7 +4,6 @@
     <list default="true" id="3b278a84-e50d-4073-9a81-db5542bccd79" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mati/SopaPrueba.py" beforeDir="false" afterPath="$PROJECT_DIR$/Mati/SopaPrueba.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SopaDeLetras/Sopa.py" beforeDir="false" afterPath="$PROJECT_DIR$/SopaDeLetras/Sopa.py" afterDir="false" />
     </list>
     <ignored path="C:\Users\fernando\PycharmProjects\ProyectoPy\.idea\shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,8 +50,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Mati/SopaPrueba.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="297" lean-forward="true" selection-start-line="297" selection-end-line="297" />
+            <state relative-caret-position="130">
+              <caret line="308" column="39" lean-forward="true" selection-start-line="308" selection-start-column="39" selection-end-line="308" selection-end-column="39" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -598,7 +597,14 @@
       <option name="project" value="LOCAL" />
       <updated>1560828929348</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="sopa 1.7.1">
+      <created>1560865597598</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1560865597598</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TodoView">
@@ -664,7 +670,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="hjhjh" />
     <MESSAGE value="Con el la sopa" />
     <MESSAGE value="sin casilla" />
     <MESSAGE value="merge de bienvenida y sopa" />
@@ -689,7 +694,8 @@
     <MESSAGE value="Update SopaPrueba(mati)" />
     <MESSAGE value="nuevo web" />
     <MESSAGE value="sopa 1.7" />
-    <option name="LAST_COMMIT_MESSAGE" value="sopa 1.7" />
+    <MESSAGE value="sopa 1.7.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="sopa 1.7.1" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python36/site-packages/pygame/__init__.py" />
@@ -800,8 +806,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Mati/SopaPrueba.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="297" lean-forward="true" selection-start-line="297" selection-end-line="297" />
+        <state relative-caret-position="130">
+          <caret line="308" column="39" lean-forward="true" selection-start-line="308" selection-start-column="39" selection-end-line="308" selection-end-column="39" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>

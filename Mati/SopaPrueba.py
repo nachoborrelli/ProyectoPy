@@ -176,6 +176,21 @@ def FormarPalabra(pintados):  #Hasta donde se, el sorted funciona con las 2 orie
         pal = pal + pintados[key]
     return pal
 
+def Comparar (palabras,encontradas):
+    if(len(encontradas['__adjetivos__']) == len(palabras['__adjetivos__'])):
+        cantAdj = 0
+    else:
+        cantAdj = len(palabras['__adjetivos__']) - len(encontradas['__adjetivos__'])
+    if (len(encontradas['__verbos__']) == len(palabras['__verbos__'])):
+        cantVerbs = 0
+    else:
+        cantVerbs = len(palabras['_verbos__']) - len(encontradas['__verbos__'])
+    if (len(encontradas['__sustantivos__']) == len(palabras['__sustantivos__'])):
+        cantSust = 0
+    else:
+        cantSust = len(palabras['__sustantivos__']) - len(encontradas['__sustantivos__'])
+    return cantAdj,cantVerbs,cantSust
+
 # ------------------------------------ Estructuras,Config y bienvenida ---------------------------------------------------------------------
 # bienvenida()
 
@@ -183,6 +198,10 @@ dic_palabras = {}
 dic_palabras['__verbos__'] = []  # dic de palabras clasificadas por tipo
 dic_palabras['__adjetivos__'] = []
 dic_palabras['__sustantivos__'] = []
+palabras_encontradas = {}
+palabras_encontradas['__verbos__'] = []  # dic de palabras encontradas por tipo
+palabras_encontradas['__adjetivos__'] = []
+palabras_encontradas['__sustantivos__'] = []
 coordenadas = {}
 pintados = {}
 
@@ -289,6 +308,8 @@ while True:  # Event Loop
                 Despintar(coordenadas, pintados, graph, punto)
             for punto in pintadosClone:
                 Pintar(coordenadas, pintadosClone, graph, punto, color)
+            palabras_encontradas[clave].append(pal)
+            cantAdj,cantVerbs,cantSust = Comparar(wordDic,palabras_encontradas)
         else:
             pintadosClone = pintados.copy()  # si no haces copias: RuntimeError: dictionary changed size during iteration (??)
             for punto in pintadosClone:
