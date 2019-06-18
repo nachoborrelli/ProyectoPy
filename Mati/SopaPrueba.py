@@ -171,7 +171,7 @@ def Despintar(coordenadas, pintados, graph, punto):
 def FormarPalabra(pintados,orientacion='Horizontal'):  #Hasta donde se, el sorted funciona con las 2 orientaciones
     contigua = True
     if (orientacion == 'Horizontal'):
-        # keys = sorted(pintados.keys())
+        ## keys = sorted(pintados.keys())
         # stop= keys[len(keys-1)[0]]
         # for i in range(len(keys)-1):
         #     num = keys[i]
