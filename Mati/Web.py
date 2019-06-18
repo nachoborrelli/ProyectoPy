@@ -98,7 +98,10 @@ def Definicion(pal):
         if etimologia[letra] == '1':
             pos=letra
             break
-    definicion = etimologia[pos:]
+    try:
+        definicion = etimologia[pos:]
+    except UnboundLocalError:
+        definicion = etimologia
 
     return definicion
 

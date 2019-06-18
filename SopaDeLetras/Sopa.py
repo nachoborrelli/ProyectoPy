@@ -187,53 +187,44 @@ wordDic = select_words(dic_palabras, config_values['__cantverbos__'],  # Selecci
                        )
 
 # --------------------------------------- Layouts ----------------------------------------------------------------------
+if (config_values['__orientacion__'] == 'Horizontal'):
+    lado1= (0, BOX_SIZE * calc_cantPalabrasSide(wordDic) + 3)
+    lado2= (BOX_SIZE * calc_palMaxSide() + 5, 0)
+else:
+    lado1=(0, BOX_SIZE * calc_palMaxSide() + 3)
+    lado2=(BOX_SIZE * calc_cantPalabrasSide(wordDic) + 5, 0)
 
-layoutHorizontal = [
+
+layout_sopa = [
     [sg.Text('Sopa De Letras'), sg.Text('', key='_OUTPUT_')],
-    [sg.Graph((500, 500),                                                       # canvas_size
-              (0, BOX_SIZE * calc_cantPalabrasSide(wordDic) + 3),               #graph_bottom_left
-              (BOX_SIZE * calc_palMaxSide() + 5, 0), key='_GRAPH_',             #graph_top_right
+    [sg.Graph((500, 500),                                                       #canvas_size
+              lado1,                                                            #graph_bottom_left
+              lado2, key='_GRAPH_',                                             #graph_top_right
               change_submits=True, drag_submits=False, background_color='white')],
-    [sg.Button('Adjetivo', button_color=('black', config_values['__adjColorChooser__']), size=(9, 2)),
+    [sg.Button('Adjetivo', button_color=('black', config_values['__adjColorChooser__']),font=('none' , 10, 'bold'), size=(9, 2)),
      # Los colores deberian llegar por parametro.
-     sg.Button('Verbo', button_color=('black', config_values['__verbColorChooser__']), size=(9, 2)),
-     sg.Button('Sustantivo', button_color=('black', config_values['__sustColorChooser__']), size=(9, 2))],
+     sg.Button('Verbo', button_color=('black', config_values['__verbColorChooser__']),font=('none' , 10, 'bold'), size=(9, 2)),
+     sg.Button('Sustantivo', button_color=('black', config_values['__sustColorChooser__']),font=('none' , 10, 'bold'), size=(9, 2)),
+     sg.Button('Ayuda', key='__helpButton__', button_color=('black', '#ff8100'),font=('none' , 10, 'bold'), size=(9, 2))],
     [sg.Button('Terminar', button_color=('black', 'grey55')), sg.Button('Salir', button_color=('black', 'grey55'))]
     # Salir no tendria q estar...
 ]
 
-layoutVertical = [
-    [sg.Text('Sopa De Letras'), sg.Text('', key='_OUTPUT_')],
-    [sg.Graph((500, 500),                                                           # canvas_size
-              (0, BOX_SIZE * calc_palMaxSide() + 3),                                #graph_bottom_left
-              (BOX_SIZE * calc_cantPalabrasSide(wordDic) + 5, 0), key='_GRAPH_',    #graph_top_right
-              change_submits=True, drag_submits=False, background_color='white')],
-    [sg.Button('Adjetivo', button_color=('black', config_values['__adjColorChooser__']), size=(9, 2)),
-     # Los colores deberian llegar por parametro.
-     sg.Button('Verbo', button_color=('black', config_values['__verbColorChooser__']), size=(9, 2)),
-     sg.Button('Sustantivo', button_color=('black', config_values['__sustColorChooser__']), size=(9, 2))],
-    [sg.Button('Terminar', button_color=('black', 'grey55')), sg.Button('Salir', button_color=('black', 'grey55'))]
-    # Salir no tendria q estar...
-]
-
-helpLayout = [  [sg.Text('Definicion de una palabra al azar')],
+helpLayout = [
+                [sg.Text('Definicion de una palabra al azar')],
                 [sg.Multiline('',key = '__helpText__',size=(50,20))],
-                [sg.Quit('Cerrar')]
+                [sg.Button('Cerrar')]
             ]
 
+sopa_window = sg.Window('Window Title').Layout(layout_sopa).Finalize()
 
-
-if (config_values['__orientacion__'] == 'Horizontal'):
-    sopa_window = sg.Window('Window Title').Layout(layoutHorizontal).Finalize()
-else:
-    sopa_window = sg.Window('Window Title').Layout(layoutVertical).Finalize()
 
 if config_values['__ayudaDefinicion__'] == False:
     sopa_window.FindElement('__helpButton__').Update(visible=False)
 
 graph = sopa_window.FindElement('_GRAPH_')
 
-help_window = sg.Window('Ayudin' ,layout=helpLayout, no_titlebar=True )
+help_window = sg.Window('Ayudin').Layout(helpLayout)
 
 # --------------------------------------- Main -------------------------------------------------------------------------
 
