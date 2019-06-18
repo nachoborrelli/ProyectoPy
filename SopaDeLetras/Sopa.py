@@ -271,11 +271,11 @@ while True:  # Event Loop
         print (pal)
         if pal in dic_palabras[clave]:
             if clave == '__Adjetivo__':
-                color = 'blue'  # config_values['__adjColorChooser__']
+                color = config_values['__adjColorChooser__']
             elif clave == '__Sustantivo__':
-                color = 'red'  # config_values['__sustColorChooser__']
+                color = config_values['__sustColorChooser__']
             else:
-                color = 'green'  # config_values['__verbColorChooser__']
+                color = config_values['__verbColorChooser__']
             pintadosClone = pintados.copy()   #Puede ser keys creo
             for punto in pintadosClone:
                 Pintar(coordenadas, pintados, graph, punto, color)
