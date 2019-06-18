@@ -136,7 +136,7 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
                                 coordenadas[x, y + j] = palabra[j]
                                 graph.DrawText('{}'.format(palabra[j]), (x * BOX_SIZE + 15, (y + j) * BOX_SIZE + 15),
                                                font='Courier 25')  # Escribo la letra
-                    break
+                            break
         rellenarConLetrasRandom(cant_palabras, palMax)
 
 

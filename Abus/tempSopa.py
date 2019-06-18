@@ -59,17 +59,18 @@ def calc_palMaxSide():  #################
         palMax += 4
     else:
         palMax += 2
-
+    print('palMax', palMax)
     return palMax
 
 
 def calc_cantPalabrasSide(wordDic):
 
     cant_palabras = len(wordDic['__verbos__']) + len(wordDic['__sustantivos__']) + len(wordDic['__adjetivos__'])
-    if cant_palabras < 7:  #
-        cant_palabras += 5  #
+    if cant_palabras < 7:
+        cant_palabras += 5
     else:
         cant_palabras += 2
+        print('cantpalabras',cant_palabras)
     return cant_palabras
 
 
@@ -83,6 +84,7 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
                 graph.DrawRectangle((col * BOX_SIZE + 5, row * BOX_SIZE + 3),
                                     (col * BOX_SIZE + BOX_SIZE + 5, row * BOX_SIZE + BOX_SIZE + 3),
                                     line_color='black')
+
 
     def rellenarConLetrasRandom(lado1, lado2):
         for col in range(lado1):  # Agrego letras random en las posiciones libres.
@@ -122,6 +124,7 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
         crearLineas(cant_palabras, palMax)
         for lista in wordDic:
             for palabra in wordDic[lista]:
+                print(palabra)
                 while True:
                     ok = True
                     x = random.randrange(0, cant_palabras)  # Cant filas
@@ -130,13 +133,15 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
                         for i in range(len(palabra)):
                             if (x, y + i) in coordenadas:
                                 ok = False
+                                print('error lugar, buscar nuevo')
                                 break
+
                         if ok == True:
                             for j in range(len(palabra)):
                                 coordenadas[x, y + j] = palabra[j]
                                 graph.DrawText('{}'.format(palabra[j]), (x * BOX_SIZE + 15, (y + j) * BOX_SIZE + 15),
                                                font='Courier 25')  # Escribo la letra
-                    break
+                            break
         rellenarConLetrasRandom(cant_palabras, palMax)
 
 
@@ -160,6 +165,7 @@ def Despintar(coordenadas, pintados, graph, punto):
                    font='Courier 25')
     coordenadas[punto] = pintados[punto]  # Devuelvo la casilla de la estructura de pintados a mi auxiliar
     del pintados[punto]
+
 
 def comprobarPalabra(pintados, orientacion, event):
     def checkConsecutivos(lista):                                         #True = todos los valores de la lista consecutivos
@@ -207,12 +213,12 @@ config_values = {}
 config_values['__verbColorChooser__'] = '#ee5357'
 config_values['__adjColorChooser__'] = '#6df54b'
 config_values['__sustColorChooser__'] = '#5b4ff2'
-config_values['__cantadjetivos__'] = 3
+config_values['__cantadjetivos__'] = 5
 config_values['__cantsustantivos__'] = 4
-config_values['__cantverbos__'] = 4
+config_values['__cantverbos__'] = 5
 
 config_values['__ayuda__'] = 'Si'
-config_values['__orientacion__'] = 'Horizontal' #'Horizontal' 'Vertical'
+config_values['__orientacion__'] = 'Vertical' #'Horizontal' 'Vertical'
 config_values['__letras__'] = 'Mayúsculas'      #'Minúsculas'
 
 #si tiene ayuda:
@@ -236,11 +242,11 @@ wordDic = select_words(dic_palabras, config_values['__cantverbos__'],  # Selecci
 
 # --------------------------------------- Layouts ----------------------------------------------------------------------
 if (config_values['__orientacion__'] == 'Horizontal'):
-    lado1= (0, BOX_SIZE * calc_cantPalabrasSide(wordDic) + 3)
-    lado2= (BOX_SIZE * calc_palMaxSide() + 5, 0)
+    lado1 = (0, BOX_SIZE * calc_cantPalabrasSide(wordDic) + 3)
+    lado2 = (BOX_SIZE * calc_palMaxSide() + 5, 0)
 else:
-    lado1=(0, BOX_SIZE * calc_palMaxSide() + 3)
-    lado2=(BOX_SIZE * calc_cantPalabrasSide(wordDic) + 5, 0)
+    lado1 = (0, BOX_SIZE * calc_palMaxSide() + 3)
+    lado2 = (BOX_SIZE * calc_cantPalabrasSide(wordDic) + 5, 0)
 
 columna_grafico= [
 
