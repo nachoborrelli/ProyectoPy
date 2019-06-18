@@ -196,33 +196,30 @@ else:
 
 columna_grafico= [
 
-            [sg.Graph((500, 500),           # canvas_size
-              lado1,                        # graph_bottom_left
-              lado2, key='_GRAPH_',         # graph_top_right
-              change_submits=True, drag_submits=False, background_color='white')],
-            [sg.Text(' ' * 27),
-                sg.Button('Adjetivo', button_color=('black', config_values['__adjColorChooser__']),font=('none' , 10, 'bold'), size=(9, 2)),
-                sg.Button('Verbo', button_color=('black', config_values['__verbColorChooser__']),font=('none' , 10, 'bold'), size=(9, 2)),
-                sg.Button('Sustantivo', button_color=('black', config_values['__sustColorChooser__']),font=('none' , 10, 'bold'), size=(9, 2))
-             ]
+        [sg.Graph((500, 500),           # canvas_size
+          lado1,                        # graph_bottom_left
+          lado2, key='_GRAPH_',         # graph_top_right
+          change_submits=True, drag_submits=False, background_color='white')],
+        [sg.Text(' ' * 27),
+            sg.Button('Adjetivo', button_color=('black', config_values['__adjColorChooser__']),font=('none' , 10, 'bold'), size=(9, 2)),
+            sg.Button('Verbo', button_color=('black', config_values['__verbColorChooser__']),font=('none' , 10, 'bold'), size=(9, 2)),
+            sg.Button('Sustantivo', button_color=('black', config_values['__sustColorChooser__']),font=('none' , 10, 'bold'), size=(9, 2))
+         ]
                 ]
 
 columna_ayudas= [
-
-                [sg.Frame('Definicion de una palabra al azar',[
-                    [sg.Multiline(' ', key='__helpText__', size=(50, 15))],
-                    [sg.Text(' ' * 30),
-                        sg.Button('Ayuda', key='__helpButton__', button_color=('black', '#ff8100'),
-                               font=('none' , 10, 'bold'), size=(9, 2))]
-                ])],
-                [sg.Frame('Lista de palabras', [
-                    [sg.Multiline(list(wordDic.values()), key='__helpText__', size=(50, 9))],
-                ])]
-
+                    [sg.Frame('Definicion de una palabra al azar',[
+                        [sg.Multiline(' ', key='__helpText__', size=(50, 15))],
+                        [sg.Text(' ' * 30),
+                            sg.Button('Ayuda', key='__helpButton__', button_color=('black', '#ff8100'),
+                                   font=('none' , 10, 'bold'), size=(9, 2))]
+                    ])],
+                    [sg.Frame('Lista de palabras', [
+                        [sg.Multiline(list(wordDic.values()), key='__helpText__', size=(50, 9))],
+                    ])]
                 ]
 
 layout_sopa = [
-
                 [sg.Column(columna_grafico),sg.Column(columna_ayudas)],
                 [sg.Text(' ' * 50),
                     sg.Button('Salir', button_color=('black', 'grey55')), sg.Button('Verificar', button_color=('black', 'grey55'))]
@@ -241,7 +238,6 @@ elif config_values['__ayudalistaPalabras__'] == False:
 graph = sopa_window.FindElement('_GRAPH_')
 
 # --------------------------------------- Main -------------------------------------------------------------------------
-
 
 
 draw_grid(sopa_window, config_values['__orientacion__'], graph, coordenadas,wordDic)
