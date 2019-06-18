@@ -142,13 +142,21 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
 def Pintar(coordenadas, pintados, graph, punto, color= 'grey72'):
     '''  Se ocupa de indicar como marcada una casilla pintandola en gris.
         '''
-    graph.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
-                        (punto[0] * BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3), line_color='black',
-                        fill_color=color)
-    graph.DrawText('{}'.format(coordenadas[punto]), (punto[0] * BOX_SIZE + 15, punto[1] * BOX_SIZE + 15),
-                   font='Courier 25')
-    pintados[punto] = coordenadas[punto]  # Mantengo una estructura con solo las casillas pintadas.
-    del coordenadas[punto]  # Y las saco de mi estructura auxiliar.
+    if(color == 'grey72'):
+        graph.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
+                            (punto[0] * BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3), line_color='black',
+                            fill_color=color)
+        graph.DrawText('{}'.format(coordenadas[punto]), (punto[0] * BOX_SIZE + 15, punto[1] * BOX_SIZE + 15),
+                       font='Courier 25')
+        pintados[punto] = coordenadas[punto]  # Mantengo una estructura con solo las casillas pintadas.
+        del coordenadas[punto]  # Y las saco de mi estructura auxiliar.
+    else:
+        graph.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
+                            (punto[0] * BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3),
+                            line_color='black',
+                            fill_color=color)
+        graph.DrawText('{}'.format(coordenadas[punto]), (punto[0] * BOX_SIZE + 15, punto[1] * BOX_SIZE + 15),
+                       font='Courier 25')
 
 
 def Despintar(coordenadas, pintados, graph, punto):
@@ -160,15 +168,21 @@ def Despintar(coordenadas, pintados, graph, punto):
     coordenadas[punto] = pintados[punto]  # Devuelvo la casilla de la estructura de pintados a mi auxiliar
     del pintados[punto]
 
-def FormarPalabra(pintados,orientacion):  #Hasta donde se, el sorted funciona con las 2 orientaciones
+def FormarPalabra(pintados,orientacion='Horizontal'):  #Hasta donde se, el sorted funciona con las 2 orientaciones
     contigua = True
     if (orientacion == 'Horizontal'):
+        # keys = sorted(pintados.keys())
+        # stop= keys[len(keys-1)[0]]
+        # for i in range(len(keys)-1):
+        #     num = keys[i]
+        #     if((num[0] + 1) != keys[i+1][0]):
+        #         contigua = False
         keys = sorted(pintados.keys())
-        stop= keys[len(keys-1)[0]]
-        for i in range(len(keys)-1):
-            num = keys[i]
-            if((num[0] + 1) != keys[i+1][0]):
-                contigua = False
+        print(keys)
+        pal = ''
+        for key in keys:
+            pal = pal + pintados[key]
+        return pal
     if (orientacion == 'Vertical'):
         keys = sorted(pintados.keys())
         for i in range(len(keys)):
