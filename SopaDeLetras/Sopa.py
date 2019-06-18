@@ -194,37 +194,51 @@ else:
     lado1=(0, BOX_SIZE * calc_palMaxSide() + 3)
     lado2=(BOX_SIZE * calc_cantPalabrasSide(wordDic) + 5, 0)
 
+columna_grafico= [
+
+            [sg.Graph((500, 500),           # canvas_size
+              lado1,                        # graph_bottom_left
+              lado2, key='_GRAPH_',         # graph_top_right
+              change_submits=True, drag_submits=False, background_color='white')],
+            [sg.Text(' ' * 27),
+                sg.Button('Adjetivo', button_color=('black', config_values['__adjColorChooser__']),font=('none' , 10, 'bold'), size=(9, 2)),
+                sg.Button('Verbo', button_color=('black', config_values['__verbColorChooser__']),font=('none' , 10, 'bold'), size=(9, 2)),
+                sg.Button('Sustantivo', button_color=('black', config_values['__sustColorChooser__']),font=('none' , 10, 'bold'), size=(9, 2))
+             ]
+                ]
+
+columna_ayudas= [
+
+                [sg.Frame('Definicion de una palabra al azar',[
+                    [sg.Multiline(' ', key='__helpText__', size=(50, 15))],
+                    [sg.Text(' ' * 30),
+                        sg.Button('Ayuda', key='__helpButton__', button_color=('black', '#ff8100'),
+                               font=('none' , 10, 'bold'), size=(9, 2))]
+                ])],
+                [sg.Frame('Lista de palabras', [
+                    [sg.Multiline(list(wordDic.values()), key='__helpText__', size=(50, 9))],
+                ])]
+
+                ]
 
 layout_sopa = [
-    [sg.Text('Sopa De Letras'), sg.Text('', key='_OUTPUT_')],
-    [sg.Graph((500, 500),                                                       #canvas_size
-              lado1,                                                            #graph_bottom_left
-              lado2, key='_GRAPH_',                                             #graph_top_right
-              change_submits=True, drag_submits=False, background_color='white')],
-    [sg.Button('Adjetivo', button_color=('black', config_values['__adjColorChooser__']),font=('none' , 10, 'bold'), size=(9, 2)),
-     # Los colores deberian llegar por parametro.
-     sg.Button('Verbo', button_color=('black', config_values['__verbColorChooser__']),font=('none' , 10, 'bold'), size=(9, 2)),
-     sg.Button('Sustantivo', button_color=('black', config_values['__sustColorChooser__']),font=('none' , 10, 'bold'), size=(9, 2)),
-     sg.Button('Ayuda', key='__helpButton__', button_color=('black', '#ff8100'),font=('none' , 10, 'bold'), size=(9, 2))],
-    [sg.Button('Terminar', button_color=('black', 'grey55')), sg.Button('Salir', button_color=('black', 'grey55'))]
-    # Salir no tendria q estar...
-]
 
-helpLayout = [
-                [sg.Text('Definicion de una palabra al azar')],
-                [sg.Multiline('',key = '__helpText__',size=(50,20))],
-                [sg.Button('Cerrar')]
-            ]
+                [sg.Column(columna_grafico),sg.Column(columna_ayudas)],
+                [sg.Text(' ' * 50),
+                    sg.Button('Salir', button_color=('black', 'grey55')), sg.Button('Verificar', button_color=('black', 'grey55'))]
+]
 
 sopa_window = sg.Window('Window Title').Layout(layout_sopa).Finalize()
 
 
-if config_values['__ayudaDefinicion__'] == False:
-    sopa_window.FindElement('__helpButton__').Update(visible=False)
+if config_values['__ayudaDefinicion__'] == False and config_values['__ayudalistaPalabras__'] == False:
+    sopa_window.FindElement('__columnaAyudas__').Update(visible=False)
+elif config_values['__ayudaDefinicion__'] == False:
+    sopa_window.FindElement('__frameDefiniciones__').Update(visible=False)
+elif config_values['__ayudalistaPalabras__'] == False:
+    sopa_window.FindElement('__frameLista__').Update(visible=False)
 
 graph = sopa_window.FindElement('_GRAPH_')
-
-help_window = sg.Window('Ayudin').Layout(helpLayout)
 
 # --------------------------------------- Main -------------------------------------------------------------------------
 
@@ -274,5 +288,4 @@ while True:  # Event Loop
             for punto in pintadosClone:
                 Despintar(coordenadas, pintados, graph, punto)
     elif event == '__helpButton__':
-        help_window.FindElement('__helpText__').Update(Web.Definicion(random.choice(random.choice(list(wordDic.values())))))    #elegir random word y tirar la definicion
-        helpevent, helpvalues= help_window.Read()
+        sopa_window.FindElement('__helpText__').Update(Web.Definicion(random.choice(random.choice(list(wordDic.values())))))    #elegir random word y tirar la definicion
