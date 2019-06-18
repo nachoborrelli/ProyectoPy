@@ -29,13 +29,13 @@ def select_words(dic_palabras, cantverbos, cantadj, cantsust):
     wordDic['__sustantivos__'] = []
     if (cantverbos != 0):
         tempList = dic_palabras['__verbos__'].copy()
-        wordDic['verbos'] = random.sample(tempList, k=cantverbos)
+        wordDic['__verbos__'] = random.sample(tempList, k=cantverbos)
     if (cantsust != 0):
         tempList = dic_palabras['__sustantivos__'].copy()
-        wordDic['sustantivos'] = random.sample(tempList, k=cantsust)
+        wordDic['__sustantivos__'] = random.sample(tempList, k=cantsust)
     if (cantadj != 0):
         tempList = dic_palabras['__adjetivos__'].copy()
-        wordDic['adjetivos'] = random.sample(tempList, k=cantadj)
+        wordDic['__adjetivos__'] = random.sample(tempList, k=cantadj)
     return wordDic
 
 
@@ -65,7 +65,7 @@ def calc_palMaxSide():  #################
 
 def calc_cantPalabrasSide(wordDic):
 
-    cant_palabras = len(wordDic['verbos']) + len(wordDic['sustantivos']) + len(wordDic['adjetivos'])
+    cant_palabras = len(wordDic['__verbos__']) + len(wordDic['__sustantivos__']) + len(wordDic['__adjetivos__'])
     if cant_palabras < 7:  #
         cant_palabras += 5  #
     else:
@@ -177,6 +177,7 @@ def FormarPalabra(pintados):  #Hasta donde se, el sorted funciona con las 2 orie
     return pal
 
 def Comparar (wordDic,palabras_encontradas):
+    print(wordDic)
     if(len(palabras_encontradas['__adjetivos__']) == len(wordDic['__adjetivos__'])):
         cantAdj = 0
     else:
@@ -195,9 +196,9 @@ def Comparar (wordDic,palabras_encontradas):
 # bienvenida()
 
 dic_palabras = {}
-dic_palabras['__verbos__'] = []  # dic de palabras clasificadas por tipo
-dic_palabras['__adjetivos__'] = []
-dic_palabras['__sustantivos__'] = []
+dic_palabras['__verbos__'] = ['correr', 'caminar', 'saltar' , 'dormir', 'cojer']  # dic de palabras clasificadas por tipo
+dic_palabras['__adjetivos__'] = ['lindo', 'feo', 'rojo', 'negro', 'oscuro']
+dic_palabras['__sustantivos__'] = ['perro', 'gato', 'mesa' , 'celular', 'silla']
 palabras_encontradas = {}
 palabras_encontradas['__verbos__'] = []  # dic de palabras encontradas por tipo
 palabras_encontradas['__adjetivos__'] = []
@@ -309,11 +310,14 @@ while True:  # Event Loop
             for punto in pintadosClone:
                 Pintar(coordenadas, pintadosClone, graph, punto, color)
             palabras_encontradas[clave].append(pal)
-            cantAdj,cantVerbs,cantSust = Comparar(wordDic,palabras_encontradas)
-            print('Te faltan encontrar {} adjetivos, {} verbos, {} sustantivos'.format(cantAdj,cantVerbs,cantSust))
+            Adjs,Verbs,Susts = Comparar(wordDic,palabras_encontradas)
+            print('Te faltan encontrar {} adjetivos, {} verbos, {} sustantivos'.format(Adjs,Verbs,Susts))
         else:
             pintadosClone = pintados.copy()  # si no haces copias: RuntimeError: dictionary changed size during iteration (??)
             for punto in pintadosClone:
                 Despintar(coordenadas, pintados, graph, punto)
+    elif (event == 'Verificar'):
+        if(Adjs == 0)and (Verbs == 0) and (Susts == 0):
+            sg.Popup('GANASTE FELICITACIONES!!!!!')
     elif event == '__helpButton__':
         sopa_window.FindElement('__helpText__').Update(Web.Definicion(random.choice(random.choice(list(wordDic.values())))))    #elegir random word y tirar la definicion
