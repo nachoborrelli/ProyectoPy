@@ -299,7 +299,7 @@ columna_ayudas= [
                         [sg.Multiline(' ', key='__helpText__', size=(50, 15))],
                         [sg.Text(' ' * 30),
                             sg.Button('Ayuda', key='__helpButton__', button_color=('black', '#ff8100'),
-                                   font = ('none', 10, 'bold'), size=(9, 2))]
+                                   font=('none', 10, 'bold'), size=(9, 2))]
                     ])],
                     [sg.Frame('Lista de palabras', [
                         [sg.Multiline(GenerarListaPalabras(wordDic), key='__helpText__', size=(50, 9))],   ###################################################
@@ -379,7 +379,6 @@ while True:  # Event Loop
     elif event == '__helpButton__':
         sopa_window.FindElement('__helpText__').Update('Busqueda en proceso, espere un momento.')
         sopa_window.FindElement('__helpText__').Update(Web.Definicion(random.choice(random.choice(list(wordDic.values())))))    #elegir random word y tirar la definicion
-
 
 
 
