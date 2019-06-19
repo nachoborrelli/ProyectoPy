@@ -16,13 +16,13 @@ def ProcesarPalabra(pal, dic, tipo):
             sg.Popup('Ingrese otra palabra')
         else:
             print(palabra)
-            if (len(palabra)> 4):
+            if (len(palabra)> 3):
                 seccion2 = str(palabra[3])
                 seccion1 = str(palabra[2])
             else:
                 seccion2 = str(palabra[2])
                 seccion1 = str(palabra[1])
-            if ('Verb' in seccion2) or ('Verb' in seccion1):                  #Verbo o Forma Verbal
+            if ('erb' in seccion2) or ('erb' in seccion1):                  #Verbo o Forma Verbal
                 dic['__verbos__'].append(pal)
                 tipo= '__verbos__'
                 correcto=True
@@ -30,7 +30,7 @@ def ProcesarPalabra(pal, dic, tipo):
                 dic['__sustantivos__'].append(pal)
                 tipo = '__sustantivos__'
                 correcto=True
-            elif('djetiv' in seccion2) or ('Adjetiv' in seccion1):           #Adjetivo o Forma Adjetiva
+            elif('djetiv' in seccion2) or ('djetiv' in seccion1):           #Adjetivo o Forma Adjetiva
                 dic['__adjetivos__'].append(pal)
                 tipo= '__adjetivos__'
                 correcto=True
@@ -99,7 +99,7 @@ def Definicion(pal):
     y la devuelve toda como texto plano'''
     wi = Wiktionary(language='es')
     secciones = wi.search(pal).sections
-    if(len(secciones)> 3):
+    if(len(secciones)>= 3):
         seccion = secciones[2]
     else:
         seccion = secciones[3]
@@ -117,17 +117,17 @@ def Definicion(pal):
     return definicion
 
 #TRABAJO CONFORMADO Y REALIZADO POR ALBERCA AGUSTIN, BORRELLI JUAN IGNACIO, GEBER MATIAS
-# dic ={}
-# dic['__verbos__'] = []
-# dic['__adjetivos__'] = []
-# dic['__sustantivos__'] = []
-# pal = str(input('ingrese la palabra : '))
-# tipo= ''
-# bol,tipo= ProcesarPalabra(pal,dic,tipo)
-# if bol:
-#     pass
-# else:
-#     print(bol , tipo)
-# print(Definicion(pal))
-# print(dic)
+dic ={}
+dic['__verbos__'] = []
+dic['__adjetivos__'] = []
+dic['__sustantivos__'] = []
+pal = str(input('ingrese la palabra : '))
+tipo= ''
+bol,tipo= ProcesarPalabra(pal,dic,tipo)
+if bol:
+    pass
+else:
+    print(bol , tipo)
+print(Definicion(pal))
+print(dic)
 
