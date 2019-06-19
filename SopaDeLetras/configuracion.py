@@ -34,7 +34,7 @@ def configPalabras(dic_palabras):
     columna_verbos = [
         [sg.Frame('Verbos', [
         [sg.Listbox(dic_palabras['__verbos__'], key='__verbos__', size=(25, 5))],
-        [sg.Text('Cantidad:'), sg.Spin([i for i in range(0, 6)], initial_value=0, size=(3, 3),key='__cantverbos__'),
+        [sg.Text('Cantidad:'), sg.Spin([i for i in range(0, 6)], initial_value=0, size=(3, 3), key='__cantverbos__'),
         sg.ColorChooserButton('Elegir color', key='__verbColorChooser__', )]
                            ])]
     ]
@@ -48,7 +48,7 @@ def configPalabras(dic_palabras):
     columna_sust = [
         [sg.Frame('Sustantivos', [
         [sg.Listbox(dic_palabras['__sustantivos__'], key='__sustantivos__', size=(25, 5))],
-        [sg.Text('Cantidad:'), sg.Spin([i for i in range(0,  6)], initial_value=0, size=(3, 3),key='__cantsustantivos__'),
+        [sg.Text('Cantidad:'), sg.Spin([i for i in range(0,  6)], initial_value=0, size=(3, 3), key='__cantsustantivos__'),
         sg.ColorChooserButton('Elegir color', key='__sustColorChooser__', )]
                             ])]
     ]
@@ -86,14 +86,11 @@ def configPalabras(dic_palabras):
     while True:
         event, values = ventana_IngVen.Read()
         tipo = ''
-        if event == None:
+        if event is None:
             break
         elif event == '__addbutton__':
             valores = Web.ProcesarPalabra(values['__input__'].lower(), dic_palabras, tipo)
-            #pos 0 = boolean si se pudo o no #pos 1 el tipo de palabra
-            if valores[0] == False:
-                pass
-            else:
+            if valores[0]:
                 ventana_IngVen.FindElement(valores[1]).Update(dic_palabras[valores[1]])
             ventana_IngVen.Refresh()
 
