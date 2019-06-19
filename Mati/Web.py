@@ -125,7 +125,7 @@ def Definicion(pal):
     return definicion
 
 #TRABAJO CONFORMADO Y REALIZADO POR ALBERCA AGUSTIN, BORRELLI JUAN IGNACIO, GEBER MATIAS
-# dic ={}
+## dic ={}
 # dic['__verbos__'] = []
 # dic['__adjetivos__'] = ['linda']
 # dic['__sustantivos__'] = []
