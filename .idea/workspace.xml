@@ -1,26 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3b278a84-e50d-4073-9a81-db5542bccd79" name="Default Changelist" comment="">
+    <list default="true" id="3b278a84-e50d-4073-9a81-db5542bccd79" name="Default Changelist" comment="nacho (sopa 1.5.4)&#10;No anda porque falla la sopa">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mati/Web.py" beforeDir="false" afterPath="$PROJECT_DIR$/Mati/Web.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Nacho/nacho.py" beforeDir="false" afterPath="$PROJECT_DIR$/Nacho/nacho.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SopaDeLetras/Sopa.py" beforeDir="false" afterPath="$PROJECT_DIR$/SopaDeLetras/Sopa.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SopaDeLetras/configuracion.py" beforeDir="false" afterPath="$PROJECT_DIR$/SopaDeLetras/configuracion.py" afterDir="false" />
     </list>
-    <ignored path="C:\Users\fernando\PycharmProjects\ProyectoPy\.idea\shelf/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Mati/Web.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="119" selection-start-line="119" selection-end-line="132" />
+            <state relative-caret-position="17">
+              <caret line="36" column="13" lean-forward="true" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SopaDeLetras/configuracion.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="257">
+              <caret line="109" column="25" lean-forward="true" selection-start-line="109" selection-start-column="25" selection-end-line="109" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -29,8 +42,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SopaDeLetras/Sopa.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="358" column="47" selection-start-line="358" selection-start-column="47" selection-end-line="358" selection-end-column="47" />
+            <state relative-caret-position="-3085">
+              <caret line="187" column="14" lean-forward="true" selection-start-line="187" selection-start-column="14" selection-end-line="187" selection-end-column="14" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -39,8 +52,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Mati/Reporte.txt">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/Nacho/nacho.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="346" column="17" selection-end-line="390" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/PySimpleGUI/PySimpleGUI.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="1078" column="8" selection-start-line="1078" selection-start-column="8" selection-end-line="1078" selection-end-column="8" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -52,38 +81,18 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>borrad</find>
-      <find>g</find>
-      <find>font</find>
-      <find>modulo</find>
-      <find>chang</find>
-      <find>verb</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/SopaDeLetras/sopa.py" />
-        <option value="$PROJECT_DIR$/SopaDeLetras/Rectangulo}.py" />
-        <option value="$PROJECT_DIR$/SopaDeLetras/Rectangulo.py" />
-        <option value="$PROJECT_DIR$/SopaDeLetras/bienvenida.py" />
-        <option value="$PROJECT_DIR$/SopaDeLetras/Demo-Crucigrama.py" />
-        <option value="$PROJECT_DIR$/Nacho/sopaNacho.py" />
-        <option value="$PROJECT_DIR$/SopaDeLetras/sopaNacho.py" />
-        <option value="$PROJECT_DIR$/Nacho/nacho.py" />
-        <option value="$PROJECT_DIR$/Mati/Probando.py" />
-        <option value="$PROJECT_DIR$/Mati/SopaPrueba.py" />
         <option value="$PROJECT_DIR$/Abus/valoresDePrueba.py" />
-        <option value="$PROJECT_DIR$/Abus/pruebaDeLayout.py" />
-        <option value="$PROJECT_DIR$/Abus/tempSopa.py" />
-        <option value="$PROJECT_DIR$/SopaDeLetras/configuracion.py" />
-        <option value="$PROJECT_DIR$/SopaDeLetras/Sopa.py" />
         <option value="$PROJECT_DIR$/Mati/Web.py" />
+        <option value="$PROJECT_DIR$/SopaDeLetras/configuracion.py" />
+        <option value="$PROJECT_DIR$/Nacho/borrar.py" />
+        <option value="$PROJECT_DIR$/Nacho/nacho.py" />
+        <option value="$PROJECT_DIR$/SopaDeLetras/Sopa.py" />
       </list>
     </option>
   </component>
@@ -92,6 +101,9 @@
     <option name="y" value="2" />
     <option name="width" value="697" />
     <option name="height" value="775" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -134,16 +146,6 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Mariafernanda\PycharmProjects\ProyectoPy\SopaDeLetras" />
-      <recent name="C:\Users\Mariafernanda\Desktop\ProyectoFinal\Mati" />
-      <recent name="C:\Users\Mariafernanda\Desktop\ProyectoFinal\SopaDeLetras" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -179,7 +181,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Web" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="borrar" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ProyectoPy" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -187,11 +189,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Mati" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Nacho" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Mati/Web.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Nacho/borrar.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -200,7 +202,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="configuracion" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="nacho" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ProyectoPy" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -208,53 +210,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SopaDeLetras" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Nacho" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SopaDeLetras/configuracion.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="pruebaDeLayout" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="ProyectoPy" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Abus" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Abus/pruebaDeLayout.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="tempSopa" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="ProyectoPy" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Abus" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Abus/tempSopa.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Nacho/nacho.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -266,10 +226,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.Sopa" />
-        <item itemvalue="Python.Web" />
-        <item itemvalue="Python.tempSopa" />
-        <item itemvalue="Python.pruebaDeLayout" />
-        <item itemvalue="Python.configuracion" />
+        <item itemvalue="Python.nacho" />
+        <item itemvalue="Python.borrar" />
       </list>
     </recent_temporary>
   </component>
@@ -277,552 +235,98 @@
     <configuration />
   </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="3b278a84-e50d-4073-9a81-db5542bccd79" name="Default Changelist" comment="" />
-      <created>1559819971664</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1559819971664</updated>
-    </task>
-    <task id="LOCAL-00001" summary="hjhjh">
-      <created>1560262891074</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1560262891074</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Con el la sopa">
-      <created>1560264077879</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1560264077879</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Con el la sopa">
-      <created>1560266173361</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1560266173361</updated>
-    </task>
-    <task id="LOCAL-00004" summary="sin casilla">
-      <created>1560266466912</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1560266466912</updated>
-    </task>
-    <task id="LOCAL-00005" summary="merge de bienvenida y sopa">
-      <created>1560267224640</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1560267224640</updated>
-    </task>
-    <task id="LOCAL-00006" summary="nueva organizacion de archivos">
-      <created>1560268101116</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1560268101116</updated>
-    </task>
-    <task id="LOCAL-00007" summary="nueva funcion">
-      <created>1560269034688</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1560269034688</updated>
-    </task>
-    <task id="LOCAL-00008" summary="temporal">
-      <created>1560272949929</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1560272949929</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Sopa comentada">
-      <created>1560275358351</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1560275358351</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Sopa comentada">
-      <created>1560275432886</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1560275432886</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Sopa comentada">
-      <created>1560275537553</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1560275537553</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Sopa comentada">
-      <created>1560275592802</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1560275592802</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Sopa comentada">
-      <created>1560275967784</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1560275967784</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Sopa comentada">
-      <created>1560277987001</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1560277987001</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Sopa comentada">
-      <created>1560279019220</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1560279019220</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Sopa comentada">
-      <created>1560281864002</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1560281864002</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Sopa comentada mejor">
-      <created>1560282284039</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1560282284039</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Sopa v1.1">
-      <created>1560283181868</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1560283181868</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Sopa v1.1">
-      <created>1560296284780</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1560296284780</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Sopa v1.2">
-      <created>1560296313361</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1560296313363</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Sopa v1.2">
-      <created>1560296700520</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1560296700520</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Sopa v1.3">
-      <created>1560296765364</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1560296765364</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Sopa v1.4">
-      <created>1560427267396</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1560427267396</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Sopa v1.4.1">
-      <created>1560427333141</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1560427333141</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Sopa v1.4.2">
-      <created>1560427853266</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1560427853266</updated>
-    </task>
-    <task id="LOCAL-00026" summary="nacho (sopa 1.5)">
-      <created>1560554171083</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1560554171084</updated>
-    </task>
-    <task id="LOCAL-00027" summary="nacho (sopa 1.5.1)">
-      <created>1560583388810</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1560583388810</updated>
-    </task>
-    <task id="LOCAL-00028" summary="nacho (sopa 1.5.2)&#10;RuntimeError: dictionary changed size during iteration">
-      <created>1560583499525</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1560583499526</updated>
-    </task>
-    <task id="LOCAL-00029" summary="nacho (sopa 1.5.3)">
-      <created>1560627641362</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1560627641362</updated>
-    </task>
-    <task id="LOCAL-00030" summary="nacho (sopa 1.5.3)">
-      <created>1560628481257</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1560628481257</updated>
-    </task>
-    <task id="LOCAL-00031" summary="nacho (sopa 1.5.3)">
-      <created>1560733632126</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1560733632126</updated>
-    </task>
-    <task id="LOCAL-00032" summary="nacho (sopa 1.5.3)">
-      <created>1560735381299</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1560735381299</updated>
-    </task>
-    <task id="LOCAL-00033" summary="nacho (sopa 1.5.3)">
-      <created>1560782732285</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1560782732285</updated>
-    </task>
-    <task id="LOCAL-00034" summary="nuevos cambios en web">
-      <created>1560783237496</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1560783237496</updated>
-    </task>
-    <task id="LOCAL-00035" summary="sopa 1.5.5 (merge con 'nacho.py')">
-      <created>1560791087998</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1560791087998</updated>
-    </task>
-    <task id="LOCAL-00036" summary="sopa 1.5.5 (merge con 'nacho.py')">
-      <created>1560793879674</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1560793879674</updated>
-    </task>
-    <task id="LOCAL-00037" summary="sopa 1.5.6 (merge con 'nacho.py')">
-      <created>1560793947808</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1560793947808</updated>
-    </task>
-    <task id="LOCAL-00038" summary="Update SopaPrueba(mati)">
-      <created>1560794927399</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1560794927399</updated>
-    </task>
-    <task id="LOCAL-00039" summary="nuevo web">
-      <created>1560818491930</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1560818491930</updated>
-    </task>
-    <task id="LOCAL-00040" summary="sopa 1.7">
-      <created>1560821792509</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1560821792509</updated>
-    </task>
-    <task id="LOCAL-00041" summary="sopa 1.7">
-      <created>1560828929348</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1560828929348</updated>
-    </task>
-    <task id="LOCAL-00042" summary="sopa 1.7.1">
-      <created>1560865597598</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1560865597598</updated>
-    </task>
-    <task id="LOCAL-00043" summary="sopa 1.7.2">
-      <created>1560866381660</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1560866381660</updated>
-    </task>
-    <task id="LOCAL-00044" summary="sopa 1.7.3">
-      <created>1560895671934</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1560895671934</updated>
-    </task>
-    <task id="LOCAL-00045" summary="sopa 1.7.4 errores arreglados">
-      <created>1560898574267</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1560898574267</updated>
-    </task>
-    <task id="LOCAL-00046" summary="Arreglado web">
-      <created>1560909827126</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1560909827127</updated>
-    </task>
-    <task id="LOCAL-00047" summary="Sopa con Verificar hecho y Autores">
-      <created>1560911848859</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1560911848859</updated>
-    </task>
-    <option name="localTasksCounter" value="48" />
     <servers />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19866072" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12946428" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49702382" weight="0.3289689" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4940476" visible="true" weight="0.23895253" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39938557" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49702382" visible="true" weight="0.1603928" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49925596" weight="0.3289689" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.4985119" weight="0.32565284" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49925596" weight="0.3289689" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50595236" side_tool="true" weight="0.23809524" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32733223" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3289689" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5029762" side_tool="true" weight="0.31914893" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49702382" weight="0.3289689" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4940476" visible="true" weight="0.2405892" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39938557" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49925596" weight="0.3289689" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.4985119" weight="0.32565284" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49925596" weight="0.3289689" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50595236" side_tool="true" weight="0.23809524" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout-to-restore>
   </component>
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ORDER">
-      <list>
-        <option value="0" />
-        <option value="2" />
-        <option value="3" />
-        <option value="1" />
-      </list>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="temporal" />
-    <MESSAGE value="Sopa comentada" />
-    <MESSAGE value="Sopa comentada mejor" />
-    <MESSAGE value="Sopa v1.1" />
-    <MESSAGE value="Sopa v1.2" />
-    <MESSAGE value="Sopa v1.3" />
-    <MESSAGE value="Sopa v1.4" />
-    <MESSAGE value="Sopa v1.4.1" />
-    <MESSAGE value="Sopa v1.4.2" />
-    <MESSAGE value="nacho (sopa 1.5)" />
-    <MESSAGE value="nacho (sopa 1.5.1)" />
-    <MESSAGE value="nacho (sopa 1.5.2)&#10;RuntimeError: dictionary changed size during iteration" />
-    <MESSAGE value="nacho (sopa 1.5.3)" />
-    <MESSAGE value="nuevos cambios en web" />
-    <MESSAGE value="sopa 1.5.5 (merge con 'nacho.py')" />
-    <MESSAGE value="sopa 1.5.6 (merge con 'nacho.py')" />
-    <MESSAGE value="Update SopaPrueba(mati)" />
-    <MESSAGE value="nuevo web" />
-    <MESSAGE value="sopa 1.7" />
-    <MESSAGE value="sopa 1.7.1" />
-    <MESSAGE value="sopa 1.7.2" />
-    <MESSAGE value="sopa 1.7.3" />
-    <MESSAGE value="sopa 1.7.4 errores arreglados" />
-    <MESSAGE value="Arreglado web" />
-    <MESSAGE value="Sopa con Verificar hecho y Autores" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sopa con Verificar hecho y Autores" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Mati/Web.py</url>
+          <line>122</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python36/site-packages/pygame/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/SopaDeLetras/Casilla.py" />
-    <entry file="file://$PROJECT_DIR$/SopaDeLetras/bienvenida.py" />
-    <entry file="file://$PROJECT_DIR$/SopaDeLetras/pruebaPygame.py" />
-    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-1070850418/builtins.py" />
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/PySimpleGUI/PySimpleGUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="2179" column="32" lean-forward="true" selection-start-line="2179" selection-start-column="32" selection-end-line="2179" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/tkinter/__init__.py" />
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/random.py" />
-    <entry file="file://$PROJECT_DIR$/SopaDeLetras/sopaNacho.py" />
-    <entry file="file://$PROJECT_DIR$/Abus/crosswords.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/tkinter/font.py" />
-    <entry file="file://C:/Program Files/Python36/Lib/site-packages/PySimpleGUI/PySimpleGUI.py" />
-    <entry file="file://$PROJECT_DIR$/Nacho/nacho.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2380">
-          <caret line="144" column="4" selection-start-line="144" selection-start-column="4" selection-end-line="149" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mati/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Abus/valoresDePrueba.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/PySimpleGUI/PySimpleGUI.py" />
-    <entry file="file://$PROJECT_DIR$/Abus/pruebaDeLayout.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Abus/tempSopa.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1241">
-          <caret line="73" selection-start-line="73" selection-end-line="73" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SopaDeLetras/Demo-Crucigrama.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mati/SopaPrueba.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="320" column="51" lean-forward="true" selection-start-line="318" selection-start-column="4" selection-end-line="320" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SopaDeLetras/configuracion.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="142" column="88" selection-start-line="142" selection-start-column="88" selection-end-line="142" selection-end-column="88" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mati/Probando.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="23" column="74" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mati/Reporte.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Mati/Web.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="119" selection-start-line="119" selection-end-line="132" />
+        <state relative-caret-position="17">
+          <caret line="36" column="13" lean-forward="true" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/SopaDeLetras/configuracion.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="109" column="25" lean-forward="true" selection-start-line="109" selection-start-column="25" selection-end-line="109" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Abus/valoresDePrueba.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="68" lean-forward="true" selection-start-line="20" selection-start-column="68" selection-end-line="20" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nacho/borrar.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/PySimpleGUI/PySimpleGUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="1078" column="8" selection-start-line="1078" selection-start-column="8" selection-end-line="1078" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nacho/nacho.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="346" column="17" selection-end-line="390" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/SopaDeLetras/Sopa.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="358" column="47" selection-start-line="358" selection-start-column="47" selection-end-line="358" selection-end-column="47" />
+        <state relative-caret-position="-3085">
+          <caret line="187" column="14" lean-forward="true" selection-start-line="187" selection-start-column="14" selection-end-line="187" selection-end-column="14" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>

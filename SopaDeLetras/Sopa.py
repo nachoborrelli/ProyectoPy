@@ -53,9 +53,9 @@ def longest_word(wordDic):
 
 def calc_palMaxSide():  #################
     palMax = len(longest_word(wordDic))
-    if (palMax < 5):
+    if palMax < 5:
         palMax += 6
-    elif ((palMax >= 5) and (palMax <= 7)):
+    elif (palMax >= 5) and (palMax <= 7):
         palMax += 4
     else:
         palMax += 2
@@ -72,15 +72,17 @@ def calc_cantPalabrasSide(wordDic):
         cant_palabras += 2
     return cant_palabras
 
-def convertir_UpperLower(palabra,letras):
+
+def convertir_UpperLower(palabra, letras):
     if letras == 'Mayúsculas':
         palabra = palabra.upper()
     else:
         palabra = palabra.lower()
     return palabra
 
+
 def draw_grid(window, orientacion, graph, coordenadas, wordDic, letras):
-    ''' Dibuja con letras random (POR AHORA) la matriz. A su vez, guarda en un diccionario auxiliar
+    ''' Dibuja con letras random la matriz. A su vez, guarda en un diccionario auxiliar
     con las cordenadas como clave y su letra como valor.'''
 
     def crearLineas(lado1, lado2):
@@ -170,7 +172,9 @@ def Pintar(coordenadas, pintados, graph, punto, color= 'grey72'):
         graph.DrawText('{}'.format(coordenadas[punto]), (punto[0] * BOX_SIZE + 15, punto[1] * BOX_SIZE + 15),
                        font='Courier 25')
 
+
 def Despintar(coordenadas, pintados, graph, punto):
+    '''Despinta la letra dejandola nuevamente en blanco'''
     graph.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
                         (punto[0] * BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3), line_color='black',
                         fill_color='white')
@@ -194,12 +198,11 @@ def comprobarPalabra(pintados, orientacion, event):
     y = 1
     x = 0
     if orientacion == 'Horizontal':
-        palCorrecta = checkValoresIguales(list(map(lambda zz: zz[y],keys))) and checkConsecutivos(list(map(lambda zz: zz[x],keys)))
+        palCorrecta = checkValoresIguales(list(map(lambda zz: zz[y], keys))) and checkConsecutivos(list(map(lambda zz: zz[x], keys)))
     elif orientacion == 'Vertical':
-        palCorrecta = checkValoresIguales(list(map(lambda zz: zz[x],keys))) and checkConsecutivos(list(map(lambda zz: zz[y],keys)))
+        palCorrecta = checkValoresIguales(list(map(lambda zz: zz[x], keys))) and checkConsecutivos(list(map(lambda zz: zz[y], keys)))
 
-
-    if palCorrecta == True:
+    if palCorrecta:
         for key in keys:
             pal = pal + pintados[key]
 
@@ -220,24 +223,33 @@ def comprobarPalabra(pintados, orientacion, event):
                 color = config_values['__verbColorChooser__']
 
 
-    return color,pal,palCorrecta,clave
+    return color, pal, palCorrecta, clave
 
-def Comparar (wordDic,palabras_encontradas):
+
+def Comparar (wordDic, palabras_encontradas):
     print(wordDic)
-    if(len(palabras_encontradas['__adjetivos__']) == len(wordDic['__adjetivos__'])):
+    if len(palabras_encontradas['__adjetivos__']) == len(wordDic['__adjetivos__']):
         cantAdj = 0
     else:
         cantAdj = len(wordDic['__adjetivos__']) - len(palabras_encontradas['__adjetivos__'])
-    if (len(palabras_encontradas['__verbos__']) == len(wordDic['__verbos__'])):
+    if len(palabras_encontradas['__verbos__']) == len(wordDic['__verbos__']):
         cantVerbs = 0
     else:
         cantVerbs = len(wordDic['__verbos__']) - len(palabras_encontradas['__verbos__'])
-    if (len(palabras_encontradas['__sustantivos__']) == len(wordDic['__sustantivos__'])):
+    if len(palabras_encontradas['__sustantivos__']) == len(wordDic['__sustantivos__']):
         cantSust = 0
     else:
         cantSust = len(wordDic['__sustantivos__']) - len(palabras_encontradas['__sustantivos__'])
-    return cantAdj,cantVerbs,cantSust
+    return cantAdj, cantVerbs, cantSust
 
+
+def GenerarListaPalabras(wordDic):
+    lista = []
+    for tipo in wordDic:
+        for palabra in wordDic[tipo]:
+            lista.append(palabra.capitalize())
+            lista.append('-')
+    return lista[:-1]
 # ------------------------------------ Estructuras,Config y bienvenida ---------------------------------------------------------------------
 # bienvenida()
 
@@ -262,7 +274,7 @@ wordDic = select_words(dic_palabras, config_values['__cantverbos__'],  # Selecci
                        )
 
 # --------------------------------------- Layouts ----------------------------------------------------------------------
-if (config_values['__orientacion__'] == 'Horizontal'):
+if config_values['__orientacion__'] == 'Horizontal':
     lado1= (0, BOX_SIZE * calc_cantPalabrasSide(wordDic) + 3)
     lado2= (BOX_SIZE * calc_palMaxSide() + 5, 0)
 else:
@@ -276,9 +288,9 @@ columna_grafico= [
           lado2, key='_GRAPH_',         # graph_top_right
           change_submits=True, drag_submits=False, background_color='white')],
         [sg.Text(' ' * 27),
-            sg.Button('Adjetivo', button_color=('black', config_values['__adjColorChooser__']),font=('none' , 10, 'bold'), size=(9, 2)),
-            sg.Button('Verbo', button_color=('black', config_values['__verbColorChooser__']),font=('none' , 10, 'bold'), size=(9, 2)),
-            sg.Button('Sustantivo', button_color=('black', config_values['__sustColorChooser__']),font=('none' , 10, 'bold'), size=(9, 2))
+            sg.Button('Adjetivo', button_color=('black', config_values['__adjColorChooser__']),font=('none', 10, 'bold'), size=(9, 2)),
+            sg.Button('Verbo', button_color=('black', config_values['__verbColorChooser__']),font=('none', 10, 'bold'), size=(9, 2)),
+            sg.Button('Sustantivo', button_color=('black', config_values['__sustColorChooser__']),font=('none', 10, 'bold'), size=(9, 2))
          ]
                 ]
 
@@ -287,15 +299,15 @@ columna_ayudas= [
                         [sg.Multiline(' ', key='__helpText__', size=(50, 15))],
                         [sg.Text(' ' * 30),
                             sg.Button('Ayuda', key='__helpButton__', button_color=('black', '#ff8100'),
-                                   font=('none' , 10, 'bold'), size=(9, 2))]
+                                   font = ('none', 10, 'bold'), size=(9, 2))]
                     ])],
                     [sg.Frame('Lista de palabras', [
-                        [sg.Multiline(list(wordDic.values()), key='__helpText__', size=(50, 9))],
+                        [sg.Multiline(GenerarListaPalabras(wordDic), key='__helpText__', size=(50, 9))],   ###################################################
                     ])]
                 ]
 
 layout_sopa = [
-                [sg.Column(columna_grafico),sg.Column(columna_ayudas)],
+                [sg.Column(columna_grafico), sg.Column(columna_ayudas)],
                 [sg.Text(' ' * 50),
                     sg.Button('Salir', button_color=('black', 'grey55')), sg.Button('Verificar', button_color=('black', 'grey55'))]
 ]
@@ -318,6 +330,7 @@ if config_values['__cantverbos__'] + config_values['__cantadjetivos__'] + config
     sys.exit()
 
 draw_grid(sopa_window, config_values['__orientacion__'], graph, coordenadas, wordDic, config_values['__letras__'])
+Adjs, Verbs, Susts = Comparar(wordDic, palabras_encontradas)
 
 while True:  # Event Loop
     event, values = sopa_window.Read()
@@ -342,25 +355,27 @@ while True:  # Event Loop
                 except KeyError:
                     pass
     elif event == 'Adjetivo' or event == 'Sustantivo' or event == 'Verbo':
-        color, pal, correcta, clave = comprobarPalabra(pintados, config_values['__orientacion__'], event )
-        if correcta == True:
-            pintadosClone = pintados.copy()   #Puede ser keys creo
-            print(pintadosClone)
-            for punto in pintadosClone:
-                Despintar(coordenadas, pintados, graph, punto)
-            for punto in pintadosClone:
-                Pintar(coordenadas, pintadosClone, graph, punto, color)
-            palabras_encontradas[clave].append(pal)
-            Adjs, Verbs, Susts = Comparar(wordDic, palabras_encontradas)
-            print('Te faltan encontrar {} adjetivos, {} verbos, {} sustantivos'.format(Adjs, Verbs, Susts))
-        else:
-            pintadosClone = pintados.copy()  # si no haces copias: RuntimeError: dictionary changed size during iteration (??)
-            for punto in pintadosClone:
-                Despintar(coordenadas, pintados, graph, punto)
-    elif (event == 'Verificar'):
+        if len(pintados) > 0:
+            color, pal, correcta, clave = comprobarPalabra(pintados, config_values['__orientacion__'], event)
+            if correcta:
+                pintadosClone = pintados.copy()
+                for punto in pintadosClone:
+                    Despintar(coordenadas, pintados, graph, punto)
+                for punto in pintadosClone:
+                    Pintar(coordenadas, pintadosClone, graph, punto, color)
+                palabras_encontradas[clave].append(pal)
+                Adjs, Verbs, Susts = Comparar(wordDic, palabras_encontradas)
+                print('Te faltan encontrar {} adjetivos, {} verbos, {} sustantivos'.format(Adjs, Verbs, Susts))  #?????????????
+            else:
+                pintadosClone = pintados.copy()
+                for punto in pintadosClone:
+                    Despintar(coordenadas, pintados, graph, punto)
+    elif event == 'Verificar':
         if(Adjs == 0)and (Verbs == 0) and (Susts == 0):
             sg.Popup('GANASTE FELICITACIONES!!!!!')
             break
+        else:
+            sg.Popup('Todavia te faltan {} palabras!'.format(Adjs + Verbs + Susts))
     elif event == '__helpButton__':
         sopa_window.FindElement('__helpText__').Update('Busqueda en proceso, espere un momento.')
         sopa_window.FindElement('__helpText__').Update(Web.Definicion(random.choice(random.choice(list(wordDic.values())))))    #elegir random word y tirar la definicion
@@ -370,4 +385,5 @@ while True:  # Event Loop
 
 
 
-#TRABAJO CONFORMADO Y REALIZADO POR ALBERCA AGUSTIN, BORRELLI JUAN IGNACIO, GEBER MATIAS
+# TRABAJO CONFORMADO Y REALIZADO POR ALBERCA AGUSTIN, BORRELLI JUAN IGNACIO, GEBER MATIAS
+

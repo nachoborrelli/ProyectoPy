@@ -2,6 +2,7 @@ import PySimpleGUI as sg
 from Mati import Web
 import random
 
+
 def configPalabras(dic_palabras):
     #------------------------------------ Funciones ------------------------------------
     def borrar_valor(valor,dic_palabras):
@@ -97,14 +98,14 @@ def configPalabras(dic_palabras):
             if tipo_borrado != '':                              #Chequear que la palabra a eliminar sea valida
                 ventana_IngVen.FindElement(tipo_borrado).Update(dic_palabras[tipo_borrado])
             else:
-                sg.PopupError('Palabra no existente',title='')
+                sg.PopupError('Palabra no existente', title='')
 
         elif event == 'Aceptar':
-            if values['__cantverbos__']=='0' and values['__cantadjetivos__'] =='0'and values['__cantsustantivos__'] =='0':
+            if values['__cantverbos__']=='0' and values['__cantadjetivos__'] == '0' and values['__cantsustantivos__'] == '0':
                 continuar = sg.PopupYesNo('Se eligieron 0 verbos, 0 adjetivos y 0 sustantivos. \n'
                                 'Esto finalizará el juego y perderá todos los datos ingresados.\n'
                                 'Desea continuar?',
-                                title='Peligro',font=('Helvetica',9,'bold'),button_color=('#000000','#ff1919'))
+                                title='Peligro', font=('Helvetica', 9, 'bold'), button_color=('#000000', '#ff1919'))
                 if continuar == 'Yes':
                     break
                 else:

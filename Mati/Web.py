@@ -34,7 +34,7 @@ def ProcesarPalabra(pal, dic, tipo):
                 dic['__adjetivos__'].append(pal)
                 tipo= '__adjetivos__'
                 correcto=True
-        return (correcto, tipo)
+        return correcto, tipo
 
     def PalabraPattern(pal):
         '''Busca la palabra en el pattern y la califica segun su tipo, si no es un verbo, sustantivo o adjetivo, se debera ingresar otra.
@@ -55,7 +55,7 @@ def ProcesarPalabra(pal, dic, tipo):
         else:
             tipo = ' '
             print('Ingrese otra Palabra')
-        return correcto,tipo
+        return correcto, tipo
 
 
     wik = PalabraWik(pal, dic, tipo)
