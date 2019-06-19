@@ -27,7 +27,7 @@ def ProcesarPalabra(pal, dic, tipo):
             else:
                 for x in range(len(palabra)):
                     seccion=str(palabra[x])
-                    if('verb'in seccion) or ('Sust' in seccion) or ('adjetiv' in seccion):
+                    if('erb'in seccion) or ('ustantiv' in seccion) or ('djetiv' in seccion):
                         print(seccion)
                         break
                 if ('erb' in seccion):                #Verbo o Forma Verbal
@@ -125,17 +125,17 @@ def Definicion(pal):
     return definicion
 
 #TRABAJO CONFORMADO Y REALIZADO POR ALBERCA AGUSTIN, BORRELLI JUAN IGNACIO, GEBER MATIAS
-## dic ={}
-# dic['__verbos__'] = []
-# dic['__adjetivos__'] = ['linda']
-# dic['__sustantivos__'] = []
-# pal = str(input('ingrese la palabra : '))
-# tipo= ''
-# bol,tipo= ProcesarPalabra(pal,dic,tipo)
-# if bol:
-#     pass
-# else:
-#     print(bol , tipo)
-# print(Definicion(pal))
-# print(dic)
+dic ={}
+dic['__verbos__'] = []
+dic['__adjetivos__'] = ['linda']
+dic['__sustantivos__'] = []
+pal = str(input('ingrese la palabra : '))
+tipo= ''
+bol,tipo= ProcesarPalabra(pal,dic,tipo)
+if bol:
+    pass
+else:
+    print(bol , tipo)
+print(Definicion(pal))
+print(dic)
 
