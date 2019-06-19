@@ -202,7 +202,6 @@ def comprobarPalabra(pintados, orientacion, event):
     elif orientacion == 'Vertical':
         palCorrecta = checkValoresIguales(list(map(lambda zz: zz[x], keys))) and checkConsecutivos(list(map(lambda zz: zz[y], keys)))
 
-
     if palCorrecta:
         for key in keys:
             pal = pal + pintados[key]
@@ -227,7 +226,7 @@ def comprobarPalabra(pintados, orientacion, event):
     return color, pal, palCorrecta, clave
 
 
-def Comparar (wordDic,palabras_encontradas):
+def Comparar (wordDic, palabras_encontradas):
     print(wordDic)
     if len(palabras_encontradas['__adjetivos__']) == len(wordDic['__adjetivos__']):
         cantAdj = 0
@@ -275,7 +274,7 @@ wordDic = select_words(dic_palabras, config_values['__cantverbos__'],  # Selecci
                        )
 
 # --------------------------------------- Layouts ----------------------------------------------------------------------
-if (config_values['__orientacion__'] == 'Horizontal'):
+if config_values['__orientacion__'] == 'Horizontal':
     lado1= (0, BOX_SIZE * calc_cantPalabrasSide(wordDic) + 3)
     lado2= (BOX_SIZE * calc_palMaxSide() + 5, 0)
 else:
@@ -300,7 +299,7 @@ columna_ayudas= [
                         [sg.Multiline(' ', key='__helpText__', size=(50, 15))],
                         [sg.Text(' ' * 30),
                             sg.Button('Ayuda', key='__helpButton__', button_color=('black', '#ff8100'),
-                                   font = ('none', 10, 'bold'), size=(9, 2))]
+                                   font=('none', 10, 'bold'), size=(9, 2))]
                     ])],
                     [sg.Frame('Lista de palabras', [
                         [sg.Multiline(GenerarListaPalabras(wordDic), key='__helpText__', size=(50, 9))],   ###################################################
@@ -366,7 +365,6 @@ while True:  # Event Loop
                     Pintar(coordenadas, pintadosClone, graph, punto, color)
                 palabras_encontradas[clave].append(pal)
                 Adjs, Verbs, Susts = Comparar(wordDic, palabras_encontradas)
-                print('Te faltan encontrar {} adjetivos, {} verbos, {} sustantivos'.format(Adjs, Verbs, Susts))  #?????????????
             else:
                 pintadosClone = pintados.copy()
                 for punto in pintadosClone:
@@ -376,14 +374,19 @@ while True:  # Event Loop
             sg.Popup('GANASTE FELICITACIONES!!!!!')
             break
         else:
-            sg.Popup('Todavia te faltan {} palabras!'.format(Adjs + Verbs + Susts))
+            sg.Popup('Todavia faltan encontrar {} adjetivos, {} verbos, y {} sustantivos!\n '.format(Adjs, Verbs, Susts),
+                     'Si quieres terminar de todas formas apreta "Salir" en la pantalla principal')
     elif event == '__helpButton__':
         sopa_window.FindElement('__helpText__').Update('Busqueda en proceso, espere un momento.')
-        sopa_window.FindElement('__helpText__').Update(Web.Definicion(random.choice(random.choice(list(wordDic.values())))))    #elegir random word y tirar la definicion
+        eleccionRandom = random.choice(random.choice(list(wordDic.values())))
+        encontradas = list(palabras_encontradas.values())
+        encontradas = encontradas[0] + encontradas[1] + encontradas[2]
+        while eleccionRandom in encontradas:
+            eleccionRandom = random.choice(random.choice(list(wordDic.values())))
+        sopa_window.FindElement('__helpText__').Update(Web.Definicion(eleccionRandom))    #elegir random word y tirar la definicion
 
 
-
-
+ #Cambiar submit
 
 
 # TRABAJO CONFORMADO Y REALIZADO POR ALBERCA AGUSTIN, BORRELLI JUAN IGNACIO, GEBER MATIAS
