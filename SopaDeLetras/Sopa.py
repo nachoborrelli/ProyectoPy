@@ -227,6 +227,7 @@ def comprobarPalabra(pintados, orientacion, event):
 
 
 def Comparar (wordDic, palabras_encontradas):
+    ''' Devuelve la cantidad de palabras que faltan encontrar'''
     print(wordDic)
     if len(palabras_encontradas['__adjetivos__']) == len(wordDic['__adjetivos__']):
         cantAdj = 0
@@ -244,6 +245,7 @@ def Comparar (wordDic, palabras_encontradas):
 
 
 def GenerarListaPalabras(wordDic):
+    '''Genera la lista necesaria para la ayuda'''
     lista = []
     for tipo in wordDic:
         for palabra in wordDic[tipo]:
