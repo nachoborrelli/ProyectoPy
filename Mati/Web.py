@@ -107,7 +107,7 @@ def Definicion(pal):
     y la devuelve toda como texto plano'''
     wi = Wiktionary(language='es')
     secciones = wi.search(pal).sections
-    if(len(secciones)>=3):
+    if(len(secciones)>3):
         seccion = secciones[2]
     else:
         seccion = secciones[3]
