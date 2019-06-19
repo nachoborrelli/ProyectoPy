@@ -15,25 +15,33 @@ def ProcesarPalabra(pal, dic, tipo):
         except(AttributeError):
             sg.Popup('Ingrese otra palabra')
         else:
+            # if (len(palabra)>4):
+            #     seccion2 = str(palabra[3])
+            #     #seccion1 = str(palabra[2])
+            # else:
+            #     seccion2 = str(palabra[2])
+            #     #seccion1 = str(palabra[1])
             print(palabra)
-            if (len(palabra)> 3):
-                seccion2 = str(palabra[3])
-                seccion1 = str(palabra[2])
+            if(pal in dic['__verbos__']) or (pal in dic['__sustantivos__']) or (pal in dic['__adjetivos__']):
+                pass
             else:
-                seccion2 = str(palabra[2])
-                seccion1 = str(palabra[1])
-            if ('erb' in seccion2) or ('erb' in seccion1):                  #Verbo o Forma Verbal
-                dic['__verbos__'].append(pal)
-                tipo= '__verbos__'
-                correcto=True
-            elif('Sustantivo' in seccion2) or ('Sustantivo' in seccion1):
-                dic['__sustantivos__'].append(pal)
-                tipo = '__sustantivos__'
-                correcto=True
-            elif('djetiv' in seccion2) or ('djetiv' in seccion1):           #Adjetivo o Forma Adjetiva
-                dic['__adjetivos__'].append(pal)
-                tipo= '__adjetivos__'
-                correcto=True
+                for x in range(len(palabra)):
+                    seccion=str(palabra[x])
+                    if('verb'in seccion) or ('Sust' in seccion) or ('adjetiv' in seccion):
+                        print(seccion)
+                        break
+                if ('erb' in seccion):                #Verbo o Forma Verbal
+                    dic['__verbos__'].append(pal)
+                    tipo= '__verbos__'
+                    correcto=True
+                elif('Sustantivo' in seccion):
+                    dic['__sustantivos__'].append(pal)
+                    tipo = '__sustantivos__'
+                    correcto=True
+                elif('djetiv' in seccion):           #Adjetivo o Forma Adjetiva
+                    dic['__adjetivos__'].append(pal)
+                    tipo= '__adjetivos__'
+                    correcto=True
         return correcto, tipo
 
     def PalabraPattern(pal):
@@ -99,7 +107,7 @@ def Definicion(pal):
     y la devuelve toda como texto plano'''
     wi = Wiktionary(language='es')
     secciones = wi.search(pal).sections
-    if(len(secciones)>= 3):
+    if(len(secciones)>=3):
         seccion = secciones[2]
     else:
         seccion = secciones[3]
@@ -117,17 +125,17 @@ def Definicion(pal):
     return definicion
 
 #TRABAJO CONFORMADO Y REALIZADO POR ALBERCA AGUSTIN, BORRELLI JUAN IGNACIO, GEBER MATIAS
-dic ={}
-dic['__verbos__'] = []
-dic['__adjetivos__'] = []
-dic['__sustantivos__'] = []
-pal = str(input('ingrese la palabra : '))
-tipo= ''
-bol,tipo= ProcesarPalabra(pal,dic,tipo)
-if bol:
-    pass
-else:
-    print(bol , tipo)
-print(Definicion(pal))
-print(dic)
+# dic ={}
+# dic['__verbos__'] = []
+# dic['__adjetivos__'] = ['linda']
+# dic['__sustantivos__'] = []
+# pal = str(input('ingrese la palabra : '))
+# tipo= ''
+# bol,tipo= ProcesarPalabra(pal,dic,tipo)
+# if bol:
+#     pass
+# else:
+#     print(bol , tipo)
+# print(Definicion(pal))
+# print(dic)
 
