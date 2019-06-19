@@ -2,7 +2,10 @@ from pattern.web import Wiktionary
 import pattern.text.es as patt
 import PySimpleGUI as sg
 def ProcesarPalabra(pal, dic, tipo):
-    #pal = str(input())
+    '''Toma la palabra de internet en Wiktionary, se fija su clasificacion y la compara con la clasificacion
+        del modulo Pattern.es, si las 2 se encontraron en los dos sitios, pregunta si la clasificacion entre ambos sitios
+        dio distinto, en caso afirmativo se agrega al reporte.
+        Si no existe en Wiktionary, este devuelve falso y lo agrega al reporte indicando que no se encontro la palabra'''
     def PalabraWik(pal, dic, tipo):
         '''Va a buscar la palabra a Wiktionary y la califica en verbo, sustantivo o adjetivo segun
         la primer seccion por orden de relevancia, si la palabra no se encuentra en el diccionario de la pagina,
@@ -103,8 +106,8 @@ def ProcesarPalabra(pal, dic, tipo):
         return (False,wik[1])
 
 def Definicion(pal):
-    '''Busca el articulo de la palabra en Wiktionary, selecciona la seccion con el tipo
-    y la devuelve toda como texto plano'''
+    '''Busca el articulo de la palabra en Wiktionary, selecciona la seccion con el tipo, se queda con las definiciones
+    y devuelve todas las que encuentra'''
     wi = Wiktionary(language='es')
     secciones = wi.search(pal).sections
     if(len(secciones)>3):
