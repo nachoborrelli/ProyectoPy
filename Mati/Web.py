@@ -16,7 +16,7 @@ def ProcesarPalabra(pal, dic, tipo):
             sg.Popup('Ingrese otra palabra')
         else:
             print(palabra)
-            if (len(palabra)> 3):
+            if (len(palabra)> 4):
                 seccion2 = str(palabra[3])
                 seccion1 = str(palabra[2])
             else:
@@ -30,7 +30,7 @@ def ProcesarPalabra(pal, dic, tipo):
                 dic['__sustantivos__'].append(pal)
                 tipo = '__sustantivos__'
                 correcto=True
-            elif('Adjetiv' in seccion2) or ('Adjetiv' in seccion1):           #Adjetivo o Forma Adjetiva
+            elif('djetiv' in seccion2) or ('Adjetiv' in seccion1):           #Adjetivo o Forma Adjetiva
                 dic['__adjetivos__'].append(pal)
                 tipo= '__adjetivos__'
                 correcto=True
@@ -129,4 +129,5 @@ def Definicion(pal):
 # else:
 #     print(bol , tipo)
 # print(Definicion(pal))
+# print(dic)
 
