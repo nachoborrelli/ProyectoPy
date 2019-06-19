@@ -1,13 +1,18 @@
+#-----------------------------------------------------------------------------------------#
+# TRABAJO CONFORMADO Y REALIZADO POR ALBERCA AGUSTIN, BORRELLI JUAN IGNACIO, GEBER MATIAS #
+#-----------------------------------------------------------------------------------------#
+
 import PySimpleGUI as sg
 from Mati import Web
 import random
 
 
 def configPalabras(dic_palabras):
+    '''Modulo encargado de procesar toda la informacion relacionada a la configuracion del juego'''
     #------------------------------------ Funciones ------------------------------------
     def borrar_valor(valor,dic_palabras):
-
         '''borra un valor del diccionario de palabras'''
+
         valido=''
         if valor in dic_palabras['__verbos__']:
             dic_palabras['__verbos__'].remove(valor)
@@ -85,12 +90,11 @@ def configPalabras(dic_palabras):
             break
         elif event == '__addbutton__':
             valores = Web.ProcesarPalabra(values['__input__'].lower(), dic_palabras, tipo)
-            print(valores[0])
+            #pos 0 = boolean si se pudo o no #pos 1 el tipo de palabra
             if valores[0] == False:
-                #valores = Web.ProcesarPalabra(values['__input__'], dic_palabras, tipo)
                 pass
             else:
-                ventana_IngVen.FindElement(valores[1]).Update(dic_palabras[valores[1]])       #pos 0 = boolean si se pudo o no #pos 1 el tipo de palabra
+                ventana_IngVen.FindElement(valores[1]).Update(dic_palabras[valores[1]])
             ventana_IngVen.Refresh()
 
         elif event == '__deletebutton__':
@@ -101,6 +105,7 @@ def configPalabras(dic_palabras):
                 sg.PopupError('Palabra no existente', title='')
 
         elif event == 'Aceptar':
+            # corroborar que no se haya equivocado
             if values['__cantverbos__'] == '0' and values['__cantadjetivos__'] == '0' and values['__cantsustantivos__'] == '0':
                 continuar = sg.PopupYesNo('Se eligieron 0 verbos, 0 adjetivos y 0 sustantivos. \n'
                                 'Esto finalizará el juego y perderá todos los datos ingresados.\n'
@@ -113,14 +118,14 @@ def configPalabras(dic_palabras):
             else:
                 break
 
-
-    if values['__cantverbos__'] != '0' and values['__cantadjetivos__'] != '0' and values['__cantsustantivos__'] != '0':
+    if (values['__cantverbos__'] != '0') or (values['__cantadjetivos__'] != '0') or (values['__cantsustantivos__'] != '0'):
         if values['__ayuda__'] == 'Si':                                                         #en caso de que se seleccione ayuda,
             event_ayuda, values_ayuda = window_selectAyuda.Read()
-            if event_ayuda is 'Submit':
+            if event_ayuda is 'Aceptar':
                 values['__ayudalistaPalabras__'] = values_ayuda['__ayudalistaPalabras__']
                 values['__ayudaDefinicion__'] = values_ayuda['__ayudaDefinicion__']
 
+        #generar colores random si no se ingresan
         if values['__verbColorChooser__'] == '':                                                #Generar colores al azar si no son ingresados
             values['__verbColorChooser__'] = '#' + "%06x" % random.randint(0, 0xFFFFFF)
         if values['__adjColorChooser__'] == '':
@@ -128,18 +133,27 @@ def configPalabras(dic_palabras):
         if values['__sustColorChooser__'] == '':
             values['__sustColorChooser__'] = '#' + "%06x" % random.randint(0, 0xFFFFFF)
 
-        valoresInservibles = ['__input__', '__verbos__', '__adjetivos__', '__sustantivos__']       #elimino los valores devueltos por el layout que no me sirven
-        for dato in valoresInservibles:
-            if dato in values.keys():
-                del values[dato]
-
         #convertir valores string a numericos para facilitar el procesamiento luego
         values['__cantsustantivos__'] = int(values['__cantsustantivos__'])
         values['__cantverbos__'] = int(values['__cantverbos__'])
         values['__cantadjetivos__'] = int(values['__cantadjetivos__'])
-        print(values)
+
+        #comprobar que la cantidad pedida de cada tipo no sobrepase la cantidad ingresada
+        if values['__cantsustantivos__'] > len(values['__sustantivos__']):
+            values['__cantsustantivos__'] = len(values['__sustantivos__'])
+        if values['__cantverbos__'] > len(values['__verbos__']):
+            values['__cantverbos__'] = len(values['__verbos__'])
+        if values['__cantadjetivos__'] > len(values['__adjetivos__']):
+            values['__cantadjetivos__'] = len(values['__adjetivos__'])
+
+        # elimino los valores devueltos por el layout que no me sirven
+        valoresInservibles = ['__input__', '__verbos__', '__adjetivos__', '__sustantivos__']
+        for dato in valoresInservibles:
+            if dato in values.keys():
+                del values[dato]
+
+    print(values)
     return values
 
 
 
-#TRABAJO CONFORMADO Y REALIZADO POR ALBERCA AGUSTIN, BORRELLI JUAN IGNACIO, GEBER MATIAS

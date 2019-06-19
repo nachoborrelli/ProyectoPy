@@ -227,6 +227,7 @@ def comprobarPalabra(pintados, orientacion, event):
 
 
 def Comparar (wordDic, palabras_encontradas):
+
     if len(palabras_encontradas['__adjetivos__']) == len(wordDic['__adjetivos__']):
         cantAdj = 0
     else:
@@ -251,18 +252,19 @@ def GenerarListaPalabras(wordDic):
     return lista[:-1]
 
 def randomword_definicion():
+    '''Devuelve definicion de una palabra random que todavia no ha sido marcada.
+        En caso de que no exista ninguna, devuelve un texto especifico'''
     if Comparar(wordDic, palabras_encontradas) != (0,0,0):
         tipo = random.choice(list(wordDic.keys()))
-        while (wordDic[tipo] == []):
+        while (wordDic[tipo] == []) or (len(wordDic[tipo]) == len(palabras_encontradas[tipo])):
             tipo = random.choice(list(wordDic.keys()))
-            print(1)
         randomWord = random.choice(wordDic[tipo])
-        while randomWord in (palabras_encontradas[tipo]):           #falla esto
-            while (wordDic[tipo] == []):
+
+        while randomWord in palabras_encontradas[tipo]:
+            while (wordDic[tipo] == []) or (len(palabras_encontradas[tipo]) == len(wordDic[tipo])):
                 tipo = random.choice(list(wordDic.keys()))
-                print(2)
             randomWord = random.choice(wordDic[tipo])
-            print(tipo,randomWord,3)
+
         texto = Web.Definicion(randomWord)
     else:
         texto = 'No hay mas ayudas disponibles.'
@@ -273,9 +275,9 @@ config_values = {}
 config_values['__verbColorChooser__'] = '#ee5357'
 config_values['__adjColorChooser__'] = '#6df54b'
 config_values['__sustColorChooser__'] = '#5b4ff2'
-config_values['__cantadjetivos__'] = 1
-config_values['__cantsustantivos__'] = 1
-config_values['__cantverbos__'] = 0
+config_values['__cantadjetivos__'] = 5
+config_values['__cantsustantivos__'] = 4
+config_values['__cantverbos__'] = 4
 
 config_values['__ayuda__'] = 'Si'
 config_values['__orientacion__'] = 'Horizontal' #'Horizontal' 'Vertical'
@@ -299,6 +301,10 @@ palabras_encontradas['__adjetivos__'] = []
 palabras_encontradas['__sustantivos__'] = []
 
 #config_values = configPalabras(dic_palabras)  # Levantar configuracion
+
+if config_values['__cantverbos__'] + config_values['__cantadjetivos__'] + config_values['__cantsustantivos__'] == 0:
+    sys.exit()
+
 wordDic = select_words(dic_palabras, config_values['__cantverbos__'],  # Seleccionar palabras a usar
                        config_values['__cantadjetivos__'],
                        config_values['__cantsustantivos__']
@@ -357,8 +363,6 @@ graph = sopa_window.FindElement('_GRAPH_')
 
 # --------------------------------------- Main -------------------------------------------------------------------------
 
-if config_values['__cantverbos__'] + config_values['__cantadjetivos__'] + config_values['__cantsustantivos__'] == 0:
-    sys.exit()
 
 draw_grid(sopa_window, config_values['__orientacion__'], graph, coordenadas, wordDic, config_values['__letras__'])
 Adjs, Verbs, Susts = Comparar(wordDic, palabras_encontradas)
@@ -376,12 +380,12 @@ while True:  # Event Loop
             y = mouse[1] // BOX_SIZE
             punto = (x, y)
             if punto in coordenadas.keys():
-                try:  # Esto no va, hay que ajustar el tamaño de la window.
+                try:
                     Pintar(coordenadas, pintados, graph, punto)
                 except KeyError:
                     pass
             else:
-                try:  # Same con este.
+                try:
                     Despintar(coordenadas, pintados, graph, punto)
                 except KeyError:
                     pass
@@ -396,17 +400,17 @@ while True:  # Event Loop
                     Pintar(coordenadas, pintadosClone, graph, punto, color)
                 palabras_encontradas[clave].append(pal)
                 Adjs, Verbs, Susts = Comparar(wordDic, palabras_encontradas)
-                print('Te faltan encontrar {} adjetivos, {} verbos, {} sustantivos'.format(Adjs, Verbs, Susts))  #?????????????
             else:
                 pintadosClone = pintados.copy()
                 for punto in pintadosClone:
                     Despintar(coordenadas, pintados, graph, punto)
     elif event == 'Verificar':
-        if(Adjs == 0)and (Verbs == 0) and (Susts == 0):
+        if(Adjs == 0) and (Verbs == 0) and (Susts == 0):
             sg.Popup('GANASTE FELICITACIONES!!!!!')
             break
         else:
-            sg.Popup('Todavia te faltan {} palabras!'.format(Adjs + Verbs + Susts))
+            sg.Popup('Todavia faltan encontrar {} adjetivos, {} verbos, y {} sustantivos!\n '.format(Adjs, Verbs, Susts),
+                     'Si quieres terminar de todas formas apreta "Salir" en la pantalla principal')
     elif event == '__helpButton__':
-            sopa_window.FindElement('__helpText__').Update(randomword_definicion())
+        sopa_window.FindElement('__helpText__').Update(randomword_definicion())
 

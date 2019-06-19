@@ -1,3 +1,7 @@
+#-----------------------------------------------------------------------------------------#
+# TRABAJO CONFORMADO Y REALIZADO POR ALBERCA AGUSTIN, BORRELLI JUAN IGNACIO, GEBER MATIAS #
+#-----------------------------------------------------------------------------------------#
+
 import sys
 import PySimpleGUI as sg
 import random
@@ -13,14 +17,20 @@ BOX_SIZE = 25  # Tamaño de las casillas
 # --------------------------------------- Functions ---------------------------------------------------------------------
 
 def bienvenida():
+    '''Pantalla de bienvenida'''
     layout_bienvenido = [
         [sg.Image(filename='bienvenido_image.png')]
-
-    ]
-
+                        ]
     bienvenido = sg.Window('Bienvenido!', layout=layout_bienvenido)
     event, values = bienvenido.Read(timeout=4000)
 
+def ganar():
+    '''Pantalla de juego ganado'''
+    layout_ganar = [
+        [sg.Image(filename='ganaste.png')]
+    ]
+    ganarwindow = sg.Window('Bien hecho!', layout=layout_ganar, no_titlebar=True)
+    event, values = ganarwindow.Read(timeout=4000)
 
 def select_words(dic_palabras, cantverbos, cantadj, cantsust):
     wordDic = {}
@@ -252,6 +262,25 @@ def GenerarListaPalabras(wordDic):
             lista.append(palabra.capitalize())
             lista.append('-')
     return lista[:-1]
+
+def randomword_definicion():
+    '''Devuelve definicion de una palabra random que todavia no ha sido marcada.
+        En caso de que no exista ninguna, devuelve un texto especifico'''
+    if Comparar(wordDic, palabras_encontradas) != (0,0,0):
+        tipo = random.choice(list(wordDic.keys()))
+        while (wordDic[tipo] == []) or (len(wordDic[tipo]) == len(palabras_encontradas[tipo])):
+            tipo = random.choice(list(wordDic.keys()))
+        randomWord = random.choice(wordDic[tipo])
+
+        while randomWord in palabras_encontradas[tipo]:
+            while (wordDic[tipo] == []) or (len(palabras_encontradas[tipo]) == len(wordDic[tipo])):
+                tipo = random.choice(list(wordDic.keys()))
+            randomWord = random.choice(wordDic[tipo])
+
+        texto = Web.Definicion(randomWord)
+    else:
+        texto = 'No hay mas ayudas disponibles.'
+    return texto
 # ------------------------------------ Estructuras,Config y bienvenida ---------------------------------------------------------------------
 # bienvenida()
 
@@ -374,19 +403,13 @@ while True:  # Event Loop
                     Despintar(coordenadas, pintados, graph, punto)
     elif event == 'Verificar':
         if(Adjs == 0) and (Verbs == 0) and (Susts == 0):
-            sg.Popup('GANASTE FELICITACIONES!!!!!')
+            ganar()
             break
         else:
             sg.Popup('Todavia faltan encontrar {} adjetivos, {} verbos, y {} sustantivos!\n '.format(Adjs, Verbs, Susts),
                      'Si quieres terminar de todas formas apreta "Salir" en la pantalla principal')
     elif event == '__helpButton__':
-        sopa_window.FindElement('__helpText__').Update('Busqueda en proceso, espere un momento.')
-        eleccionRandom = random.choice(random.choice(list(wordDic.values())))
-        encontradas = list(palabras_encontradas.values())
-        encontradas = encontradas[0] + encontradas[1] + encontradas[2]
-        while eleccionRandom in encontradas:
-            eleccionRandom = random.choice(random.choice(list(wordDic.values())))
-        sopa_window.FindElement('__helpText__').Update(Web.Definicion(eleccionRandom))    #elegir random word y tirar la definicion
+        sopa_window.FindElement('__helpText__').Update(randomword_definicion())
 
 
 
