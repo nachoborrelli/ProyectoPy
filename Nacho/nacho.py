@@ -379,9 +379,9 @@ while True:  # Event Loop
     elif event == '__helpButton__':
         sopa_window.FindElement('__helpText__').Update('Busqueda en proceso, espere un momento.')
         eleccionRandom = random.choice(random.choice(list(wordDic.values())))
-        print(palabras_encontradas)
-        while eleccionRandom in palabras_encontradas:
-            print ('Toy')
+        encontradas= list(palabras_encontradas.values())
+        encontradas = encontradas[0] + encontradas[1] + encontradas[2]
+        while eleccionRandom in encontradas:
             eleccionRandom = random.choice(random.choice(list(wordDic.values())))
         sopa_window.FindElement('__helpText__').Update(Web.Definicion(eleccionRandom))    #elegir random word y tirar la definicion
 
