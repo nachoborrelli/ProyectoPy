@@ -115,6 +115,8 @@ def Definicion(pal):
         definicion = etimologia
 
     return definicion
+
+#TRABAJO CONFORMADO Y REALIZADO POR ALBERCA AGUSTIN, BORRELLI JUAN IGNACIO, GEBER MATIAS
 # dic ={}
 # dic['__verbos__'] = []
 # dic['__adjetivos__'] = []

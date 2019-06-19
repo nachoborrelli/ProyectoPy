@@ -137,3 +137,7 @@ def configPalabras(dic_palabras):
     values['__cantadjetivos__'] = int(values['__cantadjetivos__'])
     print(values)
     return values
+
+
+
+#TRABAJO CONFORMADO Y REALIZADO POR ALBERCA AGUSTIN, BORRELLI JUAN IGNACIO, GEBER MATIAS

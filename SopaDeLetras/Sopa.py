@@ -357,6 +357,17 @@ while True:  # Event Loop
             pintadosClone = pintados.copy()  # si no haces copias: RuntimeError: dictionary changed size during iteration (??)
             for punto in pintadosClone:
                 Despintar(coordenadas, pintados, graph, punto)
+    elif (event == 'Verificar'):
+        if(Adjs == 0)and (Verbs == 0) and (Susts == 0):
+            sg.Popup('GANASTE FELICITACIONES!!!!!')
+            break
     elif event == '__helpButton__':
         sopa_window.FindElement('__helpText__').Update('Busqueda en proceso, espere un momento.')
         sopa_window.FindElement('__helpText__').Update(Web.Definicion(random.choice(random.choice(list(wordDic.values())))))    #elegir random word y tirar la definicion
+
+
+
+
+
+
+#TRABAJO CONFORMADO Y REALIZADO POR ALBERCA AGUSTIN, BORRELLI JUAN IGNACIO, GEBER MATIAS
