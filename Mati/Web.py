@@ -16,8 +16,12 @@ def ProcesarPalabra(pal, dic, tipo):
             sg.Popup('Ingrese otra palabra')
         else:
             print(palabra)
-            seccion2 = str(palabra[3])
-            seccion1 = str(palabra[2])
+            if (len(palabra)> 3):
+                seccion2 = str(palabra[3])
+                seccion1 = str(palabra[2])
+            else:
+                seccion2 = str(palabra[2])
+                seccion1 = str(palabra[1])
             if ('Verb' in seccion2) or ('Verb' in seccion1):                  #Verbo o Forma Verbal
                 dic['__verbos__'].append(pal)
                 tipo= '__verbos__'
@@ -46,7 +50,7 @@ def ProcesarPalabra(pal, dic, tipo):
             tipo = '__sustantivos__'
             correcto=True
         elif ('JJ' in palabra):
-            tipo = '_adjetivos__'
+            tipo = '__adjetivos__'
             correcto=True
         else:
             tipo = ' '
@@ -58,17 +62,20 @@ def ProcesarPalabra(pal, dic, tipo):
     pat = PalabraPattern(pal)
     if wik[0] and pat[0]:
         if (wik[1] != pat[1]):
+            print(wik[1], pat[1], 'valores')
             try:
                 archivo = open('Reporte.txt', 'a')
             except(FileNotFoundError):
                 archivo = open('Reporte.txt','x')
                 archivo.write('La clasificacion de la palabra {} no coincide entre Wiktionary y Pattern. En wiktionary es: {}, y en Patter es: {}. '.format(
                         pal, wik[1], pat[1]))
-                #archivo.write('/n')
+                archivo.write('\n')
+                print('entra aca1')
             else:
                 archivo.write('La clasificacion de la palabra {} no coincide entre Wiktionary y Pattern. En wiktionary es: {}, y en Patter es: {}. '.format(
                         pal, wik[1], pat[1]))
-                archivo.write('/n')
+                archivo.write('\n')
+                print('entra aca2')
             archivo.close()
         return (True,wik[1])
     else:
@@ -77,13 +84,13 @@ def ProcesarPalabra(pal, dic, tipo):
                 archivo = open('Reporte.txt', 'a')
             except(FileNotFoundError):
                 archivo = open('Reporte.txt','x')
-                archivo.write('La clasificacion de la palabra {} no coincide entre Wiktionary y Pattern. En wiktionary es: {}, y en Patter es: {}. '.format(
-                        pal, wik[1], pat[1]))
-                archivo.write('/n')
+                archivo.write(' la palabra {} no se encuentra en Wiktionary . '.format(pal))
+                archivo.write('\n')
+                print('entra aca3')
             else:
-                archivo.write('La clasificacion de la palabra {} no coincide entre Wiktionary y Pattern. En wiktionary es: {}, y en Patter es: {}. '.format(
-                        pal, wik[1], pat[1]))
-                archivo.write('/n')
+                archivo.write(' la palabra {} no se encuentra en Wiktionary  . '.format(pal))
+                archivo.write('\n')
+                print('entra aca4')
             archivo.close()
         return (False,wik[1])
 
@@ -92,7 +99,10 @@ def Definicion(pal):
     y la devuelve toda como texto plano'''
     wi = Wiktionary(language='es')
     secciones = wi.search(pal).sections
-    seccion = secciones[3]
+    if(len(secciones)> 3):
+        seccion = secciones[2]
+    else:
+        seccion = secciones[3]
     etimologia = wi.MediaWikiSection.plaintext(seccion)  # ERROR NO PUEDO ACCEDER A UNA POSICION DE UN TEXTO PLANO
 
     for letra in range(len(etimologia)):
@@ -105,4 +115,16 @@ def Definicion(pal):
         definicion = etimologia
 
     return definicion
+# dic ={}
+# dic['__verbos__'] = []
+# dic['__adjetivos__'] = []
+# dic['__sustantivos__'] = []
+# pal = str(input('ingrese la palabra : '))
+# tipo= ''
+# bol,tipo= ProcesarPalabra(pal,dic,tipo)
+# if bol:
+#     pass
+# else:
+#     print(bol , tipo)
+# print(Definicion(pal))
 
