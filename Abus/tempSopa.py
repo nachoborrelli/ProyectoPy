@@ -227,7 +227,6 @@ def comprobarPalabra(pintados, orientacion, event):
 
 
 def Comparar (wordDic, palabras_encontradas):
-    print(wordDic)
     if len(palabras_encontradas['__adjetivos__']) == len(wordDic['__adjetivos__']):
         cantAdj = 0
     else:
@@ -251,25 +250,32 @@ def GenerarListaPalabras(wordDic):
             lista.append('-')
     return lista[:-1]
 
-def randomword_noseleccionada():
+def randomword_definicion():
     if Comparar(wordDic, palabras_encontradas) != (0,0,0):
         tipo = random.choice(list(wordDic.keys()))
+        while (wordDic[tipo] == []):
+            tipo = random.choice(list(wordDic.keys()))
+            print(1)
         randomWord = random.choice(wordDic[tipo])
-        while randomWord in palabras_encontradas[tipo]:
-            tipo = random.choice(list(wordDic.values()))
+        while randomWord in (palabras_encontradas[tipo]):           #falla esto
+            while (wordDic[tipo] == []):
+                tipo = random.choice(list(wordDic.keys()))
+                print(2)
             randomWord = random.choice(wordDic[tipo])
+            print(tipo,randomWord,3)
+        texto = Web.Definicion(randomWord)
     else:
-        randomWord = 'No hay mas ayudas.'
-    return randomWord
+        texto = 'No hay mas ayudas disponibles.'
+    return texto
 # ------------------------------------ Estructuras,Config y bienvenida ---------------------------------------------------------------------
 # bienvenida()
 config_values = {}
 config_values['__verbColorChooser__'] = '#ee5357'
 config_values['__adjColorChooser__'] = '#6df54b'
 config_values['__sustColorChooser__'] = '#5b4ff2'
-config_values['__cantadjetivos__'] = 5
-config_values['__cantsustantivos__'] = 4
-config_values['__cantverbos__'] = 5
+config_values['__cantadjetivos__'] = 1
+config_values['__cantsustantivos__'] = 1
+config_values['__cantverbos__'] = 0
 
 config_values['__ayuda__'] = 'Si'
 config_values['__orientacion__'] = 'Horizontal' #'Horizontal' 'Vertical'
@@ -402,5 +408,5 @@ while True:  # Event Loop
         else:
             sg.Popup('Todavia te faltan {} palabras!'.format(Adjs + Verbs + Susts))
     elif event == '__helpButton__':
-        sopa_window.FindElement('__helpText__').Update(Web.Definicion(randomword_noseleccionada()))
+            sopa_window.FindElement('__helpText__').Update(randomword_definicion())
 

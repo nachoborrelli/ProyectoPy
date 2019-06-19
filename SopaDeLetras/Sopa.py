@@ -268,6 +268,9 @@ palabras_encontradas['__sustantivos__'] = []
 
 config_values = configPalabras(dic_palabras)  # Levantar configuracion
 
+if config_values['__cantverbos__'] + config_values['__cantadjetivos__'] + config_values['__cantsustantivos__'] == 0:
+    sys.exit()
+
 wordDic = select_words(dic_palabras, config_values['__cantverbos__'],  # Seleccionar palabras a usar
                        config_values['__cantadjetivos__'],
                        config_values['__cantsustantivos__']
@@ -326,8 +329,6 @@ graph = sopa_window.FindElement('_GRAPH_')
 
 # --------------------------------------- Main -------------------------------------------------------------------------
 
-if config_values['__cantverbos__'] + config_values['__cantadjetivos__'] + config_values['__cantsustantivos__'] == 0:
-    sys.exit()
 
 draw_grid(sopa_window, config_values['__orientacion__'], graph, coordenadas, wordDic, config_values['__letras__'])
 Adjs, Verbs, Susts = Comparar(wordDic, palabras_encontradas)

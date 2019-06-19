@@ -112,31 +112,32 @@ def configPalabras(dic_palabras):
                     pass
             else:
                 break
-        print(event)
 
-    if values['__ayuda__'] == 'Si':                                                         #en caso de que se seleccione ayuda,
-        event_ayuda, values_ayuda = window_selectAyuda.Read()
-        if event_ayuda is 'Submit':
-            values['__ayudalistaPalabras__'] = values_ayuda['__ayudalistaPalabras__']
-            values['__ayudaDefinicion__'] = values_ayuda['__ayudaDefinicion__']
 
-    if values['__verbColorChooser__'] == '':                                                #Generar colores al azar si no son ingresados
-        values['__verbColorChooser__'] = '#' + "%06x" % random.randint(0, 0xFFFFFF)
-    if values['__adjColorChooser__'] == '':
-        values['__adjColorChooser__'] = '#' + "%06x" % random.randint(0, 0xFFFFFF)
-    if values['__sustColorChooser__'] == '':
-        values['__sustColorChooser__'] = '#' + "%06x" % random.randint(0, 0xFFFFFF)
+    if values['__cantverbos__'] != '0' and values['__cantadjetivos__'] != '0' and values['__cantsustantivos__'] != '0':
+        if values['__ayuda__'] == 'Si':                                                         #en caso de que se seleccione ayuda,
+            event_ayuda, values_ayuda = window_selectAyuda.Read()
+            if event_ayuda is 'Submit':
+                values['__ayudalistaPalabras__'] = values_ayuda['__ayudalistaPalabras__']
+                values['__ayudaDefinicion__'] = values_ayuda['__ayudaDefinicion__']
 
-    valoresInservibles = ['__input__', '__verbos__', '__adjetivos__', '__sustantivos__']       #elimino los valores devueltos por el layout que no me sirven
-    for dato in valoresInservibles:
-        if dato in values.keys():
-            del values[dato]
+        if values['__verbColorChooser__'] == '':                                                #Generar colores al azar si no son ingresados
+            values['__verbColorChooser__'] = '#' + "%06x" % random.randint(0, 0xFFFFFF)
+        if values['__adjColorChooser__'] == '':
+            values['__adjColorChooser__'] = '#' + "%06x" % random.randint(0, 0xFFFFFF)
+        if values['__sustColorChooser__'] == '':
+            values['__sustColorChooser__'] = '#' + "%06x" % random.randint(0, 0xFFFFFF)
 
-    #convertir valores string a numericos para facilitar el procesamiento luego
-    values['__cantsustantivos__'] = int(values['__cantsustantivos__'])
-    values['__cantverbos__'] = int(values['__cantverbos__'])
-    values['__cantadjetivos__'] = int(values['__cantadjetivos__'])
-    print(values)
+        valoresInservibles = ['__input__', '__verbos__', '__adjetivos__', '__sustantivos__']       #elimino los valores devueltos por el layout que no me sirven
+        for dato in valoresInservibles:
+            if dato in values.keys():
+                del values[dato]
+
+        #convertir valores string a numericos para facilitar el procesamiento luego
+        values['__cantsustantivos__'] = int(values['__cantsustantivos__'])
+        values['__cantverbos__'] = int(values['__cantverbos__'])
+        values['__cantadjetivos__'] = int(values['__cantadjetivos__'])
+        print(values)
     return values
 
 
