@@ -9,12 +9,13 @@ config_values['__cantsustantivos__'] = 4
 config_values['__cantverbos__'] = 4
 
 config_values['__ayuda__'] = 'No'
-config_values['__orientacion__'] = 'Horizontal' #'Vertical'
-config_values['__letras__'] = 'Mayúsculas'      #'Minúsculas'
+config_values['__orientacion__'] = 'Horizontal' #'Horizontal' 'Vertical'
+config_values['__letras__'] = 'Minúsculas'      #'Minúsculas' 'Mayúsculas'
 
 #si tiene ayuda:
 config_values['__ayudalistaPalabras__'] = True
 config_values['__ayudaDefinicion__'] = True
+
 
 dic_palabras = {}
 dic_palabras['__verbos__'] = []  # dic de palabras clasificadas por tipo
@@ -26,3 +27,7 @@ dic_palabras['__verbos__'] = ['cagar','comer', 'coger', 'respirar' , 'caminar','
 dic_palabras['__adjetivos__'] = ['lindo', 'rojo' , 'feo' , 'monótono' ,'extraordinario','verde', 'amarillo' , 'bajo' , 'quebrado' ,'estupendo']
 dic_palabras['__sustantivos__'] = ['dinosaurio', 'embotellamiento', 'termotanque' , 'llamas','madera', 'burlete', 'bañera' , 'computadora']
 
+palabras_encontradas = {}
+palabras_encontradas['__verbos__'] = []  # dic de palabras encontradas por tipo
+palabras_encontradas['__adjetivos__'] = []
+palabras_encontradas['__sustantivos__'] = []

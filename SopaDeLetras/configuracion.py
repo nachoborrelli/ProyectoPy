@@ -80,8 +80,10 @@ def configPalabras(dic_palabras):
     while True:
         event, values = ventana_IngVen.Read()
         tipo = ''
-        if event == '__addbutton__':
-            valores = Web.ProcesarPalabra(values['__input__'], dic_palabras, tipo)
+        if event == None:
+            break
+        elif event == '__addbutton__':
+            valores = Web.ProcesarPalabra(values['__input__'].lower(), dic_palabras, tipo)
             print(valores[0])
             if valores[0] == False:
                 #valores = Web.ProcesarPalabra(values['__input__'], dic_palabras, tipo)
@@ -92,9 +94,9 @@ def configPalabras(dic_palabras):
 
         elif event == '__deletebutton__':
             tipo_borrado = borrar_valor(values['__input__'], dic_palabras)
-            ventana_IngVen.FindElement(tipo_borrado).Update(dic_palabras[tipo_borrado])
-            ventana_IngVen.Refresh()
-            if tipo_borrado == '':                                           #Chequear que la palabra a eliminar sea valida
+            if tipo_borrado != '':                              #Chequear que la palabra a eliminar sea valida
+                ventana_IngVen.FindElement(tipo_borrado).Update(dic_palabras[tipo_borrado])
+            else:
                 sg.PopupError('Palabra no existente',title='')
 
         elif event == 'Aceptar':
@@ -105,9 +107,12 @@ def configPalabras(dic_palabras):
                                 title='Peligro',font=('Helvetica',9,'bold'),button_color=('#000000','#ff1919'))
                 if continuar == 'Yes':
                     break
-                pass
+                else:
+                    pass
+            else:
+                break
+        print(event)
 
-    ventana_IngVen.Refresh()
     if values['__ayuda__'] == 'Si':                                                         #en caso de que se seleccione ayuda,
         event_ayuda, values_ayuda = window_selectAyuda.Read()
         if event_ayuda is 'Submit':

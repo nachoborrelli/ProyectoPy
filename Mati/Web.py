@@ -9,6 +9,7 @@ def ProcesarPalabra(pal, dic, tipo):
         se debera ingresar otra'''
         w = Wiktionary(language='es')
         correcto=False
+        pal.lower()
         try:
             palabra = list(w.search(pal).sections)
         except(AttributeError):
@@ -34,6 +35,7 @@ def ProcesarPalabra(pal, dic, tipo):
     def PalabraPattern(pal):
         '''Busca la palabra en el pattern y la califica segun su tipo, si no es un verbo, sustantivo o adjetivo, se debera ingresar otra.
             TENER EN CUENTA  QUE SI LA PALABRA NO EXISTE EL MODULO PATTERN LO TOMA COMO SUSTANTIVO'''
+        pal.lower()
         palabra = patt.parse(pal)
         correcto=False
         print(palabra)
@@ -50,7 +52,6 @@ def ProcesarPalabra(pal, dic, tipo):
             tipo = ' '
             print('Ingrese otra Palabra')
         return correcto,tipo
-
 
 
     wik = PalabraWik(pal, dic, tipo)

@@ -72,8 +72,14 @@ def calc_cantPalabrasSide(wordDic):
         cant_palabras += 2
     return cant_palabras
 
+def convertir_UpperLower(palabra,letras):
+    if letras == 'Mayúsculas':
+        palabra = palabra.upper()
+    else:
+        palabra = palabra.lower()
+    return palabra
 
-def draw_grid(window, orientacion, graph, coordenadas, wordDic):
+def draw_grid(window, orientacion, graph, coordenadas, wordDic, letras):
     ''' Dibuja con letras random (POR AHORA) la matriz. A su vez, guarda en un diccionario auxiliar
     con las cordenadas como clave y su letra como valor.'''
 
@@ -87,11 +93,14 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
     def rellenarConLetrasRandom(lado1, lado2):
         for col in range(lado1):  # Agrego letras random en las posiciones libres.
             for row in range(lado2):
-                letra = random.choice(string.ascii_uppercase)  # Me guardo una letra random
+                if letras == 'Mayúsculas':
+                    letra = random.choice(string.ascii_uppercase)  # Me guardo una letra random
+                else:
+                    letra = random.choice(string.ascii_lowercase)
                 if (col, row) not in coordenadas:
                     graph.DrawText('{}'.format(letra), (col * BOX_SIZE + 15, row * BOX_SIZE + 15),
                                    font='Courier 25')  # Escribo la letra.
-                    coordenadas[(col, row)] = letra  # Generacion del diccionario auxiliar.
+                    coordenadas[(col, row)] = letra.lower()  # Generacion del diccionario auxiliar.
 
     # calcular tamaño de la grilla
     palMax = calc_palMaxSide()
@@ -101,6 +110,7 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
         crearLineas(palMax, cant_palabras)
         for lista in wordDic:
             for palabra in wordDic[lista]:
+                palabra = convertir_UpperLower(palabra, letras)
                 while True:
                     ok = True
                     x = random.randrange(0, palMax - 1)
@@ -122,6 +132,7 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic):
         crearLineas(cant_palabras, palMax)
         for lista in wordDic:
             for palabra in wordDic[lista]:
+                palabra = convertir_UpperLower(palabra, letras)
                 while True:
                     ok = True
                     x = random.randrange(0, cant_palabras)  # Cant filas
@@ -191,6 +202,8 @@ def comprobarPalabra(pintados, orientacion, event):
     if palCorrecta == True:
         for key in keys:
             pal = pal + pintados[key]
+
+        pal = pal.lower()
 
         clave = '__' + event + 's' + '__'
         clave = clave.lower()
@@ -304,7 +317,7 @@ graph = sopa_window.FindElement('_GRAPH_')
 if config_values['__cantverbos__'] + config_values['__cantadjetivos__'] + config_values['__cantsustantivos__'] == 0:
     sys.exit()
 
-draw_grid(sopa_window, config_values['__orientacion__'], graph, coordenadas,wordDic)
+draw_grid(sopa_window, config_values['__orientacion__'], graph, coordenadas, wordDic, config_values['__letras__'])
 
 while True:  # Event Loop
     event, values = sopa_window.Read()
