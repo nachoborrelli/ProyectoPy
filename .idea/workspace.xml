@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3b278a84-e50d-4073-9a81-db5542bccd79" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Nacho/nacho.py" beforeDir="false" afterPath="$PROJECT_DIR$/Nacho/nacho.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +38,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SopaDeLetras/Sopa.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
-              <caret line="388" lean-forward="true" selection-start-line="388" selection-end-line="388" />
+            <state relative-caret-position="346">
+              <caret line="385" lean-forward="true" selection-start-line="385" selection-end-line="385" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -51,7 +51,7 @@
         <entry file="file://$PROJECT_DIR$/Nacho/nacho.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="227">
-              <caret line="381" column="34" selection-start-line="381" selection-start-column="34" selection-end-line="381" selection-end-column="34" />
+              <caret line="384" column="81" lean-forward="true" selection-start-line="384" selection-start-column="81" selection-end-line="384" selection-end-column="81" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -245,11 +245,40 @@
       <option name="project" value="LOCAL" />
       <updated>1560957377985</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Sopa (1.7.6)">
+      <created>1560962086491</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1560962086491</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Sopa (1.7.7)">
+      <created>1560962130575</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1560962130575</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Sopa (1.7.8)">
+      <created>1560962181256</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1560962181256</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Sopa (1.7.8)&#10;Nacho update">
+      <created>1560963946733</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1560963946733</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.12946428" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -293,7 +322,10 @@
     <MESSAGE value="Sopa (1.7)" />
     <MESSAGE value="Sopa (1.7.1)" />
     <MESSAGE value="Sopa (1.7.6)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sopa (1.7.6)" />
+    <MESSAGE value="Sopa (1.7.7)" />
+    <MESSAGE value="Sopa (1.7.8)" />
+    <MESSAGE value="Sopa (1.7.8)&#10;Nacho update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sopa (1.7.8)&#10;Nacho update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -357,8 +389,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SopaDeLetras/Sopa.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="388" lean-forward="true" selection-start-line="388" selection-end-line="388" />
+        <state relative-caret-position="346">
+          <caret line="385" lean-forward="true" selection-start-line="385" selection-end-line="385" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -368,7 +400,7 @@
     <entry file="file://$PROJECT_DIR$/Nacho/nacho.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="227">
-          <caret line="381" column="34" selection-start-line="381" selection-start-column="34" selection-end-line="381" selection-end-column="34" />
+          <caret line="384" column="81" lean-forward="true" selection-start-line="384" selection-start-column="81" selection-end-line="384" selection-end-column="81" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
