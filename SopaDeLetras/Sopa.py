@@ -345,12 +345,12 @@ while True:  # Event Loop
             y = mouse[1] // BOX_SIZE
             punto = (x, y)
             if punto in coordenadas.keys():
-                try:  # Esto no va, hay que ajustar el tamaño de la window.
+                try:
                     Pintar(coordenadas, pintados, graph, punto)
                 except KeyError:
                     pass
             else:
-                try:  # Same con este.
+                try:
                     Despintar(coordenadas, pintados, graph, punto)
                 except KeyError:
                     pass
@@ -365,22 +365,25 @@ while True:  # Event Loop
                     Pintar(coordenadas, pintadosClone, graph, punto, color)
                 palabras_encontradas[clave].append(pal)
                 Adjs, Verbs, Susts = Comparar(wordDic, palabras_encontradas)
-                print('Te faltan encontrar {} adjetivos, {} verbos, {} sustantivos'.format(Adjs, Verbs, Susts))  #?????????????
             else:
                 pintadosClone = pintados.copy()
                 for punto in pintadosClone:
                     Despintar(coordenadas, pintados, graph, punto)
     elif event == 'Verificar':
-        if(Adjs == 0)and (Verbs == 0) and (Susts == 0):
+        if(Adjs == 0) and (Verbs == 0) and (Susts == 0):
             sg.Popup('GANASTE FELICITACIONES!!!!!')
             break
         else:
-            sg.Popup('Todavia te faltan {} palabras!'.format(Adjs + Verbs + Susts))
+            sg.Popup('Todavia faltan encontrar {} adjetivos, {} verbos, y {} sustantivos!\n '.format(Adjs, Verbs, Susts),
+                     'Si quieres terminar de todas formas apreta "Salir" en la pantalla principal')
     elif event == '__helpButton__':
         sopa_window.FindElement('__helpText__').Update('Busqueda en proceso, espere un momento.')
-        sopa_window.FindElement('__helpText__').Update(Web.Definicion(random.choice(random.choice(list(wordDic.values())))))    #elegir random word y tirar la definicion
-
-
+        eleccionRandom = random.choice(random.choice(list(wordDic.values())))
+        encontradas = list(palabras_encontradas.values())
+        encontradas = encontradas[0] + encontradas[1] + encontradas[2]
+        while eleccionRandom in encontradas:
+            eleccionRandom = random.choice(random.choice(list(wordDic.values())))
+        sopa_window.FindElement('__helpText__').Update(Web.Definicion(eleccionRandom))    #elegir random word y tirar la definicion
 
 
 

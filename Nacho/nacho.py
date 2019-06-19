@@ -345,12 +345,12 @@ while True:  # Event Loop
             y = mouse[1] // BOX_SIZE
             punto = (x, y)
             if punto in coordenadas.keys():
-                try:  # Esto no va, hay que ajustar el tamaño de la window.
+                try:
                     Pintar(coordenadas, pintados, graph, punto)
                 except KeyError:
                     pass
             else:
-                try:  # Same con este.
+                try:
                     Despintar(coordenadas, pintados, graph, punto)
                 except KeyError:
                     pass
@@ -385,8 +385,6 @@ while True:  # Event Loop
             eleccionRandom = random.choice(random.choice(list(wordDic.values())))
         sopa_window.FindElement('__helpText__').Update(Web.Definicion(eleccionRandom))    #elegir random word y tirar la definicion
 
-
- #Cambiar submit
 
 
 # TRABAJO CONFORMADO Y REALIZADO POR ALBERCA AGUSTIN, BORRELLI JUAN IGNACIO, GEBER MATIAS
