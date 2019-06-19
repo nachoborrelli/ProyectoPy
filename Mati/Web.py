@@ -15,12 +15,6 @@ def ProcesarPalabra(pal, dic, tipo):
         except(AttributeError):
             sg.Popup('Ingrese otra palabra')
         else:
-            # if (len(palabra)>4):
-            #     seccion2 = str(palabra[3])
-            #     #seccion1 = str(palabra[2])
-            # else:
-            #     seccion2 = str(palabra[2])
-            #     #seccion1 = str(palabra[1])
             print(palabra)
             if(pal in dic['__verbos__']) or (pal in dic['__sustantivos__']) or (pal in dic['__adjetivos__']):
                 pass
