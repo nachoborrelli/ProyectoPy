@@ -252,8 +252,8 @@ def GenerarListaPalabras(wordDic):
     return lista[:-1]
 
 def randomword_noseleccionada():
-    if Comparar(wordDic, palabras_encontradas) == (0,0,0):
-        tipo = random.choice(list(wordDic.values()))
+    if Comparar(wordDic, palabras_encontradas) != (0,0,0):
+        tipo = random.choice(list(wordDic.keys()))
         randomWord = random.choice(wordDic[tipo])
         while randomWord in palabras_encontradas[tipo]:
             tipo = random.choice(list(wordDic.values()))
@@ -402,6 +402,6 @@ while True:  # Event Loop
         else:
             sg.Popup('Todavia te faltan {} palabras!'.format(Adjs + Verbs + Susts))
     elif event == '__helpButton__':
-        sopa_window.FindElement('__helpText__').Update('Busqueda en proceso, espere un momento.')
-        sopa_window.FindElement('__helpText__').Update(Web.Definicion(random.choice(random.choice(list(wordDic.values())))))    #elegir random word y tirar la definicion
+        sopa_window.FindElement('__helpText__').Update(Web.Definicion(randomword_noseleccionada()))
+
 
