@@ -50,17 +50,17 @@ def configPalabras(dic_palabras):
 
     Config = [
         [sg.Text(' ' * 43), sg.Text('Ingrese de a una las palabras a utilizar (sin espacios en blanco)', font=('Helvetica', 11))],
-        [sg.Text(' ' * 40), sg.Input(do_not_clear=False,key='__input__'),
-         sg.Submit('Agregar',key='__addbutton__'), sg.Button('Eliminar',key='__deletebutton__')],
+        [sg.Text(' ' * 40), sg.Input(do_not_clear=False, key='__input__'),
+         sg.Submit('Agregar', key='__addbutton__'), sg.Button('Eliminar', key='__deletebutton__')],
         [sg.Text('_' * 113)],
         [sg.Text('Palabras ingresadas', font=('Helvetica', 13))],
         [sg.Column(columna_verbos), sg.Column(columna_adj), sg.Column(columna_sust)],
         [sg.Text('_' * 113)],
-        [sg.Text('Ayuda'), sg.InputOptionMenu(('Si' , 'No'),key='__ayuda__'),
-         sg.Text('Orientacion'), sg.InputOptionMenu(('Horizontal', 'Vertical'),key='__orientacion__'),
-         sg.Text('Letras'), sg.InputOptionMenu(('Mayúsculas','Minúsculas'),key='__letras__'),
+        [sg.Text('Ayuda'), sg.InputOptionMenu(('Si', 'No'), key='__ayuda__'),
+         sg.Text('Orientacion'), sg.InputOptionMenu(('Horizontal', 'Vertical'), key='__orientacion__'),
+         sg.Text('Letras'), sg.InputOptionMenu(('Mayúsculas','Minúsculas'), key='__letras__'),
          sg.Text('Tipografia'), sg.InputCombo(values=('Courier', 'Helvetica', 'Times', 'Arial', 'Comic', 'Verdana'), size =(15, 1), key='__tipografia__'),
-         sg.Text(' ' *5),
+         sg.Text(' ' * 5),
          sg.Ok('Aceptar', button_color=('white', '#475841'))]
 
     ]
@@ -69,7 +69,7 @@ def configPalabras(dic_palabras):
         [sg.Text('Seleccione las ayudas a usar')],
         [sg.Checkbox('Definicion de palabra', key='__ayudaDefinicion__', default=True),
          sg.Checkbox('Lista de Palabras', key='__ayudalistaPalabras__', default=True)],
-        [sg.Submit()],
+        [sg.Submit('Aceptar')],
     ]
 
 
@@ -101,7 +101,7 @@ def configPalabras(dic_palabras):
                 sg.PopupError('Palabra no existente', title='')
 
         elif event == 'Aceptar':
-            if values['__cantverbos__']=='0' and values['__cantadjetivos__'] == '0' and values['__cantsustantivos__'] == '0':
+            if values['__cantverbos__'] == '0' and values['__cantadjetivos__'] == '0' and values['__cantsustantivos__'] == '0':
                 continuar = sg.PopupYesNo('Se eligieron 0 verbos, 0 adjetivos y 0 sustantivos. \n'
                                 'Esto finalizará el juego y perderá todos los datos ingresados.\n'
                                 'Desea continuar?',
@@ -127,7 +127,7 @@ def configPalabras(dic_palabras):
     if values['__sustColorChooser__'] == '':
         values['__sustColorChooser__'] = '#' + "%06x" % random.randint(0, 0xFFFFFF)
 
-    valoresInservibles = ['__input__','__verbos__','__adjetivos__','__sustantivos__']       #elimino los valores devueltos por el layout que no me sirven
+    valoresInservibles = ['__input__', '__verbos__', '__adjetivos__', '__sustantivos__']       #elimino los valores devueltos por el layout que no me sirven
     for dato in valoresInservibles:
         if dato in values.keys():
             del values[dato]
