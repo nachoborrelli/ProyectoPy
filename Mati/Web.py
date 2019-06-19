@@ -125,17 +125,17 @@ def Definicion(pal):
     return definicion
 
 #TRABAJO CONFORMADO Y REALIZADO POR ALBERCA AGUSTIN, BORRELLI JUAN IGNACIO, GEBER MATIAS
-dic ={}
-dic['__verbos__'] = []
-dic['__adjetivos__'] = ['linda']
-dic['__sustantivos__'] = []
-pal = str(input('ingrese la palabra : '))
-tipo= ''
-bol,tipo= ProcesarPalabra(pal,dic,tipo)
-if bol:
-    pass
-else:
-    print(bol , tipo)
-print(Definicion(pal))
-print(dic)
+# dic ={}
+# dic['__verbos__'] = []
+# dic['__adjetivos__'] = ['linda']
+# dic['__sustantivos__'] = []
+# pal = str(input('ingrese la palabra : '))
+# tipo= ''
+# bol,tipo= ProcesarPalabra(pal,dic,tipo)
+# if bol:
+#     pass
+# else:
+#     print(bol , tipo)
+# print(Definicion(pal))
+# print(dic)
 
