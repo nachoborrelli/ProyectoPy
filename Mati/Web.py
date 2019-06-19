@@ -7,9 +7,10 @@ def ProcesarPalabra(pal, dic, tipo):
         dio distinto, en caso afirmativo se agrega al reporte.
         Si no existe en Wiktionary, este devuelve falso y lo agrega al reporte indicando que no se encontro la palabra'''
     def PalabraWik(pal, dic, tipo):
-        '''Va a buscar la palabra a Wiktionary y la califica en verbo, sustantivo o adjetivo segun
+        '''Va a buscar la palabra a Wiktionary y la clasifica en verbo, sustantivo o adjetivo segun
         la primer seccion por orden de relevancia, si la palabra no se encuentra en el diccionario de la pagina,
-        se debera ingresar otra'''
+        se debera ingresar otra
+        Luego si la palabra es encontrada devuelve verdadero y la agrega al diccionario segun su clasificacion '''
         w = Wiktionary(language='es')
         correcto=False
         pal.lower()
