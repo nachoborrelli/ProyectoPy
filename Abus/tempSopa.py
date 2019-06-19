@@ -403,5 +403,4 @@ while True:  # Event Loop
             sg.Popup('Todavia te faltan {} palabras!'.format(Adjs + Verbs + Susts))
     elif event == '__helpButton__':
         sopa_window.FindElement('__helpText__').Update(Web.Definicion(randomword_noseleccionada()))
-        #dale neneeeeeeeeeeeeeeeeeee
 
