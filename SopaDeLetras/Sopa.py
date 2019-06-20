@@ -6,14 +6,12 @@ import sys
 import PySimpleGUI as sg
 import random
 import string
-from Mati import Web
+import time
+from SopaDeLetras import Web
 from SopaDeLetras.configuracion import configPalabras
 
 # --------------------------------------- Global Variables -------------------------------------------------------------
-
 BOX_SIZE = 25  # Tamaño de las casillas
-
-
 # --------------------------------------- Functions ---------------------------------------------------------------------
 
 def bienvenida():
@@ -33,6 +31,7 @@ def ganar():
     event, values = ganarwindow.Read(timeout=4000)
 
 def select_words(dic_palabras, cantverbos, cantadj, cantsust):
+    '''selecciona una determinada cantidad de palabras al azar de las ingresadads'''
     wordDic = {}
     wordDic['__verbos__'] = []  # dic de palabras clasificadas por tipo
     wordDic['__adjetivos__'] = []
@@ -50,6 +49,7 @@ def select_words(dic_palabras, cantverbos, cantadj, cantsust):
 
 
 def longest_word(wordDic):
+    '''busca la palabra mas larga'''
     max = -1
     palMax = ''
     for list in wordDic:
@@ -61,7 +61,8 @@ def longest_word(wordDic):
     return palMax
 
 
-def calc_palMaxSide():  #################
+def calc_palMaxSide():
+    '''calcula el tamaño de uno de los lados respecto a la palabra mas larga'''
     palMax = len(longest_word(wordDic))
     if palMax < 5:
         palMax += 6
@@ -74,7 +75,7 @@ def calc_palMaxSide():  #################
 
 
 def calc_cantPalabrasSide(wordDic):
-
+    '''calcula el tamaño de uno de los lados respecto a la cantidad de palabras'''
     cant_palabras = len(wordDic['__verbos__']) + len(wordDic['__sustantivos__']) + len(wordDic['__adjetivos__'])
     if cant_palabras < 7:  #
         cant_palabras += 5  #
@@ -84,6 +85,7 @@ def calc_cantPalabrasSide(wordDic):
 
 
 def convertir_UpperLower(palabra, letras):
+    '''convierte una palabra al formato necesario'''
     if letras == 'Mayúsculas':
         palabra = palabra.upper()
     else:
@@ -96,6 +98,7 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic, letras):
     con las cordenadas como clave y su letra como valor.'''
 
     def crearLineas(lado1, lado2):
+        '''Crea el grid'''
         for col in range(lado1):  # Creo la grilla
             for row in range(lado2):
                 graph.DrawRectangle((col * BOX_SIZE + 5, row * BOX_SIZE + 3),
@@ -103,6 +106,7 @@ def draw_grid(window, orientacion, graph, coordenadas, wordDic, letras):
                                     line_color='black')
 
     def rellenarConLetrasRandom(lado1, lado2):
+        ''' rellena espacios vacios con letras al azar en un formato especifico'''
         for col in range(lado1):  # Agrego letras random en las posiciones libres.
             for row in range(lado2):
                 if letras == 'Mayúsculas':
@@ -194,10 +198,14 @@ def Despintar(coordenadas, pintados, graph, punto):
     del pintados[punto]
 
 def comprobarPalabra(pintados, orientacion, event):
-    def checkConsecutivos(lista):                                         #True = todos los valores de la lista consecutivos
+    '''comprueba que la palabra este en la orientacion determinada y que sea correcta'''
+
+    def checkConsecutivos(lista):
+        '''evalua si todos los valores de la lista son consecutivos'''
         return sorted(lista) == list(range(min(lista), max(lista) + 1))
 
-    def checkValoresIguales(lista):                                        #True = todos los elem iguales
+    def checkValoresIguales(lista):
+        '''evalua si todos los elem son iguales'''
         return all(elem == lista[0] for elem in lista)
 
     keys = sorted(pintados.keys())
@@ -238,7 +246,6 @@ def comprobarPalabra(pintados, orientacion, event):
 
 def Comparar (wordDic, palabras_encontradas):
     ''' Devuelve la cantidad de palabras que faltan encontrar'''
-    print(wordDic)
     if len(palabras_encontradas['__adjetivos__']) == len(wordDic['__adjetivos__']):
         cantAdj = 0
     else:
@@ -300,6 +307,7 @@ palabras_encontradas['__sustantivos__'] = []
 config_values = configPalabras(dic_palabras)  # Levantar configuracion
 
 if config_values['__cantverbos__'] + config_values['__cantadjetivos__'] + config_values['__cantsustantivos__'] == 0:
+    sg.PopupError('No se ingresaron palabras')
     sys.exit()
 
 wordDic = select_words(dic_palabras, config_values['__cantverbos__'],  # Seleccionar palabras a usar
@@ -316,7 +324,11 @@ else:
     lado2=(BOX_SIZE * calc_cantPalabrasSide(wordDic) + 5, 0)
 
 columna_grafico= [
-
+        [sg.Frame('Contadores',[
+                                [sg.Text('Adjetivos:     Verbos:     Sustantivos:     ',key='__contadores__',
+                                         relief=sg.RELIEF_RIDGE, size=(30,1))]
+                                ]
+                  )],
         [sg.Graph((500, 500),           # canvas_size
           lado1,                        # graph_bottom_left
           lado2, key='_GRAPH_',         # graph_top_right
@@ -334,14 +346,14 @@ columna_ayudas= [
                         [sg.Text(' ' * 30),
                             sg.Button('Ayuda', key='__helpButton__', button_color=('black', '#ff8100'),
                                    font=('none', 10, 'bold'), size=(9, 2))]
-                    ])],
+                    ], key='__frameDefiniciones__')],
                     [sg.Frame('Lista de palabras', [
-                        [sg.Multiline(GenerarListaPalabras(wordDic), key='__helpText__', size=(50, 9))],   ###################################################
-                    ])]
+                        [sg.Multiline(GenerarListaPalabras(wordDic), key='__helpText__', size=(50, 9))],
+                    ], key= '__frameLista__')]
                 ]
 
 layout_sopa = [
-                [sg.Column(columna_grafico), sg.Column(columna_ayudas)],
+                [sg.Column(columna_grafico), sg.Column(columna_ayudas, key='__columnaAyudas__')],
                 [sg.Text(' ' * 50),
                     sg.Button('Salir', button_color=('black', 'grey55')), sg.Button('Verificar', button_color=('black', 'grey55'))]
 ]
@@ -363,7 +375,7 @@ graph = sopa_window.FindElement('_GRAPH_')
 
 draw_grid(sopa_window, config_values['__orientacion__'], graph, coordenadas, wordDic, config_values['__letras__'])
 Adjs, Verbs, Susts = Comparar(wordDic, palabras_encontradas)
-
+sopa_window.FindElement('__contadores__').Update('Adjetivos:  {}  Verbos:  {}  Sustantivos:  {}  '.format(Adjs, Verbs, Susts))
 while True:  # Event Loop
     event, values = sopa_window.Read()
     if (event is None) or (event == 'Terminar') or (event == 'Salir'):
@@ -397,6 +409,8 @@ while True:  # Event Loop
                     Pintar(coordenadas, pintadosClone, graph, punto, color)
                 palabras_encontradas[clave].append(pal)
                 Adjs, Verbs, Susts = Comparar(wordDic, palabras_encontradas)
+                sopa_window.FindElement('__contadores__').Update(
+                    'Adjetivos:  {}  Verbos:  {}  Sustantivos:  {}  '.format(Adjs, Verbs, Susts))
             else:
                 pintadosClone = pintados.copy()
                 for punto in pintadosClone:
@@ -412,6 +426,4 @@ while True:  # Event Loop
         sopa_window.FindElement('__helpText__').Update(randomword_definicion())
 
 
-
-# TRABAJO CONFORMADO Y REALIZADO POR ALBERCA AGUSTIN, BORRELLI JUAN IGNACIO, GEBER MATIAS
 

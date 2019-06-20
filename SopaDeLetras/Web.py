@@ -1,3 +1,7 @@
+#-----------------------------------------------------------------------------------------#
+# TRABAJO CONFORMADO Y REALIZADO POR ALBERCA AGUSTIN, BORRELLI JUAN IGNACIO, GEBER MATIAS #
+#-----------------------------------------------------------------------------------------#
+
 from pattern.web import Wiktionary
 import pattern.text.es as patt
 import PySimpleGUI as sg
@@ -19,13 +23,7 @@ def ProcesarPalabra(pal, dic, tipo):
         except(AttributeError):
             sg.Popup('Ingrese otra palabra')
         else:
-            # if (len(palabra)>4):
-            #     seccion2 = str(palabra[3])
-            #     #seccion1 = str(palabra[2])
-            # else:
-            #     seccion2 = str(palabra[2])
-            #     #seccion1 = str(palabra[1])
-            print(palabra)
+
             if(pal in dic['__verbos__']) or (pal in dic['__sustantivos__']) or (pal in dic['__adjetivos__']):
                 pass
             else:
@@ -54,7 +52,7 @@ def ProcesarPalabra(pal, dic, tipo):
         pal.lower()
         palabra = patt.parse(pal)
         correcto=False
-        print(palabra)
+        #print(palabra)
         if ('VB' in palabra):
             tipo = '__verbos__'
             correcto=True
@@ -66,7 +64,7 @@ def ProcesarPalabra(pal, dic, tipo):
             correcto=True
         else:
             tipo = ' '
-            print('Ingrese otra Palabra')
+            #print('Ingrese otra Palabra')
         return correcto, tipo
 
 
@@ -82,12 +80,10 @@ def ProcesarPalabra(pal, dic, tipo):
                 archivo.write('La clasificacion de la palabra {} no coincide entre Wiktionary y Pattern. En wiktionary es: {}, y en Patter es: {}. '.format(
                         pal, wik[1], pat[1]))
                 archivo.write('\n')
-                print('entra aca1')
             else:
                 archivo.write('La clasificacion de la palabra {} no coincide entre Wiktionary y Pattern. En wiktionary es: {}, y en Patter es: {}. '.format(
                         pal, wik[1], pat[1]))
                 archivo.write('\n')
-                print('entra aca2')
             archivo.close()
         return (True,wik[1])
     else:
@@ -98,11 +94,9 @@ def ProcesarPalabra(pal, dic, tipo):
                 archivo = open('Reporte.txt','x')
                 archivo.write(' la palabra {} no se encuentra en Wiktionary . '.format(pal))
                 archivo.write('\n')
-                print('entra aca3')
             else:
                 archivo.write(' la palabra {} no se encuentra en Wiktionary  . '.format(pal))
                 archivo.write('\n')
-                print('entra aca4')
             archivo.close()
         return (False,wik[1])
 
@@ -115,7 +109,7 @@ def Definicion(pal):
         seccion = secciones[2]
     else:
         seccion = secciones[3]
-    etimologia = wi.MediaWikiSection.plaintext(seccion)  # ERROR NO PUEDO ACCEDER A UNA POSICION DE UN TEXTO PLANO
+    etimologia = wi.MediaWikiSection.plaintext(seccion)
 
     for letra in range(len(etimologia)):
         if etimologia[letra] == '1':
@@ -129,17 +123,5 @@ def Definicion(pal):
     return definicion
 
 #TRABAJO CONFORMADO Y REALIZADO POR ALBERCA AGUSTIN, BORRELLI JUAN IGNACIO, GEBER MATIAS
-# dic ={}
-# dic['__verbos__'] = []
-# dic['__adjetivos__'] = ['linda']
-# dic['__sustantivos__'] = []
-# pal = str(input('ingrese la palabra : '))
-# tipo= ''
-# bol,tipo= ProcesarPalabra(pal,dic,tipo)
-# if bol:
-#     pass
-# else:
-#     print(bol , tipo)
-# print(Definicion(pal))
-# print(dic)
+
 

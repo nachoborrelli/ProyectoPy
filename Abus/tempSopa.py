@@ -1,26 +1,33 @@
+#-----------------------------------------------------------------------------------------#
+# TRABAJO CONFORMADO Y REALIZADO POR ALBERCA AGUSTIN, BORRELLI JUAN IGNACIO, GEBER MATIAS #
+#-----------------------------------------------------------------------------------------#
+
 import sys
 import PySimpleGUI as sg
 import random
 import string
-from Mati import Web
+from SopaDeLetras import Web
 from SopaDeLetras.configuracion import configPalabras
 
 # --------------------------------------- Global Variables -------------------------------------------------------------
-
 BOX_SIZE = 25  # Tamaño de las casillas
-
-
 # --------------------------------------- Functions ---------------------------------------------------------------------
 
 def bienvenida():
+    '''Pantalla de bienvenida'''
     layout_bienvenido = [
         [sg.Image(filename='bienvenido_image.png')]
-
-    ]
-
+                        ]
     bienvenido = sg.Window('Bienvenido!', layout=layout_bienvenido)
     event, values = bienvenido.Read(timeout=4000)
 
+def ganar():
+    '''Pantalla de juego ganado'''
+    layout_ganar = [
+        [sg.Image(filename='ganaste.png')]
+    ]
+    ganarwindow = sg.Window('Bien hecho!', layout=layout_ganar, no_titlebar=True)
+    event, values = ganarwindow.Read(timeout=4000)
 
 def select_words(dic_palabras, cantverbos, cantadj, cantsust):
     wordDic = {}
@@ -227,7 +234,7 @@ def comprobarPalabra(pintados, orientacion, event):
 
 
 def Comparar (wordDic, palabras_encontradas):
-
+    ''' Devuelve la cantidad de palabras que faltan encontrar'''
     if len(palabras_encontradas['__adjetivos__']) == len(wordDic['__adjetivos__']):
         cantAdj = 0
     else:
@@ -244,6 +251,7 @@ def Comparar (wordDic, palabras_encontradas):
 
 
 def GenerarListaPalabras(wordDic):
+    '''Genera la lista necesaria para la ayuda'''
     lista = []
     for tipo in wordDic:
         for palabra in wordDic[tipo]:
@@ -319,7 +327,11 @@ else:
     lado2=(BOX_SIZE * calc_cantPalabrasSide(wordDic) + 5, 0)
 
 columna_grafico= [
-
+        [sg.Frame('Contadores',[
+                                [sg.Text('Adjetivos:     Verbos:     Sustantivos:     ',key='__contadores__',
+                                         relief=sg.RELIEF_RIDGE, size=(30,1))]
+                                ]
+                  )],
         [sg.Graph((500, 500),           # canvas_size
           lado1,                        # graph_bottom_left
           lado2, key='_GRAPH_',         # graph_top_right
@@ -337,14 +349,14 @@ columna_ayudas= [
                         [sg.Text(' ' * 30),
                             sg.Button('Ayuda', key='__helpButton__', button_color=('black', '#ff8100'),
                                    font=('none', 10, 'bold'), size=(9, 2))]
-                    ])],
+                    ], key='__frameDefiniciones__',relief='groove')],
                     [sg.Frame('Lista de palabras', [
-                        [sg.Multiline(GenerarListaPalabras(wordDic), key='__helpText__', size=(50, 9))],   ###################################################
-                    ])]
+                        [sg.Multiline(GenerarListaPalabras(wordDic), key='__helpText__', size=(50, 9))],
+                    ], key= '__frameLista__')]
                 ]
 
 layout_sopa = [
-                [sg.Column(columna_grafico), sg.Column(columna_ayudas)],
+                [sg.Column(columna_grafico), sg.Column(columna_ayudas, key='__columnaAyudas__')],
                 [sg.Text(' ' * 50),
                     sg.Button('Salir', button_color=('black', 'grey55')), sg.Button('Verificar', button_color=('black', 'grey55'))]
 ]
@@ -366,7 +378,7 @@ graph = sopa_window.FindElement('_GRAPH_')
 
 draw_grid(sopa_window, config_values['__orientacion__'], graph, coordenadas, wordDic, config_values['__letras__'])
 Adjs, Verbs, Susts = Comparar(wordDic, palabras_encontradas)
-
+sopa_window.FindElement('__contadores__').Update('Adjetivos:  {}  Verbos:  {}  Sustantivos:  {}  '.format(Adjs, Verbs, Susts))
 while True:  # Event Loop
     event, values = sopa_window.Read()
     if (event is None) or (event == 'Terminar') or (event == 'Salir'):
@@ -400,17 +412,17 @@ while True:  # Event Loop
                     Pintar(coordenadas, pintadosClone, graph, punto, color)
                 palabras_encontradas[clave].append(pal)
                 Adjs, Verbs, Susts = Comparar(wordDic, palabras_encontradas)
+                sopa_window.FindElement('__contadores__').Update('Adjetivos:  {}  Verbos:  {}  Sustantivos:  {}  '.format(Adjs, Verbs, Susts))
             else:
                 pintadosClone = pintados.copy()
                 for punto in pintadosClone:
                     Despintar(coordenadas, pintados, graph, punto)
     elif event == 'Verificar':
         if(Adjs == 0) and (Verbs == 0) and (Susts == 0):
-            sg.Popup('GANASTE FELICITACIONES!!!!!')
+            ganar()
             break
         else:
             sg.Popup('Todavia faltan encontrar {} adjetivos, {} verbos, y {} sustantivos!\n '.format(Adjs, Verbs, Susts),
                      'Si quieres terminar de todas formas apreta "Salir" en la pantalla principal')
     elif event == '__helpButton__':
         sopa_window.FindElement('__helpText__').Update(randomword_definicion())
-

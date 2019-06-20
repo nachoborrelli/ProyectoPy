@@ -3,9 +3,9 @@
 #-----------------------------------------------------------------------------------------#
 
 import PySimpleGUI as sg
-from Mati import Web
+from SopaDeLetras import Web
 import random
-
+import sys
 
 def configPalabras(dic_palabras):
     '''Modulo encargado de procesar toda la informacion relacionada a la configuracion del juego'''
@@ -36,21 +36,21 @@ def configPalabras(dic_palabras):
         [sg.Listbox(dic_palabras['__verbos__'], key='__verbos__', size=(25, 5))],
         [sg.Text('Cantidad:'), sg.Spin([i for i in range(0, 6)], initial_value=0, size=(3, 3), key='__cantverbos__'),
         sg.ColorChooserButton('Elegir color', key='__verbColorChooser__', )]
-                           ])]
+                           ],relief=sg.RELIEF_RIDGE)]
     ]
     columna_adj = [
         [sg.Frame('Adjetivos', [
         [sg.Listbox( dic_palabras['__adjetivos__'], key='__adjetivos__', size=(25, 5))],
         [sg.Text('Cantidad:'), sg.Spin([i for i in range(0,  6)], initial_value=0, size=(3, 3), key='__cantadjetivos__'),
         sg.ColorChooserButton('Elegir color', key='__adjColorChooser__' )]
-                            ])]
+                            ],relief=sg.RELIEF_RIDGE)]
     ]
     columna_sust = [
         [sg.Frame('Sustantivos', [
         [sg.Listbox(dic_palabras['__sustantivos__'], key='__sustantivos__', size=(25, 5))],
         [sg.Text('Cantidad:'), sg.Spin([i for i in range(0,  6)], initial_value=0, size=(3, 3), key='__cantsustantivos__'),
         sg.ColorChooserButton('Elegir color', key='__sustColorChooser__', )]
-                            ])]
+                            ],relief=sg.RELIEF_RIDGE)]
     ]
 
     Config = [
@@ -87,7 +87,7 @@ def configPalabras(dic_palabras):
         event, values = ventana_IngVen.Read()
         tipo = ''
         if event is None:
-            break
+            sys.exit()
         elif event == '__addbutton__':
             valores = Web.ProcesarPalabra(values['__input__'].lower(), dic_palabras, tipo)
             if valores[0]:
@@ -109,13 +109,17 @@ def configPalabras(dic_palabras):
                                 'Desea continuar?',
                                 title='Peligro', font=('Helvetica', 9, 'bold'), button_color=('#000000', '#ff1919'))
                 if continuar == 'Yes':
-                    break
+                    sys.exit()
                 else:
                     pass
             else:
                 break
+    # convertir valores string a numericos para facilitar el procesamiento luego
+    values['__cantsustantivos__'] = int(values['__cantsustantivos__'])
+    values['__cantverbos__'] = int(values['__cantverbos__'])
+    values['__cantadjetivos__'] = int(values['__cantadjetivos__'])
 
-    if (values['__cantverbos__'] != '0') or (values['__cantadjetivos__'] != '0') or (values['__cantsustantivos__'] != '0'):
+    if (values['__cantverbos__'] != 0) or (values['__cantadjetivos__'] != 0) or (values['__cantsustantivos__'] != 0):
         if values['__ayuda__'] == 'Si':                                                         #en caso de que se seleccione ayuda,
             event_ayuda, values_ayuda = window_selectAyuda.Read()
             if event_ayuda is 'Aceptar':
@@ -130,11 +134,6 @@ def configPalabras(dic_palabras):
         if values['__sustColorChooser__'] == '':
             values['__sustColorChooser__'] = '#' + "%06x" % random.randint(0, 0xFFFFFF)
 
-        #convertir valores string a numericos para facilitar el procesamiento luego
-        values['__cantsustantivos__'] = int(values['__cantsustantivos__'])
-        values['__cantverbos__'] = int(values['__cantverbos__'])
-        values['__cantadjetivos__'] = int(values['__cantadjetivos__'])
-
         #comprobar que la cantidad pedida de cada tipo no sobrepase la cantidad ingresada
         if values['__cantsustantivos__'] > len(values['__sustantivos__']):
             values['__cantsustantivos__'] = len(values['__sustantivos__'])
@@ -148,8 +147,9 @@ def configPalabras(dic_palabras):
         for dato in valoresInservibles:
             if dato in values.keys():
                 del values[dato]
-
-    print(values)
+    ventana_IngVen.Close()
+    window_selectAyuda.Close()
+    #print(values)
     return values
 
 
