@@ -6,9 +6,8 @@ import sys
 import PySimpleGUI as sg
 import random
 import string
-import time
-from SopaDeLetras import Web
-from SopaDeLetras.configuracion import configPalabras
+import Web
+from configuracion import configPalabras
 
 def main():
     # --------------------------------------- Global Variables -------------------------------------------------------------

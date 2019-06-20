@@ -3,7 +3,7 @@
 #-----------------------------------------------------------------------------------------#
 
 import PySimpleGUI as sg
-from SopaDeLetras import Web
+import Web
 import random
 import sys
 
