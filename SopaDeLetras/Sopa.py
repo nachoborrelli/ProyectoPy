@@ -9,7 +9,8 @@ import string
 import Web
 from configuracion import configPalabras
 
-def main():
+if __name__ == '__main__':
+
     # --------------------------------------- Global Variables -------------------------------------------------------------
     BOX_SIZE = 25  # Tamaño de las casillas
     # --------------------------------------- Functions ---------------------------------------------------------------------
@@ -425,6 +426,6 @@ def main():
         elif event == '__helpButton__':
             sopa_window.FindElement('__helpText__').Update(randomword_definicion())
 
-if __name__== '__main__':
-    main()
+# #if __name__== '__main__':
+# main()
 
