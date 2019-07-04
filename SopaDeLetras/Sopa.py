@@ -21,6 +21,7 @@ def main():
                             ]
         bienvenido = sg.Window('Bienvenido!', layout=layout_bienvenido)
         event, values = bienvenido.Read(timeout=4000)
+        bienvenido.Close()
 
     def ganar():
         '''Pantalla de juego ganado'''
@@ -167,32 +168,25 @@ def main():
             rellenarConLetrasRandom(cant_palabras, palMax)
 
 
-    def Pintar(coordenadas, pintados, graph, punto, color= 'grey72'):
+    def Pintar(coordenadas, pintados, graph, punto,letras, color= 'grey72'):
         '''  Se ocupa de indicar como marcada una casilla pintandola en gris.
             '''
+        graph.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
+                            (punto[0] * BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3),
+                            line_color='black',fill_color=color)
+        graph.DrawText('{}'.format(convertir_UpperLower(coordenadas[punto],letras)), (punto[0] * BOX_SIZE + 15, punto[1] * BOX_SIZE + 15),
+                       font='Courier 25')
         if(color == 'grey72'):
-            graph.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
-                                (punto[0] * BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3), line_color='black',
-                                fill_color=color)
-            graph.DrawText('{}'.format(coordenadas[punto]), (punto[0] * BOX_SIZE + 15, punto[1] * BOX_SIZE + 15),
-                           font='Courier 25')
-            pintados[punto] = coordenadas[punto]  # Mantengo una estructura con solo las casillas pintadas.
-            del coordenadas[punto]  # Y las saco de mi estructura auxiliar.
-        else:
-            graph.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
-                                (punto[0] * BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3),
-                                line_color='black',
-                                fill_color=color)
-            graph.DrawText('{}'.format(coordenadas[punto]), (punto[0] * BOX_SIZE + 15, punto[1] * BOX_SIZE + 15),
-                           font='Courier 25')
+            pintados[punto] = coordenadas[punto]                        #Mantengo una estructura con solo las casillas pintadas.
+            del coordenadas[punto]                                      #Y las saco de mi estructura auxiliar.
 
 
-    def Despintar(coordenadas, pintados, graph, punto):
+    def Despintar(coordenadas, pintados, graph, punto,letras):
         '''Despinta la letra dejandola nuevamente en blanco'''
         graph.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
                             (punto[0] * BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3), line_color='black',
                             fill_color='white')
-        graph.DrawText('{}'.format(pintados[punto]), (punto[0] * BOX_SIZE + 15, punto[1] * BOX_SIZE + 15),
+        graph.DrawText('{}'.format(convertir_UpperLower(pintados[punto],letras)), (punto[0] * BOX_SIZE + 15, punto[1] * BOX_SIZE + 15),
                        font='Courier 25')
         coordenadas[punto] = pintados[punto]  # Devuelvo la casilla de la estructura de pintados a mi auxiliar
         del pintados[punto]
@@ -361,12 +355,14 @@ def main():
     sopa_window = sg.Window('Window Title').Layout(layout_sopa).Finalize()
 
 
-    if config_values['__ayuda__'] == 'No':
+    if ((config_values['__ayuda__'] == 'No') or
+            (config_values['__ayudaDefinicion__'] == False) and (config_values['__ayudalistaPalabras__'] == False)):
         sopa_window.FindElement('__columnaAyudas__').Update(visible=False)
-    elif config_values['__ayudaDefinicion__'] == False:
-        sopa_window.FindElement('__frameDefiniciones__').Update(visible=False)
-    elif config_values['__ayudalistaPalabras__'] == False:
-        sopa_window.FindElement('__frameLista__').Update(visible=False)
+    else:
+        if config_values['__ayudaDefinicion__'] == False:
+            sopa_window.FindElement('__frameDefiniciones__').Update(visible=False)
+        elif config_values['__ayudalistaPalabras__'] == False:
+            sopa_window.FindElement('__frameLista__').Update(visible=False)
 
     graph = sopa_window.FindElement('_GRAPH_')
 
@@ -390,12 +386,12 @@ def main():
                 punto = (x, y)
                 if punto in coordenadas.keys():
                     try:
-                        Pintar(coordenadas, pintados, graph, punto)
+                        Pintar(coordenadas, pintados, graph, punto, config_values['__letras__'])
                     except KeyError:
                         pass
                 else:
                     try:
-                        Despintar(coordenadas, pintados, graph, punto)
+                        Despintar(coordenadas, pintados, graph, punto, config_values['__letras__'])
                     except KeyError:
                         pass
         elif event == 'Adjetivo' or event == 'Sustantivo' or event == 'Verbo':
@@ -404,9 +400,9 @@ def main():
                 if correcta:
                     pintadosClone = pintados.copy()
                     for punto in pintadosClone:
-                        Despintar(coordenadas, pintados, graph, punto)
+                        Despintar(coordenadas, pintados, graph, punto, config_values['__letras__'])
                     for punto in pintadosClone:
-                        Pintar(coordenadas, pintadosClone, graph, punto, color)
+                        Pintar(coordenadas, pintadosClone, graph, punto,config_values['__letras__'], color)
                     palabras_encontradas[clave].append(pal)
                     Adjs, Verbs, Susts = Comparar(wordDic, palabras_encontradas)
                     sopa_window.FindElement('__contadores__').Update(
@@ -414,7 +410,7 @@ def main():
                 else:
                     pintadosClone = pintados.copy()
                     for punto in pintadosClone:
-                        Despintar(coordenadas, pintados, graph, punto)
+                        Despintar(coordenadas, pintados, graph, punto,config_values['__letras__'])
         elif event == 'Verificar':
             if(Adjs == 0) and (Verbs == 0) and (Susts == 0):
                 ganar()
