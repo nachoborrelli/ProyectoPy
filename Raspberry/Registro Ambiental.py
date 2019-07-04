@@ -16,13 +16,9 @@ class Temperatura:
         self._sensor = sensor
         self._data_pin = pin
     def datos_sensor(self):
-        humedad, temperatura = Adafruit_DHT.read_retry(self.
-        _sensor, self._data_pin)
+        humedad, temperatura = Adafruit_DHT.read_retry(self.sensor, self._data_pin)
         return {'temperatura': temperatura, 'humedad': humedad}
-temp = Temperatura()
-datos = temp.datos_sensor()
-print('Temperatura = {}C Humedad = {} %'.format
-(datos['temperatura'], datos['humedad']))
+
 #=====================================MATRIZ=====================================================
 class Matriz:
     def __init__(self, numero_matrices=1, orientacion=0,
@@ -37,7 +33,7 @@ class Matriz:
         font=proportional(self.font[font]),
         scroll_delay=delay) #MUESTRA EL MENSAJE
 
-matriz = Matriz(numero_matrices=2, ancho=16)
+
 
 
 #====================================SONIDO=====================================================
@@ -53,12 +49,15 @@ class Sonido:
     def evento_detectado(self, funcion):
         #print('Sonido d,mnjkyghjutvgfyhvgfetectado!')
         if GPIO.event_detected(self._canal):
-            funcion()
+            funcion(datos)
 
-def test():
+def test(datos):
     print('Sonido detectado!')
-    matriz.mostrar_mensaje("Python", delay=0.3)
+    matriz.mostrar_mensaje('Temperatura = {}C Humedad = {} %'.format(datos['temperatura'], datos['humedad']), delay=0.3)
 sonido = Sonido()
+matriz = Matriz(numero_matrices=2, ancho=16)
+temp = Temperatura()
 while True:
     time.sleep(0.0001)
-    sonido.evento_detectado(test)
+    datos = temp.datos_sensor()
+    sonido.evento_detectado(test(datos))
