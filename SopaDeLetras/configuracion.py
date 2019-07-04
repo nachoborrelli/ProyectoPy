@@ -135,12 +135,12 @@ def configPalabras(dic_palabras):
             values['__sustColorChooser__'] = '#' + "%06x" % random.randint(0, 0xFFFFFF)
 
         #comprobar que la cantidad pedida de cada tipo no sobrepase la cantidad ingresada
-        if values['__cantsustantivos__'] > len(values['__sustantivos__']):
-            values['__cantsustantivos__'] = len(values['__sustantivos__'])
-        if values['__cantverbos__'] > len(values['__verbos__']):
-            values['__cantverbos__'] = len(values['__verbos__'])
-        if values['__cantadjetivos__'] > len(values['__adjetivos__']):
-            values['__cantadjetivos__'] = len(values['__adjetivos__'])
+        if values['__cantsustantivos__'] > len(dic_palabras['__sustantivos__']):
+            values['__cantsustantivos__'] = len(dic_palabras['__sustantivos__'])
+        if values['__cantverbos__'] > len(dic_palabras['__verbos__']):
+            values['__cantverbos__'] = len(dic_palabras['__verbos__'])
+        if values['__cantadjetivos__'] > len(dic_palabras['__adjetivos__']):
+            values['__cantadjetivos__'] = len(dic_palabras['__adjetivos__'])
 
         # elimino los valores devueltos por el layout que no me sirven
         valoresInservibles = ['__input__', '__verbos__', '__adjetivos__', '__sustantivos__']
@@ -149,7 +149,7 @@ def configPalabras(dic_palabras):
                 del values[dato]
     ventana_IngVen.Close()
     window_selectAyuda.Close()
-    #print(values)
+    print(values)
     return values
 
 
