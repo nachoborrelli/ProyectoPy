@@ -289,7 +289,7 @@ def main():
             texto = 'No hay mas ayudas disponibles.'
         return texto
     # ------------------------------------ Estructuras,Config y bienvenida ---------------------------------------------------------------------
-    # bienvenida()
+    bienvenida()
 
     dic_palabras = {}
     dic_palabras['__verbos__'] = []  # dic de palabras clasificadas por tipo
