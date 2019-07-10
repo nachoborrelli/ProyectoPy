@@ -54,9 +54,12 @@ class Sonido:
 def test(datos):
     print('Sonido detectado!')
     matriz.mostrar_mensaje('Temperatura = {}C Humedad = {} %'.format(datos['temperatura'], datos['humedad']), delay=0.3)
+
+
 sonido = Sonido()
 matriz = Matriz(numero_matrices=2, ancho=16)
 temp = Temperatura()
+
 while True:
     time.sleep(0.0001)
     datos = temp.datos_sensor()

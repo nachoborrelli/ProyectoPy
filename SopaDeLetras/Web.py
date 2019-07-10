@@ -93,9 +93,11 @@ def ProcesarPalabra(pal, dic, tipo):
             except(FileNotFoundError):
                 archivo = open('Reporte.txt','x')
                 archivo.write(' la palabra {} no se encuentra en Wiktionary . '.format(pal))
+                #ACA AGREGAR A JSON LA DEFINICION
                 archivo.write('\n')
             else:
                 archivo.write(' la palabra {} no se encuentra en Wiktionary  . '.format(pal))
+                #ACA AGREGAR A JSON LA DEFINICION
                 archivo.write('\n')
             archivo.close()
         return (False,wik[1])
