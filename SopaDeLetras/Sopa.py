@@ -320,8 +320,8 @@ if __name__ == '__main__':
 
     columna_grafico= [
             [sg.Frame('Contadores',[
-                                    [sg.Text('Adjetivos:     Verbos:     Sustantivos:     ',key='__contadores__',
-                                             relief=sg.RELIEF_RIDGE, size=(30,1))]
+                                    [sg.Text('  Adjetivos:     Verbos:     Sustantivos:     ',key='__contadores__',
+                                             relief=sg.RELIEF_RIDGE, size=(33,1))]
                                     ]
                       )],
             [sg.Graph((500, 500),           # canvas_size
@@ -372,7 +372,7 @@ if __name__ == '__main__':
 
     draw_grid(sopa_window, config_values['__orientacion__'], graph, coordenadas, wordDic, config_values['__letras__'])
     Adjs, Verbs, Susts = Comparar(wordDic, palabras_encontradas)
-    sopa_window.FindElement('__contadores__').Update('Adjetivos:  {}  Verbos:  {}  Sustantivos:  {}  '.format(Adjs, Verbs, Susts))
+    sopa_window.FindElement('__contadores__').Update('  Adjetivos:  {}  Verbos:  {}  Sustantivos:  {}  '.format(Adjs, Verbs, Susts))
     while True:  # Event Loop
         event, values = sopa_window.Read()
         if (event is None) or (event == 'Terminar') or (event == 'Salir'):
@@ -404,10 +404,11 @@ if __name__ == '__main__':
                         Despintar(coordenadas, pintados, graph, punto, config_values['__letras__'])
                     for punto in pintadosClone:
                         Pintar(coordenadas, pintadosClone, graph, punto,config_values['__letras__'], color)
-                    palabras_encontradas[clave].append(pal)
+                    if pal not in palabras_encontradas[clave]:
+                        palabras_encontradas[clave].append(pal)
                     Adjs, Verbs, Susts = Comparar(wordDic, palabras_encontradas)
                     sopa_window.FindElement('__contadores__').Update(
-                        'Adjetivos:  {}  Verbos:  {}  Sustantivos:  {}  '.format(Adjs, Verbs, Susts))
+                        '  Adjetivos:  {}  Verbos:  {}  Sustantivos:  {}  '.format(Adjs, Verbs, Susts))
                 else:
                     pintadosClone = pintados.copy()
                     for punto in pintadosClone:

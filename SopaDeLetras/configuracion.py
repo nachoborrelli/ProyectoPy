@@ -125,7 +125,8 @@ def configPalabras(dic_palabras):
             if event_ayuda is 'Aceptar':
                 values['__ayudalistaPalabras__'] = values_ayuda['__ayudalistaPalabras__']
                 values['__ayudaDefinicion__'] = values_ayuda['__ayudaDefinicion__']
-
+            else:                                                                               #Si apreta X en la ventana de ayudas
+                values['__ayuda__'] = 'No'
         #generar colores random si no se ingresan
         if values['__verbColorChooser__'] == '':                                                #Generar colores al azar si no son ingresados
             values['__verbColorChooser__'] = '#' + "%06x" % random.randint(0, 0xFFFFFF)
