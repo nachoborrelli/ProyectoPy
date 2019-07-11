@@ -10,13 +10,13 @@ class Temperatura:
         self._sensor = sensor
         self._data_pin = pin
     def datos_sensor(self):
-        humedad, temperatura = Adafruit_DHT.read_retry(self.sensor, self._data_pin)
+        humedad, temperatura = Adafruit_DHT.read_retry(self._sensor, self._data_pin)
         return {'temperatura': temperatura, 'humedad': humedad}
 
 def AgregarDatos(datos,dic):
-    dic['Temperatura'] = datos[0]
-    dic['Humedad'] = datos[1]
-    dic['Fecha'] = datetime.now()
+    dic['Temperatura'] = datos['temperatura']
+    dic['Humedad'] = datos['humedad']
+    dic['Fecha'] = '20190707'
 
 
 temp = Temperatura()
@@ -25,12 +25,16 @@ oficinas = {}
 oficinas['Oficina 1'] = []
 oficinas ['Oficina 2'] = []
 oficinas ['Oficina 3'] = []
-jsonfile = open('datos-oficinas.json','x')
-json.dump(dic,jsonfile)
+try:
+    jsonfile = open('datos-oficinas.json', 'x')
+except FileExistsError:
+    jsonfile = open('datos-oficinas.json', 'a')
 while True:
-    time.sleep(60)
-    for i in range(2)+1:
+    time.sleep(2)
+    for i in range(1,4):
         datos = temp.datos_sensor()
+        print(type(datos))
+        print(datos)
         AgregarDatos(datos,dic)
         oficinas['Oficina {}'.format(i)].append(dic)
         json.dump(dic,jsonfile)
