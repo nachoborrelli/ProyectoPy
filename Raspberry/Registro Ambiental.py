@@ -37,6 +37,6 @@ while True:
         print(datos)
         AgregarDatos(datos,dic)
         oficinas['Oficina {}'.format(i)].append(dic)
-        json.dump(dic,jsonfile)
+        json.dump(oficinas,jsonfile)
         jsonfile.write('\n')
         dic.clear()
