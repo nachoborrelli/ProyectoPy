@@ -16,27 +16,26 @@ class Temperatura:
 def AgregarDatos(datos,dic):
     dic['Temperatura'] = datos['temperatura']
     dic['Humedad'] = datos['humedad']
-    dic['Fecha'] = '20190707'
+    dic['Fecha'] = str(datetime.fromtimestamp(time.time()))
+
 
 
 temp = Temperatura()
-dic = {}
 oficinas = {}
 oficinas['Oficina 1'] = []
 oficinas ['Oficina 2'] = []
 oficinas ['Oficina 3'] = []
-try:
-    jsonfile = open('datos-oficinas.json', 'x')
-except FileExistsError:
-    jsonfile = open('datos-oficinas.json', 'a')
+
 while True:
-    time.sleep(2)
+    try:
+        jsonfile = open('datos-oficinas.json', 'x')
+    except FileExistsError:
+        jsonfile = open('datos-oficinas.json', 'r+')
+    time.sleep(60)
     for i in range(1,4):
         datos = temp.datos_sensor()
         print(type(datos))
         print(datos)
-        AgregarDatos(datos,dic)
-        oficinas['Oficina {}'.format(i)].append(dic)
-        json.dump(oficinas,jsonfile)
-        jsonfile.write('\n')
-        dic.clear()
+        oficinas['Oficina {}'.format(i)].append(AgregarDatos(datos))
+    json.dump(oficinas, jsonfile)
+    jsonfile.close()
