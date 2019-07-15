@@ -130,6 +130,11 @@ def AgregarJson(palabra,definicion):
         json.dump(definiciones,jsonfile)
         jsonfile.close()
 
+def ConsultarDefinicionJson(palabra):
+    jsonfile = open('Definiciones.json','r')
+    diccionario = json.loads(definiciones,jsonfile)
+    return diccionario[palabra]
+
 #TRABAJO CONFORMADO Y REALIZADO POR ALBERCA AGUSTIN, BORRELLI JUAN IGNACIO, GEBER MATIAS
 
 
