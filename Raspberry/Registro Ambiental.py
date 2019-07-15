@@ -13,11 +13,12 @@ class Temperatura:
         humedad, temperatura = Adafruit_DHT.read_retry(self._sensor, self._data_pin)
         return {'temperatura': temperatura, 'humedad': humedad}
 
-def AgregarDatos(datos,dic):
-    dic['Temperatura'] = datos['temperatura']
-    dic['Humedad'] = datos['humedad']
+def AgregarDatos(datos):
+    dic = {}
+    dic['Temperatura'] = datos[0]
+    dic['Humedad'] = datos[1]
     dic['Fecha'] = str(datetime.fromtimestamp(time.time()))
-
+    return dic
 
 
 temp = Temperatura()
