@@ -77,10 +77,7 @@ def ProcesarPalabra(pal, dic, tipo):
                 archivo = open('Reporte.txt', 'a')
             except(FileNotFoundError):
                 archivo = open('Reporte.txt','x')
-                archivo.write('La clasificacion de la palabra {} no coincide entre Wiktionary y Pattern. En wiktionary es: {}, y en Patter es: {}. '.format(
-                        pal, wik[1], pat[1]))
-                archivo.write('\n')
-            else:
+            finally:
                 archivo.write('La clasificacion de la palabra {} no coincide entre Wiktionary y Pattern. En wiktionary es: {}, y en Patter es: {}. '.format(
                         pal, wik[1], pat[1]))
                 archivo.write('\n')
@@ -92,12 +89,10 @@ def ProcesarPalabra(pal, dic, tipo):
                 archivo = open('Reporte.txt', 'a')
             except(FileNotFoundError):
                 archivo = open('Reporte.txt','x')
+            finally:
                 archivo.write(' la palabra {} no se encuentra en Wiktionary . '.format(pal))
-                #ACA AGREGAR A JSON LA DEFINICION
-                archivo.write('\n')
-            else:
-                archivo.write(' la palabra {} no se encuentra en Wiktionary  . '.format(pal))
-                #ACA AGREGAR A JSON LA DEFINICION
+                definicion = sg.PopupGetText('ingrese una definicion para la palabra')
+                # ACA AGREGAR A JSON LA DEFINICION
                 archivo.write('\n')
             archivo.close()
         return (False,wik[1])

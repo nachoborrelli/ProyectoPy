@@ -45,4 +45,3 @@ while True:
     #jsonfile = open('datos-oficinas.json', 'r+')
     #oficinas = json.load(jsonfile)
     #jsonfile.write('\n')
-
