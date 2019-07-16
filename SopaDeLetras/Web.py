@@ -108,6 +108,8 @@ def ProcesarPalabra(pal, dic, tipo):
                     archivo.write('\n')
                     ok = True
                     tipo = event
+                    dic[tipo].append(pal)
+                    print(tipo)
                 archivo.close()
                 return (ok,tipo)
         return (ok,wik[1])
