@@ -12,3 +12,4 @@ env/
 venv/
 Reporte.txt
 Definiciones.json
+__init__.py
