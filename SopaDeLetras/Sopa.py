@@ -184,7 +184,6 @@ if __name__ == '__main__':
             else:
                 no_desmarcables[punto] = coordenadas[punto]
                 del coordenadas[punto]
-                print('borrado')
 
     def Despintar(coordenadas, pintados, graph, punto,letras):
         '''Despinta la letra dejandola nuevamente en blanco'''

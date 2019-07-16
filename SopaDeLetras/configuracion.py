@@ -7,6 +7,8 @@ import Web
 import random
 import sys
 import os
+import json
+import statistics
 
 def configPalabras(dic_palabras):
     '''Modulo encargado de procesar toda la informacion relacionada a la configuracion del juego'''
@@ -26,8 +28,24 @@ def configPalabras(dic_palabras):
             valido='__sustantivos__'
 
         return valido
-    #----------------------------------------- Datos ------------------------------------------
+    #---------------------------- Procesamiento de temperaturas -------------------------------
     dirJsonOficinas = os.path.abspath(os.path.join(os.path.join(os.pardir, 'Raspberry'), 'datos-oficinas.json'))
+    oficinas_temp = {}
+    try:
+        oficinas_registroAmbiental = {}
+        jsonOficinas = open(dirJsonOficinas)
+        oficinas_registroAmbiental = json.load(jsonOficinas)
+        print(oficinas_registroAmbiental)
+        listaTemperaturas = []
+        for oficina in oficinas_registroAmbiental:
+            for dic_registro in oficinas_registroAmbiental[oficina]:
+                listaTemperaturas.append(int(dic_registro['Temperatura']))
+            oficinas_temp[oficina] = statistics.mean(listaTemperaturas)             #obtener promedio de temp de una oficina
+        print(oficinas_temp)
+    except:
+        oficinas_temp['Vacio'] = 20
+        sg.PopupNoButtons('Registro Ambiental no encontrado.', auto_close=True, auto_close_duration=4)
+
 
     # ------------------------------------ Layout & Design ------------------------------------
 
@@ -66,7 +84,7 @@ def configPalabras(dic_palabras):
         [sg.Text('Ayuda'), sg.InputOptionMenu(('Si', 'No'), key='__ayuda__'),
          sg.Text('Orientacion'), sg.InputOptionMenu(('Horizontal', 'Vertical'), key='__orientacion__'),
          sg.Text('Letras'), sg.InputOptionMenu(('Mayúsculas','Minúsculas'), key='__letras__'),
-         sg.Text('Oficina'), sg.InputCombo(values=('aaa'), size =(15, 1), key='__tipografia__'),
+         sg.Text('Oficina'), sg.InputOptionMenu(values=list(oficinas_temp.keys()), key='__oficinas__'),
          sg.Text(' ' * 5),
          sg.Ok('Aceptar', button_color=('white', '#475841'))]
 
@@ -144,6 +162,14 @@ def configPalabras(dic_palabras):
             values['__cantverbos__'] = len(dic_palabras['__verbos__'])
         if values['__cantadjetivos__'] > len(dic_palabras['__adjetivos__']):
             values['__cantadjetivos__'] = len(dic_palabras['__adjetivos__'])
+
+        # determino color de look and feel.
+        if oficinas_temp[values['__oficinas__']] < 10:
+            sg.ChangeLookAndFeel('BlueMono')
+        elif (oficinas_temp[values['__oficinas__']] >= 10) and (oficinas_temp[values['__oficinas__']] <= 25):
+            sg.ChangeLookAndFeel('Purple')
+        else:
+            sg.ChangeLookAndFeel('Reds')
 
         # elimino los valores devueltos por el layout que no me sirven
         valoresInservibles = ['__input__', '__verbos__', '__adjetivos__', '__sustantivos__']
