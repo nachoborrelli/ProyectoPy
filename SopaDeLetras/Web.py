@@ -112,10 +112,10 @@ def ProcesarPalabra(pal, dic, tipo):
                     archivo.write(' la palabra {} no se encuentra en Wiktionary . '.format(pal))
                     event, values = windowDefinicion.Read()
                     if (event is not 'None') and (event is not None):
-                        AgregarJson(pal, values['__definicion__'])
+                        tipo = event
+                        AgregarJson(pal, values['__definicion__'],tipo)
                         archivo.write('\n')
                         ok = True
-                        tipo = event
                         dic[tipo].append(pal)
                     archivo.close()
                     return (ok, tipo)
