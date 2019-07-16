@@ -1,2 +1,2 @@
-# Sopa de letras
-Primer entrega 20/6/19
+# Sopa de letras y Raspberry
+Entrega Final 16/07/19
