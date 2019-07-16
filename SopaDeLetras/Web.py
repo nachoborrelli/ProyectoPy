@@ -80,47 +80,40 @@ def ProcesarPalabra(pal, dic, tipo):
         del modulo Pattern.es, si las 2 se encontraron en los dos sitios, pregunta si la clasificacion entre ambos sitios
         dio distinto, en caso afirmativo se agrega al reporte.
         Si no existe en Wiktionary, este devuelve falso y lo agrega al reporte indicando que no se encontro la palabra'''
-    palabra,clasificacion = ConsultarPalabraJson(pal)
-    if (palabra):
-        ok = True
-        dic[clasificacion].append(palabra)
-        return ok,clasificacion
+    wik = PalabraWik(pal, dic, tipo)
+    pat = PalabraPattern(pal)
+    if wik[0] and pat[0]:
+        if (wik[1] != pat[1]):
+            #print(wik[1], pat[1], 'valores')
+            try:
+                archivo = open('Reporte.txt', 'a')
+            except(FileNotFoundError):
+                archivo = open('Reporte.txt', 'x')
+            finally:
+                archivo.write('La clasificacion de la palabra {} no coincide entre Wiktionary y Pattern. En wiktionary es: {}, y en Patter es: {}. '.format(
+                        pal, wik[1], pat[1]))
+                archivo.write('\n')
+            archivo.close()
+        return (True,wik[1])
     else:
-        wik = PalabraWik(pal, dic, tipo)
-        pat = PalabraPattern(pal)
-        if wik[0] and pat[0]:
-            if (wik[1] != pat[1]):
-                #print(wik[1], pat[1], 'valores')
-                try:
-                    archivo = open('Reporte.txt', 'a')
-                except(FileNotFoundError):
-                    archivo = open('Reporte.txt', 'x')
-                finally:
-                    archivo.write('La clasificacion de la palabra {} no coincide entre Wiktionary y Pattern. En wiktionary es: {}, y en Patter es: {}. '.format(
-                            pal, wik[1], pat[1]))
+        ok = False
+        if wik[1] != pat[1]:
+            try:
+                archivo = open('Reporte.txt', 'a')
+            except(FileNotFoundError):
+                archivo = open('Reporte.txt', 'x')
+            finally:
+                archivo.write(' la palabra {} no se encuentra en Wiktionary . '.format(pal))
+                event, values = windowDefinicion.Read()
+                if (event is not 'None') and (event is not None):
+                    AgregarJson(pal, values['__definicion__'])
                     archivo.write('\n')
+                    ok = True
+                    tipo = event
+                    dic[tipo].append(pal)
                 archivo.close()
-            return (True,wik[1])
-        else:
-            ok = False
-            if wik[1] != pat[1]:
-                try:
-                    archivo = open('Reporte.txt', 'a')
-                except(FileNotFoundError):
-                    archivo = open('Reporte.txt', 'x')
-                finally:
-                    archivo.write(' la palabra {} no se encuentra en Wiktionary . '.format(pal))
-                    event, values = windowDefinicion.Read()
-                    print(event,type(event),values)
-                    if (event is not 'None') and (event is not None):
-                        tipo = event
-                        AgregarJson(pal, values['__definicion__'],tipo)
-                        archivo.write('\n')
-                        ok = True
-                        dic[tipo].append(pal)
-                    archivo.close()
-                    return (ok, tipo)
-            return (ok, wik[1])
+                return (ok, tipo)
+        return (ok, wik[1])
 
 def Definicion(pal):
     '''Busca el articulo de la palabra en Wiktionary, selecciona la seccion con el tipo, se queda con las definiciones
@@ -146,9 +139,9 @@ def Definicion(pal):
         definicion = etimologia
     return definicion
 
-def AgregarJson(palabra, definicion,tipo):
+def AgregarJson(palabra, definicion):
     '''agrega una palabra con su definicion al json sin borrar los datos previos (actualiza)'''
-    definiciones[palabra] = (tipo,definicion)
+    definiciones[palabra] = definicion
     try:
         jsonfile = open('Definiciones.json', 'x')
     except FileExistsError:
@@ -163,29 +156,16 @@ def AgregarJson(palabra, definicion,tipo):
 
 def ConsultarDefinicionJson(palabra):
     '''devuelve la definicion de una palabra'''
-    jsonfile = open('Definiciones.json', 'r')
-    diccionario = json.load(jsonfile)
-    if (palabra in diccionario.keys()):
-        jsonfile.close()
-        return diccionario[palabra][1]
-    else:
-        jsonfile.close()
-        return False
-def ConsultarPalabraJson(palabra):
-    '''devuelve la definicion de una palabra'''
     try:
         jsonfile = open('Definiciones.json', 'r')
-    except FileNotFoundError:
-        return False,False
-    else:
         diccionario = json.load(jsonfile)
         if (palabra in diccionario.keys()):
             jsonfile.close()
-            print(diccionario)
-            return palabra,diccionario[palabra][0]
+            return diccionario[palabra]
         else:
             jsonfile.close()
-            return False,False
+            return False
+    except: return False
 
 #TRABAJO CONFORMADO Y REALIZADO POR ALBERCA AGUSTIN, BORRELLI JUAN IGNACIO, GEBER MATIAS
 
