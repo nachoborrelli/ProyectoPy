@@ -1,8 +1,3 @@
-i=0
-if (i==1):
-    s = 'hola'
-else:
-    s = False
+import json
+definiciones = {}
 
-if (s):
-    print('anda')

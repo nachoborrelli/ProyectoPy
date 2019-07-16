@@ -35,13 +35,11 @@ def configPalabras(dic_palabras):
         oficinas_registroAmbiental = {}
         jsonOficinas = open(dirJsonOficinas)
         oficinas_registroAmbiental = json.load(jsonOficinas)                           #levantar json registro
-        print(oficinas_registroAmbiental)
         listaTemperaturas = []
         for oficina in oficinas_registroAmbiental:
             for dic_registro in oficinas_registroAmbiental[oficina]:
                 listaTemperaturas.append(int(dic_registro['Temperatura']))
             oficinas_temp[oficina] = statistics.mean(listaTemperaturas)             #calcular promedio de tempemperatura de una oficina
-        print(oficinas_temp)
     except:                                                                         #En caso de que no exista, valor predeterminado = 20
         oficinas_temp['Vacio'] = 20
         sg.PopupNoButtons('Registro Ambiental no encontrado o no es operable.',title= 'Advertencia', auto_close=True, auto_close_duration=4)#aviso de que el registro no se encontro o esta vacio
@@ -110,9 +108,6 @@ def configPalabras(dic_palabras):
         elif event == '__addbutton__':
             valores = Web.ProcesarPalabra(values['__input__'].lower(), dic_palabras, tipo)
             if valores[0]:
-                print('entre')
-                print(dic_palabras[valores[1]])
-                print(dic_palabras)
                 ventana_IngVen.FindElement(valores[1]).Update(dic_palabras[valores[1]])
             ventana_IngVen.Refresh()
 
