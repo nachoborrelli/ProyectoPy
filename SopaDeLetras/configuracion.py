@@ -110,6 +110,9 @@ def configPalabras(dic_palabras):
         elif event == '__addbutton__':
             valores = Web.ProcesarPalabra(values['__input__'].lower(), dic_palabras, tipo)
             if valores[0]:
+                print('entre')
+                print(dic_palabras[valores[1]])
+                print(dic_palabras)
                 ventana_IngVen.FindElement(valores[1]).Update(dic_palabras[valores[1]])
             ventana_IngVen.Refresh()
 
