@@ -93,14 +93,17 @@ def ProcesarPalabra(pal, dic, tipo):
             finally:
                 archivo.write(' la palabra {} no se encuentra en Wiktionary . '.format(pal))
                 definicion = sg.PopupGetText('ingrese una definicion para la palabra')
-                AgregarJson(pal,definicion)
-                archivo.write('\n')
+                if(definicion != None):
+                    AgregarJson(pal,definicion)
+                    archivo.write('\n')
             archivo.close()
         return (False,wik[1])
 
 def Definicion(pal):
     '''Busca el articulo de la palabra en Wiktionary, selecciona la seccion con el tipo, se queda con las definiciones
     y devuelve todas las que encuentra'''
+    if (pal in definiciones.keys()):
+      return ConsultarDefinicionJson(pal)
     wi = Wiktionary(language='es')
     secciones = wi.search(pal).sections
     if(len(secciones)>3):
