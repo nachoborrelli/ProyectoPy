@@ -46,7 +46,6 @@ def configPalabras(dic_palabras):
         oficinas_temp['Vacio'] = 20
         sg.PopupNoButtons('Registro Ambiental no encontrado.', auto_close=True, auto_close_duration=4)
 
-
     # ------------------------------------ Layout & Design ------------------------------------
 
     sg.ChangeLookAndFeel('Purple')

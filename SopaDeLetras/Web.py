@@ -11,11 +11,13 @@ layout = [[sg.Text('ingrese una definicion para la palabra')],
                  [sg.InputText(key='Definicion')],
                  [sg.Button('Verbo',key='V'),sg.Button('Adjetivo',key='A'),sg.Button('Sustantivo',key='S')]]
 window = sg.Window.Layout(layout)
+
 def PalabraWik(pal, dic, tipo):
     '''Va a buscar la palabra a Wiktionary y la clasifica en verbo, sustantivo o adjetivo segun
     la primer seccion por orden de relevancia, si la palabra no se encuentra en el diccionario de la pagina,
     se debera ingresar otra
     Luego si la palabra es encontrada devuelve verdadero y la agrega al diccionario segun su clasificacion '''
+
     w = Wiktionary(language='es')
     correcto=False
     pal.lower()
@@ -25,8 +27,8 @@ def PalabraWik(pal, dic, tipo):
         sg.Popup('Palabra no encontrada')
         tipo = 'null'
         return correcto,tipo
-    else:
 
+    else:
         if(pal in dic['__verbos__']) or (pal in dic['__sustantivos__']) or (pal in dic['__adjetivos__']):
             pass
         else:
@@ -130,7 +132,6 @@ def Definicion(pal):
         definicion = etimologia[pos:]
     except UnboundLocalError:
         definicion = etimologia
-
     return definicion
 
 def AgregarJson(palabra,definicion):
