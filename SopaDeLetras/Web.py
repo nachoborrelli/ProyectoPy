@@ -14,7 +14,7 @@ layoutDefinicion = [
                   sg.Button('Adjetivo',key='__adjetivos__', enable_events=True),
                   sg.Button('Sustantivo',key='__sustantivos__', enable_events=True)]
           ]
-windowDefinicion = sg.Window('Definicion',layout=layoutDefinicion)
+
 
 def PalabraWik(pal, dic, tipo):
     '''Va a buscar la palabra a Wiktionary y la clasifica en verbo, sustantivo o adjetivo segun
@@ -104,7 +104,10 @@ def ProcesarPalabra(pal, dic, tipo):
                 archivo = open('Reporte.txt', 'x')
             finally:
                 archivo.write(' la palabra {} no se encuentra en Wiktionary . '.format(pal))
-                event, values = windowDefinicion.Read()
+                windowDefinicion = sg.Window('Definicion')
+                event, values = windowDefinicion.Layout(layoutDefinicion).Read()
+                print(event,values)
+                windowDefinicion.Close()
                 if (event is not 'None') and (event is not None):
                     AgregarJson(pal, values['__definicion__'])
                     archivo.write('\n')
