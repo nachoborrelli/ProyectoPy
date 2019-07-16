@@ -169,17 +169,26 @@ if __name__ == '__main__':
             rellenarConLetrasRandom(cant_palabras, palMax)
 
 
-    def Pintar(coordenadas, pintados, graph, punto,letras, color= 'grey72'):
+    def Pintar(coordenadas, pintados, no_desmarcables, graph, punto, letras, color= 'grey72'):
         '''  Se ocupa de indicar como marcada una casilla pintandola en gris.
             '''
-        graph.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
-                            (punto[0] * BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3),
-                            line_color='black',fill_color=color)
-        graph.DrawText('{}'.format(convertir_UpperLower(coordenadas[punto],letras)), (punto[0] * BOX_SIZE + 15, punto[1] * BOX_SIZE + 15),
-                       font='Courier 25')
-        if(color == 'grey72'):
-            pintados[punto] = coordenadas[punto]                        #Mantengo una estructura con solo las casillas pintadas.
-            del coordenadas[punto]                                      #Y las saco de mi estructura auxiliar.
+        if punto not in no_desmarcables:
+            graph.DrawRectangle((punto[0] * BOX_SIZE + 5, punto[1] * BOX_SIZE + 3),
+                                (punto[0] * BOX_SIZE + BOX_SIZE + 5, punto[1] * BOX_SIZE + BOX_SIZE + 3),
+                                line_color='black',fill_color=color)
+            graph.DrawText('{}'.format(convertir_UpperLower(coordenadas[punto],letras)), (punto[0] * BOX_SIZE + 15, punto[1] * BOX_SIZE + 15),
+                           font='Courier 25')
+            if(color == 'grey72'):
+                pintados[punto] = coordenadas[punto]                        #Mantengo una estructura con solo las casillas pintadas.
+                del coordenadas[punto]                                      #Y las saco de mi estructura auxiliar.
+            else:
+                no_desmarcables[punto] = coordenadas[punto]
+                del coordenadas[punto]
+                print('borrado')
+        print('pintados',pintados)
+        print('no_desmarcables',no_desmarcables)
+
+
 
 
     def Despintar(coordenadas, pintados, graph, punto,letras):
@@ -298,6 +307,8 @@ if __name__ == '__main__':
     palabras_encontradas['__adjetivos__'] = []
     palabras_encontradas['__sustantivos__'] = []
 
+    no_desmarcables = {}
+
 
     config_values = configPalabras(dic_palabras)  # Levantar configuracion
 
@@ -385,16 +396,17 @@ if __name__ == '__main__':
                 x = mouse[0] // BOX_SIZE
                 y = mouse[1] // BOX_SIZE
                 punto = (x, y)
-                if punto in coordenadas.keys():
-                    try:
-                        Pintar(coordenadas, pintados, graph, punto, config_values['__letras__'])
-                    except KeyError:
-                        pass
-                else:
-                    try:
-                        Despintar(coordenadas, pintados, graph, punto, config_values['__letras__'])
-                    except KeyError:
-                        pass
+                if punto not in no_desmarcables:
+                    if punto in coordenadas.keys():
+                        try:
+                            Pintar(coordenadas, pintados, no_desmarcables, graph, punto, config_values['__letras__'])
+                        except KeyError:
+                            pass
+                    else:
+                        try:
+                            Despintar(coordenadas, pintados, graph, punto, config_values['__letras__'])
+                        except KeyError:
+                            pass
         elif event == 'Adjetivo' or event == 'Sustantivo' or event == 'Verbo':
             if len(pintados) > 0:
                 color, pal, correcta, clave = comprobarPalabra(pintados, config_values['__orientacion__'], event)
@@ -403,7 +415,7 @@ if __name__ == '__main__':
                     for punto in pintadosClone:
                         Despintar(coordenadas, pintados, graph, punto, config_values['__letras__'])
                     for punto in pintadosClone:
-                        Pintar(coordenadas, pintadosClone, graph, punto,config_values['__letras__'], color)
+                        Pintar(coordenadas, pintados, no_desmarcables, graph, punto,config_values['__letras__'], color)
                     if pal not in palabras_encontradas[clave]:
                         palabras_encontradas[clave].append(pal)
                     Adjs, Verbs, Susts = Comparar(wordDic, palabras_encontradas)
