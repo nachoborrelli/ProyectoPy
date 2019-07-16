@@ -42,7 +42,8 @@ def configPalabras(dic_palabras):
             oficinas_temp[oficina] = statistics.mean(listaTemperaturas)             #calcular promedio de tempemperatura de una oficina
     except:                                                                         #En caso de que no exista, valor predeterminado = 20
         oficinas_temp['Vacio'] = 20
-        sg.PopupNoButtons('Registro Ambiental no encontrado o no es operable.',title= 'Advertencia', auto_close=True, auto_close_duration=4)#aviso de que el registro no se encontro o esta vacio
+        sg.PopupNoButtons('Registro Ambiental no encontrado o no es operable.',
+                        title= 'Advertencia', auto_close=True, auto_close_duration=4)#aviso: el registro no se encontro o esta vacio
 
     # ------------------------------------ Layout & Design ------------------------------------
 
@@ -178,5 +179,8 @@ def configPalabras(dic_palabras):
     # print(values)
     return values
 
+#-----------------------------------------------------------------------------------------#
+# TRABAJO CONFORMADO Y REALIZADO POR ALBERCA AGUSTIN, BORRELLI JUAN IGNACIO, GEBER MATIAS #
+#-----------------------------------------------------------------------------------------#
 
 
