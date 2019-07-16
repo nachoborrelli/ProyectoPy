@@ -185,11 +185,6 @@ if __name__ == '__main__':
                 no_desmarcables[punto] = coordenadas[punto]
                 del coordenadas[punto]
                 print('borrado')
-        print('pintados',pintados)
-        print('no_desmarcables',no_desmarcables)
-
-
-
 
     def Despintar(coordenadas, pintados, graph, punto,letras):
         '''Despinta la letra dejandola nuevamente en blanco'''
@@ -425,6 +420,7 @@ if __name__ == '__main__':
                     pintadosClone = pintados.copy()
                     for punto in pintadosClone:
                         Despintar(coordenadas, pintados, graph, punto,config_values['__letras__'])
+                    sg.Popup('Palabra incorrecta, inténtelo nuevamente. :)',keep_on_top=True,auto_close=True, auto_close_duration=3, no_titlebar=True, grab_anywhere=True)
         elif event == 'Verificar':
             if(Adjs == 0) and (Verbs == 0) and (Susts == 0):
                 ganar()

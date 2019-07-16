@@ -6,6 +6,7 @@ import PySimpleGUI as sg
 import Web
 import random
 import sys
+import os
 
 def configPalabras(dic_palabras):
     '''Modulo encargado de procesar toda la informacion relacionada a la configuracion del juego'''
@@ -25,7 +26,8 @@ def configPalabras(dic_palabras):
             valido='__sustantivos__'
 
         return valido
-
+    #----------------------------------------- Datos ------------------------------------------
+    dirJsonOficinas = os.path.abspath(os.path.join(os.path.join(os.pardir, 'Raspberry'), 'datos-oficinas.json'))
 
     # ------------------------------------ Layout & Design ------------------------------------
 
@@ -64,7 +66,7 @@ def configPalabras(dic_palabras):
         [sg.Text('Ayuda'), sg.InputOptionMenu(('Si', 'No'), key='__ayuda__'),
          sg.Text('Orientacion'), sg.InputOptionMenu(('Horizontal', 'Vertical'), key='__orientacion__'),
          sg.Text('Letras'), sg.InputOptionMenu(('Mayúsculas','Minúsculas'), key='__letras__'),
-         sg.Text('Tipografia'), sg.InputCombo(values=('Courier', 'Helvetica', 'Times', 'Arial', 'Comic', 'Verdana'), size =(15, 1), key='__tipografia__'),
+         sg.Text('Oficina'), sg.InputCombo(values=('aaa'), size =(15, 1), key='__tipografia__'),
          sg.Text(' ' * 5),
          sg.Ok('Aceptar', button_color=('white', '#475841'))]
 
@@ -128,11 +130,11 @@ def configPalabras(dic_palabras):
             else:                                                                               #Si apreta X en la ventana de ayudas
                 values['__ayuda__'] = 'No'
         #generar colores random si no se ingresan
-        if values['__verbColorChooser__'] == '':                                                #Generar colores al azar si no son ingresados
+        if values['__verbColorChooser__'] == '' or values['__verbColorChooser__'] == 'None':                                                #Generar colores al azar si no son ingresados
             values['__verbColorChooser__'] = '#' + "%06x" % random.randint(0, 0xFFFFFF)
-        if values['__adjColorChooser__'] == '':
+        if values['__adjColorChooser__'] == '' or values['__adjColorChooser__'] == 'None':
             values['__adjColorChooser__'] = '#' + "%06x" % random.randint(0, 0xFFFFFF)
-        if values['__sustColorChooser__'] == '':
+        if values['__sustColorChooser__'] == '' or values['__sustColorChooser__'] == 'None':
             values['__sustColorChooser__'] = '#' + "%06x" % random.randint(0, 0xFFFFFF)
 
         #comprobar que la cantidad pedida de cada tipo no sobrepase la cantidad ingresada
@@ -150,7 +152,7 @@ def configPalabras(dic_palabras):
                 del values[dato]
     ventana_IngVen.Close()
     window_selectAyuda.Close()
-    print(values)
+    # print(values)
     return values
 
 
