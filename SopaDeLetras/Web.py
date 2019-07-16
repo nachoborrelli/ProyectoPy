@@ -105,7 +105,6 @@ def ProcesarPalabra(pal, dic, tipo):
             finally:
                 archivo.write(' la palabra {} no se encuentra en Wiktionary . '.format(pal))
                 event, values = windowDefinicion.Read()
-                print(event,type(event),values)
                 if (event is not 'None') and (event is not None):
                     AgregarJson(pal, values['__definicion__'])
                     archivo.write('\n')
@@ -157,14 +156,16 @@ def AgregarJson(palabra, definicion):
 
 def ConsultarDefinicionJson(palabra):
     '''devuelve la definicion de una palabra'''
-    jsonfile = open('Definiciones.json', 'r')
-    diccionario = json.load(jsonfile)
-    if (palabra in diccionario.keys()):
-        jsonfile.close()
-        return diccionario[palabra]
-    else:
-        jsonfile.close()
-        return False
+    try:
+        jsonfile = open('Definiciones.json', 'r')
+        diccionario = json.load(jsonfile)
+        if (palabra in diccionario.keys()):
+            jsonfile.close()
+            return diccionario[palabra]
+        else:
+            jsonfile.close()
+            return False
+    except: return False
 
 #TRABAJO CONFORMADO Y REALIZADO POR ALBERCA AGUSTIN, BORRELLI JUAN IGNACIO, GEBER MATIAS
 
