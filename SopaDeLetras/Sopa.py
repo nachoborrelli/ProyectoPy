@@ -419,7 +419,7 @@ if __name__ == '__main__':
                     pintadosClone = pintados.copy()
                     for punto in pintadosClone:
                         Despintar(coordenadas, pintados, graph, punto,config_values['__letras__'])
-                    sg.Popup('Palabra incorrecta, inténtelo nuevamente. :)',keep_on_top=True,auto_close=True, auto_close_duration=3, no_titlebar=True, grab_anywhere=True)
+                    sg.Popup('Palabra incorrecta, inténtelo nuevamente •ᴗ•', keep_on_top=True, auto_close=True, auto_close_duration=3, no_titlebar=True, grab_anywhere=True)
         elif event == 'Verificar':
             if(Adjs == 0) and (Verbs == 0) and (Susts == 0):
                 ganar()

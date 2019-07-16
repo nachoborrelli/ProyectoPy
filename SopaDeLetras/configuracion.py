@@ -29,22 +29,22 @@ def configPalabras(dic_palabras):
 
         return valido
     #---------------------------- Procesamiento de temperaturas -------------------------------
-    dirJsonOficinas = os.path.abspath(os.path.join(os.path.join(os.pardir, 'Raspberry'), 'datos-oficinas.json'))
+    dirJsonOficinas = os.path.abspath(os.path.join(os.path.join(os.pardir, 'Raspberry'), 'datos-oficinas.json'))    #archivo en carpeta padre
     oficinas_temp = {}
     try:
         oficinas_registroAmbiental = {}
         jsonOficinas = open(dirJsonOficinas)
-        oficinas_registroAmbiental = json.load(jsonOficinas)
+        oficinas_registroAmbiental = json.load(jsonOficinas)                           #levantar json registro
         print(oficinas_registroAmbiental)
         listaTemperaturas = []
         for oficina in oficinas_registroAmbiental:
             for dic_registro in oficinas_registroAmbiental[oficina]:
                 listaTemperaturas.append(int(dic_registro['Temperatura']))
-            oficinas_temp[oficina] = statistics.mean(listaTemperaturas)             #obtener promedio de temp de una oficina
+            oficinas_temp[oficina] = statistics.mean(listaTemperaturas)             #calcular promedio de tempemperatura de una oficina
         print(oficinas_temp)
-    except:
+    except:                                                                         #En caso de que no exista, valor predeterminado = 20
         oficinas_temp['Vacio'] = 20
-        sg.PopupNoButtons('Registro Ambiental no encontrado.', auto_close=True, auto_close_duration=4)
+        sg.PopupNoButtons('Registro Ambiental no encontrado o no es operable.',title= 'Advertencia', auto_close=True, auto_close_duration=4)#aviso de que el registro no se encontro o esta vacio
 
     # ------------------------------------ Layout & Design ------------------------------------
 
@@ -115,7 +115,7 @@ def configPalabras(dic_palabras):
 
         elif event == '__deletebutton__':
             tipo_borrado = borrar_valor(values['__input__'], dic_palabras)
-            if tipo_borrado != '':                              #Chequear que la palabra a eliminar sea valida
+            if tipo_borrado != '':                                         #Chequear que la palabra a eliminar sea valida
                 ventana_IngVen.FindElement(tipo_borrado).Update(dic_palabras[tipo_borrado])
             else:
                 sg.PopupError('Palabra no existente', title='')
