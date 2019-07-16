@@ -8,9 +8,9 @@ import PySimpleGUI as sg
 import json
 definiciones = {}
 layout = [[sg.Text('ingrese una definicion para la palabra')],
-                 [sg.InputText(key='Definicion')],
-                 [sg.Button('Verbo',key='V'),sg.Button('Adjetivo',key='A'),sg.Button('Sustantivo',key='S')]]
-window = sg.Window.Layout(layout)
+                 [sg.InputText(key='__definicion__')],
+                 [sg.Button('Verbo',key='__verbos__'),sg.Button('Adjetivo',key='__adjetivos__'),sg.Button('Sustantivo',key='__sustantivos__')]]
+window = sg.Window('Definicion').Layout(layout)
 
 def PalabraWik(pal, dic, tipo):
     '''Va a buscar la palabra a Wiktionary y la clasifica en verbo, sustantivo o adjetivo segun
@@ -24,7 +24,7 @@ def PalabraWik(pal, dic, tipo):
     try:
         palabra = list(w.search(pal).sections)
     except(AttributeError):
-        sg.Popup('Palabra no encontrada')
+        sg.Popup('Palabra no encontrada en Wiktionary')
         tipo = 'null'
         return correcto,tipo
 
@@ -103,11 +103,13 @@ def ProcesarPalabra(pal, dic, tipo):
                 archivo.write(' la palabra {} no se encuentra en Wiktionary . '.format(pal))
                 event,values = window.Read()
                 if(event is not 'None'):
-                    AgregarJson(pal,values[0])
+                    window.Close()
+                    AgregarJson(pal,values['__definicion__'])
                     archivo.write('\n')
                     ok = True
+                    tipo = event
             archivo.close()
-            return (ok,wik[1])
+            return (ok,tipo)
         return (ok,wik[1])
 
 def Definicion(pal):
