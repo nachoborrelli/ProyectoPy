@@ -7,9 +7,13 @@ import pattern.text.es as patt
 import PySimpleGUI as sg
 import json
 definiciones = {}
-layout = [[sg.Text('ingrese una definicion para la palabra')],
+layout = [
+                 [sg.Text('ingrese una definicion para la palabra')],
                  [sg.InputText(key='__definicion__')],
-                 [sg.Button('Verbo',key='__verbos__'),sg.Button('Adjetivo',key='__adjetivos__'),sg.Button('Sustantivo',key='__sustantivos__')]]
+                 [sg.Button('Verbo',key='__verbos__', enable_events=True),
+                  sg.Button('Adjetivo',key='__adjetivos__', enable_events=True),
+                  sg.Button('Sustantivo',key='__sustantivos__', enable_events=True)]
+          ]
 window = sg.Window('Definicion').Layout(layout)
 
 def PalabraWik(pal, dic, tipo):
@@ -85,7 +89,7 @@ def ProcesarPalabra(pal, dic, tipo):
             try:
                 archivo = open('Reporte.txt', 'a')
             except(FileNotFoundError):
-                archivo = open('Reporte.txt','x')
+                archivo = open('Reporte.txt', 'x')
             finally:
                 archivo.write('La clasificacion de la palabra {} no coincide entre Wiktionary y Pattern. En wiktionary es: {}, y en Patter es: {}. '.format(
                         pal, wik[1], pat[1]))
@@ -94,35 +98,34 @@ def ProcesarPalabra(pal, dic, tipo):
         return (True,wik[1])
     else:
         ok = False
-        if (wik[1] != pat[1]):
+        if wik[1] != pat[1]:
             try:
                 archivo = open('Reporte.txt', 'a')
             except(FileNotFoundError):
-                archivo = open('Reporte.txt','x')
+                archivo = open('Reporte.txt', 'x')
             finally:
                 archivo.write(' la palabra {} no se encuentra en Wiktionary . '.format(pal))
-                event,values = window.Read()
+                event, values = window.Read()
                 if(event is not 'None'):
-                    window.Close()
-                    AgregarJson(pal,values['__definicion__'])
+                    AgregarJson(pal, values['__definicion__'])
                     archivo.write('\n')
                     ok = True
                     tipo = event
                     dic[tipo].append(pal)
                     print(tipo)
                 archivo.close()
-                return (ok,tipo)
-        return (ok,wik[1])
+                return (ok, tipo)
+        return (ok, wik[1])
 
 def Definicion(pal):
     '''Busca el articulo de la palabra en Wiktionary, selecciona la seccion con el tipo, se queda con las definiciones
     y devuelve todas las que encuentra'''
     definicion = ConsultarDefinicionJson(pal)
-    if (definicion):
+    if definicion:
       return definicion
     wi = Wiktionary(language='es')
     secciones = wi.search(pal).sections
-    if(len(secciones)>3):
+    if len(secciones) > 3:
         seccion = secciones[2]
     else:
         seccion = secciones[3]
@@ -130,7 +133,7 @@ def Definicion(pal):
 
     for letra in range(len(etimologia)):
         if etimologia[letra] == '1':
-            pos=letra
+            pos = letra
             break
     try:
         definicion = etimologia[pos:]
@@ -138,18 +141,18 @@ def Definicion(pal):
         definicion = etimologia
     return definicion
 
-def AgregarJson(palabra,definicion):
+def AgregarJson(palabra, definicion):
     try:
         jsonfile = open('Definiciones.json', 'x')
     except FileExistsError:
-        jsonfile = open('Definiciones.json', 'r+')
+        jsonfile = open('Definiciones.json', 'r+')  ########################################arreglar
     finally:
         definiciones[palabra] = definicion
-        json.dump(definiciones,jsonfile)
+        json.dump(definiciones, jsonfile)
         jsonfile.close()
 
 def ConsultarDefinicionJson(palabra):
-    jsonfile = open('Definiciones.json','r')
+    jsonfile = open('Definiciones.json', 'r')
     diccionario = json.load(jsonfile)
     if (palabra in diccionario.keys()):
         jsonfile.close()
