@@ -1,3 +1,8 @@
-import os
-print(os.pardir)
-print ('esto', os.path.abspath(os.path.join(os.path.join(os.pardir, 'Raspberry'),'datos-oficinas.json')))
+i=0
+if (i==1):
+    s = 'hola'
+else:
+    s = False
+
+if (s):
+    print('anda')

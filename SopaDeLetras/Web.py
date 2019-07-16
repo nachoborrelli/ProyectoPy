@@ -7,6 +7,10 @@ import pattern.text.es as patt
 import PySimpleGUI as sg
 import json
 definiciones = {}
+layout = [[sg.Text('ingrese una definicion para la palabra')],
+                 [sg.InputText(key='Definicion')],
+                 [sg.Button('Verbo',key='V'),sg.Button('Adjetivo',key='A'),sg.Button('Sustantivo',key='S')]]
+window = sg.Window.Layout(layout)
 def PalabraWik(pal, dic, tipo):
     '''Va a buscar la palabra a Wiktionary y la clasifica en verbo, sustantivo o adjetivo segun
     la primer seccion por orden de relevancia, si la palabra no se encuentra en el diccionario de la pagina,
@@ -18,7 +22,9 @@ def PalabraWik(pal, dic, tipo):
     try:
         palabra = list(w.search(pal).sections)
     except(AttributeError):
-        sg.Popup('Ingrese otra palabra')
+        sg.Popup('Palabra no encontrada')
+        tipo = 'null'
+        return correcto,tipo
     else:
 
         if(pal in dic['__verbos__']) or (pal in dic['__sustantivos__']) or (pal in dic['__adjetivos__']):
@@ -85,6 +91,7 @@ def ProcesarPalabra(pal, dic, tipo):
             archivo.close()
         return (True,wik[1])
     else:
+        ok = False
         if (wik[1] != pat[1]):
             try:
                 archivo = open('Reporte.txt', 'a')
@@ -92,18 +99,21 @@ def ProcesarPalabra(pal, dic, tipo):
                 archivo = open('Reporte.txt','x')
             finally:
                 archivo.write(' la palabra {} no se encuentra en Wiktionary . '.format(pal))
-                definicion = sg.PopupGetText('ingrese una definicion para la palabra')
-                if(definicion != 'None'):
-                    AgregarJson(pal,definicion)
+                event,values = window.Read()
+                if(event is not 'None'):
+                    AgregarJson(pal,values[0])
                     archivo.write('\n')
+                    ok = True
             archivo.close()
-        return (False,wik[1])
+            return (ok,wik[1])
+        return (ok,wik[1])
 
 def Definicion(pal):
     '''Busca el articulo de la palabra en Wiktionary, selecciona la seccion con el tipo, se queda con las definiciones
     y devuelve todas las que encuentra'''
-    if (pal in definiciones.keys()):
-      return ConsultarDefinicionJson(pal)
+    definicion = ConsultarDefinicionJson(pal)
+    if (definicion):
+      return definicion
     wi = Wiktionary(language='es')
     secciones = wi.search(pal).sections
     if(len(secciones)>3):
@@ -135,8 +145,11 @@ def AgregarJson(palabra,definicion):
 
 def ConsultarDefinicionJson(palabra):
     jsonfile = open('Definiciones.json','r')
-    diccionario = json.loads(definiciones,jsonfile)
-    return diccionario[palabra]
+    diccionario = json.load(jsonfile)
+    if (palabra in diccionario.keys()):
+        return diccionario[palabra]
+    else:
+        return False
 
 #TRABAJO CONFORMADO Y REALIZADO POR ALBERCA AGUSTIN, BORRELLI JUAN IGNACIO, GEBER MATIAS
 
