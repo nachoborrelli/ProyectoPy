@@ -93,7 +93,7 @@ def ProcesarPalabra(pal, dic, tipo):
             finally:
                 archivo.write(' la palabra {} no se encuentra en Wiktionary . '.format(pal))
                 definicion = sg.PopupGetText('ingrese una definicion para la palabra')
-                if(definicion != None):
+                if(definicion != 'None'):
                     AgregarJson(pal,definicion)
                     archivo.write('\n')
             archivo.close()
