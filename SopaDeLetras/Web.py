@@ -108,8 +108,9 @@ def ProcesarPalabra(pal, dic, tipo):
                     archivo.write('\n')
                     ok = True
                     tipo = event
-            archivo.close()
-            return (ok,tipo)
+                    print(tipo)
+                archivo.close()
+                return (ok,tipo)
         return (ok,wik[1])
 
 def Definicion(pal):
@@ -150,8 +151,10 @@ def ConsultarDefinicionJson(palabra):
     jsonfile = open('Definiciones.json','r')
     diccionario = json.load(jsonfile)
     if (palabra in diccionario.keys()):
+        jsonfile.close()
         return diccionario[palabra]
     else:
+        jsonfile.close()
         return False
 
 #TRABAJO CONFORMADO Y REALIZADO POR ALBERCA AGUSTIN, BORRELLI JUAN IGNACIO, GEBER MATIAS
